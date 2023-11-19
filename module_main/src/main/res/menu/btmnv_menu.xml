@@ -1,0 +1,29 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/navigation_item_poem"
+        android:icon="@drawable/book_48"
+
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/navigation_item_art"
+        android:icon="@drawable/planet_64"
+
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/navigation_item3"
+        android:icon="@drawable/ic_launcher_background"
+
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/navigation_item4"
+        android:icon="@drawable/ic_launcher_background"
+
+        app:showAsAction="always"/>
+<!--    <item
+        android:id="@+id/navigation_item5"
+        android:icon="@drawable/boke"
+        android:title="@string/btnv_item5"
+        app:showAsAction="always"/>-->
+</menu>

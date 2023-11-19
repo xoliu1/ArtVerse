@@ -31,7 +31,7 @@ android {
     sourceSets {
         main {
             if (isModule.toBoolean()) {
-                manifest.srcFile 'src/main/moduleManifest/AndroidManifest.xml'
+                manifest.srcFile 'src/main/manifest/AndroidManifest.xml'
             } else {
                 manifest.srcFile 'src/main/AndroidManifest.xml'
                 //集成开发模式下排除debug文件夹中的所有Java文件,例如组件开发下的Application

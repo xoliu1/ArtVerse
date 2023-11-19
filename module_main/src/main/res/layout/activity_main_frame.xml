@@ -6,14 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".main_frame">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:textColor="@color/colorWhite"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/Btm_nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        
+        app:itemIconTint="@drawable/btmnv_selector"
+        app:itemRippleColor="@color/colorDeep"
+        app:itemTextColor="@drawable/btmnv_selector"
+        app:labelVisibilityMode="selected"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:menu="@menu/btmnv_menu"
+        tools:layout_editor_absoluteX="0dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

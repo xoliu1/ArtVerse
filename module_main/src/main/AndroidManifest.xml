@@ -3,6 +3,11 @@
 
     <application
         android:theme="@style/Theme.ArtVerse">
+        <activity
+            android:name=".main_frame"
+            android:exported="true">
+
+        </activity>
     </application>
 
 </manifest>

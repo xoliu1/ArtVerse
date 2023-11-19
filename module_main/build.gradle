@@ -12,7 +12,7 @@ android {
     defaultConfig {
         if (isModule.toBoolean()) {
             // 单独调试时添加 applicationId ，集成调试时移除
-            applicationId "com.xoliu.module_test"
+            applicationId "com.xoliu.module_main"
         }
         minSdk 24
         targetSdk 33

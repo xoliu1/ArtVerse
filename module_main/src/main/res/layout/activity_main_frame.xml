@@ -6,16 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".main_frame">
 
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="670dp"
+        app:layout_constraintBottom_toTopOf="@id/btmnv_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </FrameLayout>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/Btm_nav_view"
+        android:id="@+id/btmnv_view"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        
+        style="@style/Widget.Design.BottomNavigationView"
         app:itemIconTint="@drawable/btmnv_selector"
-        app:itemRippleColor="@color/colorDeep"
         app:itemTextColor="@drawable/btmnv_selector"
-        app:labelVisibilityMode="selected"
+        app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/transparent"
         app:menu="@menu/btmnv_menu"
-        tools:layout_editor_absoluteX="0dp" />
+        android:layout_marginBottom="0dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,23 +3,23 @@
     <item
         android:id="@+id/navigation_item_poem"
         android:icon="@drawable/book_48"
-
+        android:title="一"
         app:showAsAction="always"
         />
     <item
         android:id="@+id/navigation_item_art"
         android:icon="@drawable/planet_64"
-
+        android:title="二"
         app:showAsAction="always" />
     <item
-        android:id="@+id/navigation_item3"
+        android:id="@+id/navigation_item_community"
         android:icon="@drawable/ic_launcher_background"
-
+        android:title="三"
         app:showAsAction="always"/>
     <item
-        android:id="@+id/navigation_item4"
+        android:id="@+id/navigation_item_profile"
         android:icon="@drawable/ic_launcher_background"
-
+        android:title="四"
         app:showAsAction="always"/>
 <!--    <item
         android:id="@+id/navigation_item5"

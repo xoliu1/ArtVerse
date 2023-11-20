@@ -7,12 +7,10 @@
     android:orientation="vertical"
     tools:context=".fragment_poem_main">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_gravity="center"
-        android:layout_marginTop="400dp"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="horizontal"/>
 
 </LinearLayout>

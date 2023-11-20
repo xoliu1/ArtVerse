@@ -23,6 +23,7 @@ public class main_shell extends AppCompatActivity {
 
     ArrayList<Fragment> fragmentList; //存放各组件Fragment的集合
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,8 +35,17 @@ public class main_shell extends AppCompatActivity {
         //初始化EventBus
         // EventBus.getDefault().register(this);
 
-        initClick();
 
+        initPrePare();
+        initClick();
+        //切换默认页面
+        changeMainUI(fragmentList.get(0));
+
+    }
+
+    private void initPrePare(){
+        fragmentList = new ArrayList<>();
+        fragmentList.add((Fragment) ARouter.getInstance().build("/poem/fragment").navigation());
 
     }
 
@@ -48,7 +58,7 @@ public class main_shell extends AppCompatActivity {
                 int id = item.getItemId();
                 if(id == R.id.navigation_item_poem) {
                     // 诗句
-                    changeMainUI((Fragment) ARouter.getInstance().build("/poem/fragment").navigation());
+                    changeMainUI(fragmentList.get(0));
                     return true;
                 }else if(id == R.id.navigation_item_art) {
                     // 艺术作品

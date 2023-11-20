@@ -15,7 +15,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.xoliu.module_poem.R;
-import com.xoliu.module_poem.dialog.ShareDialog;
+import com.xoliu.module_poem.comment.MySheetDialog;
+import com.xoliu.module_poem.share.ShareDialog;
 
 
 /***
@@ -31,6 +32,8 @@ public class fragment_viewpager_item extends Fragment {
     public String shareNumStr;
     String commentNumStr;
     String likeNumStr;
+
+    MySheetDialog dialog = new MySheetDialog();
 
 
 
@@ -89,23 +92,33 @@ public class fragment_viewpager_item extends Fragment {
         comment_num.setText(commentNumStr);
         like_num.setText(likeNumStr);
 
-        //
-        final Integer[] num = {Integer.valueOf(likeNumStr)};
+        //设置评论点击事件
+        ImageButton imageButton_comment = (ImageButton) view.findViewById(R.id.btn_comment);
+        imageButton_comment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        //设置点击事件
-        ImageButton imageButton = (ImageButton) view.findViewById(R.id.btn_like);
-        imageButton.setOnClickListener(new View.OnClickListener() {
+                dialog.show(getFragmentManager(), "CommentBottomSheetDialog");
+
+
+            }
+        });
+
+        //设置点赞点击事件
+        final Integer[] num = {Integer.valueOf(likeNumStr)};
+        ImageButton imageButton_like = (ImageButton) view.findViewById(R.id.btn_like);
+        imageButton_like.setOnClickListener(new View.OnClickListener() {
             boolean isClicked = false;
 
             @Override
             public void onClick(View v) {
                 if (!isClicked) {
-                    imageButton.setImageResource(R.drawable.like_checked);
+                    imageButton_like.setImageResource(R.drawable.like_checked);
                     num[0]++;
                     like_num.setText(num[0].toString());
                     isClicked = true;
                 } else {
-                    imageButton.setImageResource(R.drawable.like);
+                    imageButton_like.setImageResource(R.drawable.like);
                     num[0]--;
                     like_num.setText(num[0].toString());
                     isClicked = false;

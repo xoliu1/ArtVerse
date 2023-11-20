@@ -98,7 +98,7 @@
         android:textColor="@color/black"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
-        android:backgroundTint="@color/gray"
+        android:backgroundTint="#DAD7D7"
         android:text="取消"
         />
 

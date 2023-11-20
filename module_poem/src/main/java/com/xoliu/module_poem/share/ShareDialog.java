@@ -1,4 +1,4 @@
-package com.xoliu.module_poem.dialog;
+package com.xoliu.module_poem.share;
 
 import android.app.Dialog;
 import android.os.Bundle;

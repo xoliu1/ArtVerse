@@ -61,9 +61,10 @@ public class fragment_poem_main extends Fragment {
     private void initViewPager() {
         fragmentList = new ArrayList<>();
         fragmentList.add(new fragment_viewpager_item("我叫王旭钊，爱吃积碳稿","作者：王旭昭",11,3,749));
-        fragmentList.add(new fragment_viewpager_item());
-        fragmentList.add(new fragment_viewpager_item());
-        fragmentList.add(new fragment_viewpager_item());
+        fragmentList.add(new fragment_viewpager_item("我叫王旭钊，爱吃积碳稿","作者：王旭昭",11,3,749));
+        fragmentList.add(new fragment_viewpager_item("我叫王旭钊，爱吃积碳稿","作者：王旭昭",11,3,749));
+        fragmentList.add(new fragment_viewpager_item("我叫王旭钊，爱吃积碳稿","作者：王旭昭",11,3,749));
+
         viewPager2.setAdapter(new CardAdapter(this,fragmentList));
     }
 

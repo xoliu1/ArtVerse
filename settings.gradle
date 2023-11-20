@@ -14,7 +14,6 @@ dependencyResolutionManagement {
         maven { url "https://maven.aliyun.com/nexus/content/repositories/releases" }
         maven { url 'https://jitpack.io' }
         google()
-        jcenter()
         mavenCentral()
     }
 }
@@ -23,3 +22,4 @@ rootProject.name = "ArtVerse"
 include ':app'
 include ':common'
 include ':module_main'
+include ':module_poem'

@@ -3,7 +3,5 @@ plugins {
     id 'com.android.application' version '8.1.1' apply false
     id 'com.android.library' version '8.1.1' apply false
 }
-apply from: 'config.gradle'
-task clean(type:Delete){
-    delete rootProject.buildDir
-}
+//加载config.gradle
+apply from: "config.gradle"

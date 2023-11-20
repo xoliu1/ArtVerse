@@ -14,7 +14,6 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
@@ -32,16 +31,21 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    buildFeatures {
-        viewBinding true    //开启ViewBinding
-    }
+
 }
 
 dependencies {
+
     implementation project(":common")
+    //集成开发下，添加所有功能模块
+    //if (!isModule.toBoolean()) {
+    implementation project(":module_main")
+    implementation project(":module_poem")
+    // }
     annotationProcessor rootProject.ext.annotationLibs
 
-    if (!isModule.toBoolean()) {
-    //implementation project(":module_")
-    }
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }

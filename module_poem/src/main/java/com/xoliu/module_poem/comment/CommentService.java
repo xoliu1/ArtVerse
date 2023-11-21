@@ -16,7 +16,7 @@ public interface CommentService {
  	lx	    否	    string	    输出头像类型[a1（男头）|b1（女头）|c1（动漫头像）|c2（动漫女头）|c3（动漫男头）]默认为c1
  	format	否	    string	    输出壁纸格式[json|images]默认为images
      */
-    @GET("sjtx/api.php?lx=c1&format=json")
+    @GET("sjtx/api.php?lx=a1&format=json")
     Observable<card_picBean> getUserPic();
     //返回json和壁纸的格式一样，直接用
 }

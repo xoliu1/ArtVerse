@@ -1,5 +1,7 @@
 package com.xoliu.module_poem.viewpager;
 
+import android.util.Log;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -15,6 +17,7 @@ public class CardViewModel extends ViewModel {
     public MutableLiveData<card_picBean> getCardPic() {
         if (cardPic == null){
             cardPic = new MainRepository().getCardPic();
+            Log.d("TAG", "public MutableLiveData<card_picBean> getCardPic()  ");
         }
         return cardPic;
     }

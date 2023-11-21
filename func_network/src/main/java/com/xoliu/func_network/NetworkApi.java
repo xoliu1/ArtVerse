@@ -9,6 +9,8 @@ package com.xoliu.func_network;
  * @create 23-11-21
  **/
 
+import android.util.Log;
+
 import com.xoliu.func_network.errorhandler.ExceptionHandle;
 import com.xoliu.func_network.errorhandler.HttpErrorHandler;
 
@@ -66,8 +68,8 @@ public class NetworkApi {
             OkHttpClient.Builder builder = new OkHttpClient.Builder();
             //设置缓存大小
             int cacheSize = 100 * 1024 * 1024;
-            //设置网络请求超时时长，这里设置为12s
-            builder.connectTimeout(12, TimeUnit.SECONDS);
+            //设置网络请求超时时长，这里设置为6s
+            builder.connectTimeout(6, TimeUnit.SECONDS);
             //OkHttp配置完成
             okHttpClient = builder.build();
         }
@@ -132,6 +134,7 @@ public class NetworkApi {
             //当response返回出现500之类的错误时
             if (response instanceof BaseResponse && ((BaseResponse) response).responseCode >= 500) {
                 //通过这个异常处理，得到用户可以知道的原因
+                Log.d("TAG", "getAppErrorHandler: 出现错误");
                 ExceptionHandle.ServerException exception = new ExceptionHandle.ServerException();
                 exception.code = ((BaseResponse) response).responseCode;
                 exception.message = ((BaseResponse) response).responseError != null ? ((BaseResponse) response).responseError : "";

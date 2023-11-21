@@ -42,6 +42,7 @@ public class MainRepository {
             @Override
             public void onSuccess(card_picBean cardPicBean) {
                 cardPic.setValue(cardPicBean);
+                Log.d("TAG", "onSuccess: 加载成功" + cardPicBean.getImgurl());
             }
 
             @Override

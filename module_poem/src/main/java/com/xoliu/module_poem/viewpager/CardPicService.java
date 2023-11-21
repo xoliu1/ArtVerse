@@ -16,7 +16,7 @@ public interface CardPicService {
  	    lx	    否	    string	        选择输出分类[meizi|dongman|fengjing|suiji]，为空随机输出
        	format	否	    string	        输出壁纸格式[json|images]默认为images
          */
-        @GET("sjbz/api.php?lx=dongman&format=json")
+        @GET("sjtx/api.php?lx=c1&format=json")
         Observable<card_picBean> getCardPic();
 
 }

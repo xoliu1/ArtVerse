@@ -55,3 +55,4 @@
 - 评论区点赞后，重新打开，会被重置-> 将new的Dialog提前定义，这样不会每次点击后，才在点击事件中new，这样的话点赞信息未保存 -> bean类增加变量，记录是否点赞或者取消点赞，并更新。
 - 实现rxjava+retrofit网络框架，请求随机图片时，因为MainRepository内请求的方式基于观察者模式，在 `applySchedulers()` 未执行完毕就返回了结果，导致没有对LiveData数据进行赋值 ->  采取 `ViewModel` + `LiveData`， 在对应碎片中绑定`CardViewModel` (注意自定义ViewModel的初始化需要在碎片的主view加载完毕才可以，否则会出现错误)，在对碎片中的图片初始化时，调用`CardViewModel`中的`getCardPic()` -> 调用主仓库的`getCardPic()`进行异步请求。然后在主页面中调用`cardViewModel.getCardPic().observe()`进行监听，当收到数据，进行图片的实时加载。//解决完后，成就感非常强烈。
 - 选择的API图片4k,加载速度较慢 -> 利用Glide 的`.thumbnail(0.15f)` 加载略缩图，速度明显变快。
+- card图片加载不出来，查看日志，`java.net.SocketException: Socket is closed`，多次调试后，发现是图片太大，加载超时,自动关闭套接字 -> 改成另一个api

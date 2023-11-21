@@ -66,8 +66,8 @@ public class NetworkApi {
             OkHttpClient.Builder builder = new OkHttpClient.Builder();
             //设置缓存大小
             int cacheSize = 100 * 1024 * 1024;
-            //设置网络请求超时时长，这里设置为6s
-            builder.connectTimeout(6, TimeUnit.SECONDS);
+            //设置网络请求超时时长，这里设置为12s
+            builder.connectTimeout(12, TimeUnit.SECONDS);
             //OkHttp配置完成
             okHttpClient = builder.build();
         }

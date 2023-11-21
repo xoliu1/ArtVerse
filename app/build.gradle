@@ -41,6 +41,7 @@ dependencies {
     //if (!isModule.toBoolean()) {
     implementation project(":module_main")
     implementation project(":module_poem")
+    implementation project(":func_network")
     // }
     annotationProcessor rootProject.ext.annotationLibs
 

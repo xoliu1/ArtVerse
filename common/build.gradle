@@ -11,6 +11,11 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
 
     buildTypes {
@@ -29,6 +34,9 @@ dependencies {
     api rootProject.ext.BaseLib
     api rootProject.ext.annotationLibs
     api rootProject.ext.networkLib
+
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
+    annotationProcessor 'androidx.room:room-compiler:2.3.0'
 
     //annotationProcessor
 

@@ -17,6 +17,7 @@ import com.xoliu.module_poem.viewpager.fragment_viewpager_item;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 /***
@@ -33,7 +34,6 @@ public class fragment_poem_main extends Fragment {
 
 
     private ViewPager2 viewPager2;
-
 
 
     public fragment_poem_main() {
@@ -60,12 +60,50 @@ public class fragment_poem_main extends Fragment {
      **/
     private void initViewPager() {
         fragmentList = new ArrayList<>();
-        fragmentList.add(new fragment_viewpager_item("我叫王旭钊，爱吃积碳稿","作者：王旭昭",11,3,749));
-        fragmentList.add(new fragment_viewpager_item("我叫王旭钊，爱吃积碳稿","作者：王旭昭",11,3,749));
-        fragmentList.add(new fragment_viewpager_item("我叫王旭钊，爱吃积碳稿","作者：王旭昭",11,3,749));
-        fragmentList.add(new fragment_viewpager_item("我叫王旭钊，爱吃积碳稿","作者：王旭昭",11,3,749));
+        Random r = new Random();
+        fragmentList.add(new fragment_viewpager_item(
+                "人生只似风前絮，欢也零星，悲也零星，都做连江点点萍。",
+                " - 王国维《采桑子》-",
+                r.nextInt(20),
+                r.nextInt(70),
+                r.nextInt(300)));
 
-        viewPager2.setAdapter(new CardAdapter(this,fragmentList));
+        fragmentList.add(new fragment_viewpager_item(
+                "应是天仙狂醉，乱把白云揉碎。",
+                " - 李白 《清平乐·画堂晨起》 -",
+                r.nextInt(20),
+                r.nextInt(70),
+                r.nextInt(300)));
+
+        fragmentList.add(new fragment_viewpager_item(
+                "劝君莫惜金缕衣，劝君惜取少年时",
+                " - 无名氏 《金缕衣》 -",
+                r.nextInt(20),
+                r.nextInt(70),
+                r.nextInt(300)));
+
+        fragmentList.add(new fragment_viewpager_item(
+                "惊觉相思不露，原来只因已入骨。    ",
+                " - 汤显祖《牡丹亭》 -",
+                r.nextInt(20),
+                r.nextInt(70),
+                r.nextInt(300)));
+
+        fragmentList.add(new fragment_viewpager_item(
+                "我醉欲眠卿且去，明朝有意抱琴来。",
+                " - 李白 《山中与幽人对酌》-",
+                r.nextInt(20),
+                r.nextInt(70),
+                r.nextInt(300)));
+
+        fragmentList.add(new fragment_viewpager_item(
+                "当时年少春衫薄。骑马倚斜桥，满楼红袖招。",
+                " - 韦庄 《菩萨蛮》-",
+                r.nextInt(20),
+                r.nextInt(70),
+                r.nextInt(300)));
+
+        viewPager2.setAdapter(new CardAdapter(this, fragmentList));
     }
 
     @Override

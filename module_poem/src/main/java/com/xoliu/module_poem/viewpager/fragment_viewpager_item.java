@@ -127,9 +127,16 @@ public class fragment_viewpager_item extends Fragment {
         });
 
 
+        cardViewModel.getPoem().observe(getViewLifecycleOwner(), new Observer<Poem>() {
+            @Override
+            public void onChanged(Poem poem) {
+                content.setText(poem.getHitokoto());
+                author.setText("-" + poem.getFromWho() + "-\n" + "《"+ poem.getFrom() + "》");
+            }
+        });
+
+
         //设置参数
-        content.setText(contentStr);
-        author.setText(authorStr);
         share_num.setText(shareNumStr);
         comment_num.setText(commentNumStr);
         like_num.setText(likeNumStr);

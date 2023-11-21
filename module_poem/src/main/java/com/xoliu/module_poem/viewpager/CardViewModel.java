@@ -12,13 +12,21 @@ import androidx.lifecycle.ViewModel;
  **/
 
 public class CardViewModel extends ViewModel {
+
+    public MutableLiveData<Poem> poem;
     public MutableLiveData<card_picBean> cardPic;
 
     public MutableLiveData<card_picBean> getCardPic() {
         if (cardPic == null){
             cardPic = new MainRepository().getCardPic();
-            Log.d("TAG", "public MutableLiveData<card_picBean> getCardPic()  ");
         }
         return cardPic;
+    }
+
+    public MutableLiveData<Poem> getPoem() {
+        if(poem == null){
+            poem = new MainRepository().getPoem();
+        }
+        return poem;
     }
 }

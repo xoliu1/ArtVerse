@@ -56,6 +56,13 @@ public class MainRepository {
     }
 
 
+    /***
+     * 获取用户头像
+     *
+     * @return androidx.lifecycle.MutableLiveData<com.xoliu.module_poem.viewpager.card_picBean>
+     * @author xoliu
+     * @create 23-11-22
+     **/
     @SuppressLint("CheckResult")
     public MutableLiveData<card_picBean> getuserIcon(){
         MutableLiveData<card_picBean> userIcon = new MutableLiveData<>();
@@ -77,4 +84,24 @@ public class MainRepository {
         return userIcon;
     }
 
+
+    //https://v1.hitokoto.cn/?c=i&encode=json
+    @SuppressLint("CheckResult")
+    public MutableLiveData<Poem> getPoem(){
+        MutableLiveData<Poem> poemData = new MutableLiveData<>();
+        CardPicService service = NetworkApi.createService(CardPicService.class);
+        service.getPoem("https://v1.hitokoto.cn/?c=i&encode=json").compose(NetworkApi.applySchedulers(new BaseObserver<Poem>() {
+            @Override
+            public void onSuccess(Poem poem) {
+                poemData.postValue(poem);
+            }
+
+            @Override
+            public void onFailure(Throwable e) {
+
+            }
+        }));
+
+        return poemData;
+    }
 }

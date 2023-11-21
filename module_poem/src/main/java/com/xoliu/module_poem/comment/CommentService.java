@@ -19,4 +19,6 @@ public interface CommentService {
     @GET("sjtx/api.php?lx=a1&format=json")
     Observable<card_picBean> getUserPic();
     //返回json和壁纸的格式一样，直接用
+
+
 }

@@ -7,7 +7,7 @@ package com.xoliu.module_poem.comment;
  **/
 
 public class commentItem {
-    String userIcon;
+    public String userIcon;
     String userName;
     String commentTime;
     String commentContent;

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.utils.widget.ImageFilterView;
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.ViewModel;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -43,6 +44,7 @@ public class commentAdapter extends RecyclerView.Adapter<commentAdapter.ViewHold
         holder.commentTime.setText(comment.commentTime);
         holder.userName.setText(comment.userName);
         holder.commentContent.setText(comment.commentContent);
+
 
         //设置点击事件
         holder.dianzan.setOnClickListener(new View.OnClickListener() {

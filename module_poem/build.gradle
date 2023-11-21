@@ -54,6 +54,7 @@ android {
 dependencies {
 
     implementation project(':common')
+    implementation project(':func_network')
     annotationProcessor rootProject.ext.annotationLibs
 
     //ViewPager2

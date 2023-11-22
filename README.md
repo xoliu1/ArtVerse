@@ -26,8 +26,8 @@
 - [x] 分享弹出的底部Dialog实现
 - [x] 点赞+1，取消点赞-1，特殊调用变量域
 - [x] 评论区实现（后期实现二级评论）//累skr人，多种转换，到处扭，各种小tips。
-- [x] Card的上层图片接入API ，ViewModel +LiveData
-- [ ] 
+- [x] Card的上层图片接入API ，ViewModel +LiveData+retrofit+rxjava
+- [x] 诗句的调用API，ViewModel +LiveData+retrofit+rxjava
 
 
 

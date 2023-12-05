@@ -1,8 +1,33 @@
-package com.xoliu.module_poem.viewpager;
+package bean;
 
 import com.google.gson.annotations.SerializedName;
 
+
+/***
+ * 诗句的Json接受类
+ *
+ * @return
+ * @author xoliu
+ * @create 23-12-4
+ **/
+
 public class Poem {
+    /*
+    返回参数名称	描述
+    id	一言标识
+    hitokoto	一言正文。编码方式 unicode。使用 utf-8。
+    type	类型。请参考第三节参数的表格
+    from	一言的出处
+    from_who	一言的作者
+    creator	添加者
+    creator_uid	添加者用户标识
+    reviewer	审核员标识
+    uuid	一言唯一标识；可以链接到 https://hitokoto.cn?uuid=[uuid] 查看这个一言的完整信息
+    commit_from	提交方式
+    created_at	添加时间
+    length	句子长度
+     **/
+
     @SerializedName("id")
     private Integer id;
     @SerializedName("uuid")

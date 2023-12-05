@@ -102,7 +102,8 @@ public class fragment_poem_main extends Fragment {
                 r.nextInt(20),
                 r.nextInt(70),
                 r.nextInt(300)));
-
+        viewPager2.setOffscreenPageLimit(5);
+        //关键
         viewPager2.setAdapter(new CardAdapter(this, fragmentList));
     }
 

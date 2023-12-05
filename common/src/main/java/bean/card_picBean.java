@@ -1,4 +1,4 @@
-package com.xoliu.module_poem.viewpager;
+package bean;
 
 import com.google.gson.annotations.SerializedName;
 

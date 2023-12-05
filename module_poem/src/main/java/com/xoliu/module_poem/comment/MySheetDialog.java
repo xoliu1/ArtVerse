@@ -3,7 +3,6 @@ package com.xoliu.module_poem.comment;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -17,8 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.xoliu.module_poem.R;
-import com.xoliu.module_poem.viewpager.MainRepository;
-import com.xoliu.module_poem.viewpager.card_picBean;
+
+import bean.card_picBean;
 
 import java.util.ArrayList;
 import java.util.List;

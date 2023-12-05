@@ -1,8 +1,8 @@
 package com.xoliu.module_poem.viewpager;
 
+import bean.Poem;
+import bean.card_picBean;
 import io.reactivex.Observable;
-import okhttp3.ResponseBody;
-import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Url;
 

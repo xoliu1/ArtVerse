@@ -1,9 +1,8 @@
 package com.xoliu.module_poem.comment;
 
-import com.xoliu.module_poem.viewpager.card_picBean;
+import bean.card_picBean;
 
 import io.reactivex.Observable;
-import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface CommentService {

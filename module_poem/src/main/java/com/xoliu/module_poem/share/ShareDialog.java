@@ -12,6 +12,13 @@ import androidx.annotation.Nullable;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.xoliu.module_poem.R;
 
+/***
+ * 分享的下弹栏
+ * @return
+ * @author xoliu
+ * @create 23-11-14
+ **/
+
 public class ShareDialog extends BottomSheetDialogFragment {
     @NonNull
     @Override

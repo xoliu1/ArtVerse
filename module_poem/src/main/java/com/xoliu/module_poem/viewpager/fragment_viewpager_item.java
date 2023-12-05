@@ -9,7 +9,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,11 +21,8 @@ import com.xoliu.module_poem.R;
 import com.xoliu.module_poem.comment.MySheetDialog;
 import com.xoliu.module_poem.share.ShareDialog;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import bean.Poem;
+import bean.card_picBean;
 
 
 /***

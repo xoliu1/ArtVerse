@@ -4,15 +4,14 @@ package com.xoliu.module_poem.viewpager;
 import android.annotation.SuppressLint;
 import android.util.Log;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.google.gson.Gson;
 import com.xoliu.func_network.BaseObserver;
 import com.xoliu.func_network.NetworkApi;
 import com.xoliu.module_poem.comment.CommentService;
 
-import retrofit2.Callback;
+import bean.Poem;
+import bean.card_picBean;
 
 /***
  * 诗句页面的Main仓库
@@ -21,7 +20,7 @@ import retrofit2.Callback;
  * @create 23-11-21
  **/
 
-public class MainRepository {
+public class PoemMainRepository {
 
 
 
@@ -29,7 +28,7 @@ public class MainRepository {
 
     /***
      * 请求card的上层图片
-     * @return androidx.lifecycle.MutableLiveData<com.xoliu.module_poem.viewpager.card_picBean>
+     * @return androidx.lifecycle.MutableLiveData<bean.card_picBean>
      * @author xoliu
      * @create 23-11-21
      **/
@@ -42,7 +41,7 @@ public class MainRepository {
             @Override
             public void onSuccess(card_picBean cardPicBean) {
                 cardPic.setValue(cardPicBean);
-                Log.d("TAG", "onSuccess: 加载成功" + cardPicBean.getImgurl());
+                Log.d("TAG", "卡片背景图片加载成功，url：" + cardPicBean.getImgurl());
             }
 
             @Override
@@ -59,7 +58,7 @@ public class MainRepository {
     /***
      * 获取用户头像
      *
-     * @return androidx.lifecycle.MutableLiveData<com.xoliu.module_poem.viewpager.card_picBean>
+     * @return androidx.lifecycle.MutableLiveData<bean.card_picBean>
      * @author xoliu
      * @create 23-11-22
      **/
@@ -71,7 +70,7 @@ public class MainRepository {
             @Override
             public void onSuccess(card_picBean cardPicBean) {
                 userIcon.postValue(cardPicBean);
-                Log.d("访问头像", "onSuccess: url = " + cardPicBean.getImgurl());
+                //Log.d("TAG", "获取用户头像url = " + cardPicBean.getImgurl());
             }
 
             @Override
@@ -85,14 +84,15 @@ public class MainRepository {
     }
 
 
-    //https://v1.hitokoto.cn/?c=i&encode=json
+    //https://v1.hitokoto.cn/?c=i&encode=json 为诗词的数据接口
     @SuppressLint("CheckResult")
     public MutableLiveData<Poem> getPoem(){
         MutableLiveData<Poem> poemData = new MutableLiveData<>();
         CardPicService service = NetworkApi.createService(CardPicService.class);
-        service.getPoem("https://v1.hitokoto.cn/?c=i&encode=json").compose(NetworkApi.applySchedulers(new BaseObserver<Poem>() {
+        service.getPoem("https://v1.hitokoto.cn/?c=i&c=k&encode=json").compose(NetworkApi.applySchedulers(new BaseObserver<Poem>() {
             @Override
             public void onSuccess(Poem poem) {
+                Log.d("TAG", "获取了诗词,正文：" + poem.getHitokoto());
                 poemData.postValue(poem);
             }
 

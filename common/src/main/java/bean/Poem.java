@@ -39,7 +39,7 @@ public class Poem {
     @SerializedName("from")
     private String from;
     @SerializedName("from_who")
-    private String fromWho;
+    private String fromWho = "佚名";
     @SerializedName("creator")
     private String creator;
     @SerializedName("creator_uid")

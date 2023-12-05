@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import comAnim.ZoomOutPageTransformer;
+
 
 /***
  * 诗句界面的主界面
@@ -102,8 +104,13 @@ public class fragment_poem_main extends Fragment {
                 r.nextInt(20),
                 r.nextInt(70),
                 r.nextInt(300)));
+
+        //关键-设置缓存数量
         viewPager2.setOffscreenPageLimit(5);
-        //关键
+
+        //设置动画切换效果
+        viewPager2.setPageTransformer(new ZoomOutPageTransformer());
+
         viewPager2.setAdapter(new CardAdapter(this, fragmentList));
     }
 

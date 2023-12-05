@@ -21,6 +21,8 @@ import com.xoliu.module_poem.R;
 import com.xoliu.module_poem.comment.MySheetDialog;
 import com.xoliu.module_poem.share.ShareDialog;
 
+import java.util.Objects;
+
 import bean.Poem;
 import bean.card_picBean;
 
@@ -127,7 +129,8 @@ public class fragment_viewpager_item extends Fragment {
             @Override
             public void onChanged(Poem poem) {
                 content.setText(poem.getHitokoto());
-                author.setText("-" + poem.getFromWho() + "-\n" + "《"+ poem.getFrom() + "》");
+                String tempStr = poem.getFromWho() == null ? "佚名" : poem.getFromWho();
+                author.setText("-" + tempStr + "-\n" + "《"+ poem.getFrom() + "》");
             }
         });
 

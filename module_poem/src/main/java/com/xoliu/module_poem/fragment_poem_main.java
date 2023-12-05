@@ -19,7 +19,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import comAnim.ZoomOutPageTransformer;
+import TransAnim.FadeInOutPageTransformer;
+import TransAnim.FlipPageTransformer;
+import TransAnim.ZoomOutPageTransformer;
 
 
 /***
@@ -63,6 +65,10 @@ public class fragment_poem_main extends Fragment {
     private void initViewPager() {
         fragmentList = new ArrayList<>();
         Random r = new Random();
+
+
+
+        /*
         fragmentList.add(new fragment_viewpager_item(
                 "人生只似风前絮，欢也零星，悲也零星，都做连江点点萍。",
                 " - 王国维《采桑子》-",
@@ -105,11 +111,13 @@ public class fragment_poem_main extends Fragment {
                 r.nextInt(70),
                 r.nextInt(300)));
 
+         */
+
         //关键-设置缓存数量
         viewPager2.setOffscreenPageLimit(5);
 
         //设置动画切换效果
-        viewPager2.setPageTransformer(new ZoomOutPageTransformer());
+        viewPager2.setPageTransformer(new FadeInOutPageTransformer());
 
         viewPager2.setAdapter(new CardAdapter(this, fragmentList));
     }

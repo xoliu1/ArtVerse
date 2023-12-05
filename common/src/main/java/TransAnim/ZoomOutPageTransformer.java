@@ -1,11 +1,11 @@
-package comAnim;
+package TransAnim;
 
 import android.view.View;
 
 import androidx.viewpager2.widget.ViewPager2;
 
 /***
- * 缩小页面转换器
+ * 页面转换器【会缩小】
  * 用于ViewPager2的切换
  * @author xoliu
  * @create 23-12-5

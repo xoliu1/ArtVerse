@@ -40,8 +40,11 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
     //annotationProcessor
-
     annotationProcessor 'com.alibaba:arouter-compiler:1.5.1'
+
+    //Room数据库
+    implementation 'androidx.room:room-runtime:2.3.0'
+    annotationProcessor 'androidx.room:room-compiler:2.3.0'
 
     //吐司框架
     implementation 'com.sdsmdg.tastytoast:tastytoast:0.1.1'

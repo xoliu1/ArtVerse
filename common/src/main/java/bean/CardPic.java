@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName;
  * @create 23-11-21
  **/
 
-public class card_picBean {
+public class CardPic {
 
     @SerializedName("code")
     private String code;

@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import bean.Poem;
-import bean.card_picBean;
+import bean.CardPic;
 
 /***
  * 作为card的ViewModel，主要用于加载图片框架
@@ -17,10 +17,10 @@ import bean.card_picBean;
 public class CardViewModel extends ViewModel {
 
     public MutableLiveData<Poem> poem = null;
-    public MutableLiveData<card_picBean> cardPic;
+    public MutableLiveData<CardPic> cardPic;
     PoemMainRepository repository = new PoemMainRepository();
 
-    public MutableLiveData<card_picBean> getCardPic() {
+    public MutableLiveData<CardPic> getCardPic() {
         if (cardPic == null){
             cardPic = repository.getCardPic();
             Log.d("TAG", "View Model 获取卡片背景");

@@ -17,7 +17,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.xoliu.module_poem.R;
 
-import bean.card_picBean;
+import bean.CardPic;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,9 +39,9 @@ public class MySheetDialog extends BottomSheetDialogFragment {
         super.onCreate(savedInstanceState);
         commentViewModel = new ViewModelProvider(this).get(CommentViewModel.class);
 
-        commentViewModel.getUserPic().observe(this, new Observer<card_picBean>() {
+        commentViewModel.getUserPic().observe(this, new Observer<CardPic>() {
             @Override
-            public void onChanged(card_picBean cardPicBean) {
+            public void onChanged(CardPic cardPicBean) {
                 comments.get(new Random().nextInt(9)).setUserIcon(cardPicBean.getImgurl());
                 adapter.notifyDataSetChanged();
             }

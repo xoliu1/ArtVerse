@@ -1,6 +1,6 @@
 package com.xoliu.module_poem.comment;
 
-import bean.card_picBean;
+import bean.CardPic;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -16,7 +16,7 @@ public interface CommentService {
  	format	否	    string	    输出壁纸格式[json|images]默认为images
      */
     @GET("sjtx/api.php?lx=a1&format=json")
-    Observable<card_picBean> getUserPic();
+    Observable<CardPic> getUserPic();
     //返回json和壁纸的格式一样，直接用
 
 

@@ -10,8 +10,8 @@ import com.xoliu.func_network.BaseObserver;
 import com.xoliu.func_network.NetworkApi;
 import com.xoliu.module_poem.comment.CommentService;
 
+import bean.CardPic;
 import bean.Poem;
-import bean.card_picBean;
 
 /***
  * 诗句页面的Main仓库
@@ -28,18 +28,18 @@ public class PoemMainRepository {
 
     /***
      * 请求card的上层图片
-     * @return androidx.lifecycle.MutableLiveData<bean.card_picBean>
+     * @return androidx.lifecycle.MutableLiveData<bean.CardPic>
      * @author xoliu
      * @create 23-11-21
      **/
 
     @SuppressLint("CheckResult")
-    public MutableLiveData<card_picBean> getCardPic() {
-        MutableLiveData<card_picBean> cardPic = new MutableLiveData<>();
+    public MutableLiveData<CardPic> getCardPic() {
+        MutableLiveData<CardPic> cardPic = new MutableLiveData<>();
         CardPicService cardPicService = NetworkApi.createService(CardPicService.class);
-        cardPicService.getCardPic().compose(NetworkApi.applySchedulers(new BaseObserver<card_picBean>() {
+        cardPicService.getCardPic().compose(NetworkApi.applySchedulers(new BaseObserver<CardPic>() {
             @Override
-            public void onSuccess(card_picBean cardPicBean) {
+            public void onSuccess(CardPic cardPicBean) {
                 cardPic.setValue(cardPicBean);
                 Log.d("TAG", "卡片背景图片加载成功，url：" + cardPicBean.getImgurl());
             }
@@ -58,17 +58,17 @@ public class PoemMainRepository {
     /***
      * 获取用户头像
      *
-     * @return androidx.lifecycle.MutableLiveData<bean.card_picBean>
+     * @return androidx.lifecycle.MutableLiveData<bean.CardPic>
      * @author xoliu
      * @create 23-11-22
      **/
     @SuppressLint("CheckResult")
-    public MutableLiveData<card_picBean> getuserIcon(){
-        MutableLiveData<card_picBean> userIcon = new MutableLiveData<>();
+    public MutableLiveData<CardPic> getuserIcon(){
+        MutableLiveData<CardPic> userIcon = new MutableLiveData<>();
         CommentService commentService = NetworkApi.createService(CommentService.class);
-        commentService.getUserPic().compose(NetworkApi.applySchedulers(new BaseObserver<card_picBean>() {
+        commentService.getUserPic().compose(NetworkApi.applySchedulers(new BaseObserver<CardPic>() {
             @Override
-            public void onSuccess(card_picBean cardPicBean) {
+            public void onSuccess(CardPic cardPicBean) {
                 userIcon.postValue(cardPicBean);
                 //Log.d("TAG", "获取用户头像url = " + cardPicBean.getImgurl());
             }

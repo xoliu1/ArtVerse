@@ -1,7 +1,7 @@
 package com.xoliu.module_poem.viewpager;
 
 import bean.Poem;
-import bean.card_picBean;
+import bean.CardPic;
 import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Url;
@@ -19,7 +19,7 @@ public interface CardPicService {
        	format	否	    string	        输出壁纸格式[json|images]默认为images
          */
         @GET("sjtx/api.php?lx=c3&format=json")
-        Observable<card_picBean> getCardPic();
+        Observable<CardPic> getCardPic();
 
         /**
          * 获取诗词

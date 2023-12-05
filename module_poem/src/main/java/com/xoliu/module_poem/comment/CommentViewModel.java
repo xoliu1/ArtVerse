@@ -4,11 +4,12 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.xoliu.module_poem.viewpager.PoemMainRepository;
-import bean.card_picBean;
+
+import bean.CardPic;
 
 public class CommentViewModel extends ViewModel {
-    public MutableLiveData< card_picBean> userPic = new MutableLiveData<>();
-    public MutableLiveData<card_picBean> getUserPic() {
+    public MutableLiveData<CardPic> userPic = new MutableLiveData<>();
+    public MutableLiveData<CardPic> getUserPic() {
 
         userPic = new PoemMainRepository().getuserIcon();
         return userPic;

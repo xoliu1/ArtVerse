@@ -7,24 +7,27 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.room.Room;
 
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.xoliu.module_poem.R;
 import com.xoliu.module_poem.comment.MySheetDialog;
 import com.xoliu.module_poem.share.ShareDialog;
 
-import java.util.Objects;
-
 import bean.Poem;
-import bean.card_picBean;
+import bean.CardPic;
+import db.AppDatabase;
+import db.bean.PoemCard;
 
 
 /***
@@ -105,22 +108,43 @@ public class fragment_viewpager_item extends Fragment {
 //                .addConverterFactory(GsonConverterFactory.create())
 //                .build();
 //        CardPicService service = retrofit.create(CardPicService.class);
-//        Call<card_picBean> call = service.getCardPic();
-//        call.enqueue(new Callback<card_picBean>() {
+//        Call<CardPic> call = service.getCardPic();
+//        call.enqueue(new Callback<CardPic>() {
 //            @Override
-//            public void onResponse(Call<card_picBean> call, Response<card_picBean> response) {
+//            public void onResponse(Call<CardPic> call, Response<CardPic> response) {
 //                Glide.with(getContext()).load(response.body().getImgurl()).into(topImage);
 //            }
 //
 //            @Override
-//            public void onFailure(Call<card_picBean> call, Throwable t) {
+//            public void onFailure(Call<CardPic> call, Throwable t) {
 //
 //            }
 //        });
-        cardViewModel.getCardPic().observe(getViewLifecycleOwner(), new Observer<card_picBean>() {
+
+
+        cardViewModel.getCardPic().observe(getViewLifecycleOwner(), new Observer<CardPic>() {
             @Override
-            public void onChanged(card_picBean cardPicBean) {
+            public void onChanged(CardPic cardPicBean) {
                 Glide.with(getContext()).load(cardPicBean.getImgurl()).thumbnail(0.15f).into(topImage);
+
+//                new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        AppDatabase db = Room.databaseBuilder(getContext(), AppDatabase.class, "PoemCards").build();
+//                        db.poemCardDao().insert(new PoemCard(cardPicBean, new Poem()));
+//                    }
+//                }).start();
+
+//                new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        AppDatabase db = Room.databaseBuilder(getContext(), AppDatabase.class, "PoemCards").build();
+//                        db.poemCardDao().insert(new PoemCard(cardPicBean, new Poem()));
+//                        String imgUrl = db.poemCardDao().getAllPoemCards().get(0).getImgUrl();
+//                    }
+//                }
+//                ).start();
+
             }
         });
 

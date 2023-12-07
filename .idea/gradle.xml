@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/module_art" />
             <option value="$PROJECT_DIR$/module_main" />
             <option value="$PROJECT_DIR$/module_poem" />
+            <option value="$PROJECT_DIR$/module_profile" />
           </set>
         </option>
       </GradleProjectSettings>

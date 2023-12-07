@@ -68,7 +68,7 @@ public class fragment_poem_main extends Fragment {
 
 
 
-        /*
+
         fragmentList.add(new fragment_viewpager_item(
                 "人生只似风前絮，欢也零星，悲也零星，都做连江点点萍。",
                 " - 王国维《采桑子》-",
@@ -111,7 +111,7 @@ public class fragment_poem_main extends Fragment {
                 r.nextInt(70),
                 r.nextInt(300)));
 
-         */
+         
 
         //关键-设置缓存数量
         viewPager2.setOffscreenPageLimit(5);

@@ -6,7 +6,7 @@ if (isModule.toBoolean()) {
 }
 
 android {
-    namespace 'com.xoliu.module_poem'
+    namespace 'com.xoliu.module_profile'
     compileSdk 33
     sourceSets {
         main {
@@ -18,12 +18,12 @@ android {
             }
         }
     }
+
     defaultConfig {
         if (isModule.toBoolean()) {
             // 单独调试时添加 applicationId ，集成调试时移除
-            applicationId "com.xoliu.module_poem"
+            applicationId "com.xoliu.module_profile"
         }
-
         minSdk 24
         targetSdk 33
         versionCode 1
@@ -57,7 +57,4 @@ dependencies {
     implementation project(':common')
     implementation project(':func_network')
     annotationProcessor rootProject.ext.annotationLibs
-
-    //ViewPager2
-    implementation "androidx.viewpager2:viewpager2:1.0.0"
 }

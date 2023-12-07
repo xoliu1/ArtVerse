@@ -46,7 +46,7 @@ public class main_shell extends AppCompatActivity {
     private void initPrePare(){
         fragmentList = new ArrayList<>();
         fragmentList.add((Fragment) ARouter.getInstance().build("/poem/fragment").navigation());
-
+        fragmentList.add((Fragment) ARouter.getInstance().build("/profile/main").navigation());
     }
 
     private void initClick() {
@@ -68,6 +68,7 @@ public class main_shell extends AppCompatActivity {
                     return true;
                 }else if(id == R.id.navigation_item_profile) {
                     // 个人资料
+                    changeMainUI(fragmentList.get(1));
                     return true;
                 }else{
                     return false;

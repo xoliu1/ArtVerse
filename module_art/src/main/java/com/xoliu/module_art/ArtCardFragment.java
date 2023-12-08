@@ -28,10 +28,7 @@ public class ArtCardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View v = inflater.inflate(R.layout.fragment_art_card, container, false);
         TextView artText = (TextView) v.findViewById(R.id.artText);
-//        final Bundle bundle = getArguments();
-//        if (bundle != null) {
             artText.setText( idx + "");
-//        }
         artText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

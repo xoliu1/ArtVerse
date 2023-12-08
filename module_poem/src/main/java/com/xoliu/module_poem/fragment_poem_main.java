@@ -7,6 +7,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -16,6 +18,7 @@ import android.view.ViewGroup;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.xoliu.module_poem.viewpager.CardAdapter;
+import com.xoliu.module_poem.viewpager.CardViewModel;
 import com.xoliu.module_poem.viewpager.fragment_viewpager_item;
 
 import java.util.ArrayList;
@@ -24,6 +27,7 @@ import java.util.Random;
 
 import Transformer.FadeInOutPageTransformer;
 import Transformer.viewpager1.VerticalStackTransformer;
+import bean.Poem;
 
 
 /***
@@ -151,5 +155,6 @@ public class fragment_poem_main extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         viewPager2 = view.findViewById(R.id.viewpager);
         initViewPager();
+
     }
 }

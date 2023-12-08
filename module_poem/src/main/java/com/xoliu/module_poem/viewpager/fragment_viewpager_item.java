@@ -55,14 +55,15 @@ public class fragment_viewpager_item extends Fragment {
     }
 
 
+
     public fragment_viewpager_item( String content, String authorStr, int shareNum, int commentNum, int likeNum) {
         this.contentStr = content;
         this.authorStr = authorStr;
         this.shareNumStr = String.valueOf(shareNum);
         this.commentNumStr = String.valueOf(commentNum);
         this.likeNumStr = String.valueOf(likeNum);
-
     }
+
 
 
     public static fragment_viewpager_item newInstance() {
@@ -153,7 +154,23 @@ public class fragment_viewpager_item extends Fragment {
         cardViewModel.getPoem().observe(getViewLifecycleOwner(), new Observer<Poem>() {
             @Override
             public void onChanged(Poem poem) {
-                content.setText(poem.getHitokoto());
+                //诗句进行处理
+                String[] strings = poem.getHitokoto().toString().split("[，。？；]");
+                String str = "";
+                for (int i = 0; i < strings.length; i++) {
+                    String s = strings[i];
+                    if (i == strings.length - 1){
+                        str += s;
+                    }else{
+                        if (s.length() < 11){
+                            str += s  + "\n";
+                        }else{
+                            str += s + "," + "\n";
+                        }
+                    }
+                }
+
+                content.setText(str);
                 String tempStr = poem.getFromWho() == null ? "佚名" : poem.getFromWho();
                 author.setText("-" + tempStr + "-\n" + "《"+ poem.getFrom() + "》");
             }
@@ -164,6 +181,9 @@ public class fragment_viewpager_item extends Fragment {
         share_num.setText(shareNumStr);
         comment_num.setText(commentNumStr);
         like_num.setText(likeNumStr);
+
+
+
 
         //设置评论点击事件
         ImageButton imageButton_comment = (ImageButton) view.findViewById(R.id.btn_comment);

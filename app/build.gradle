@@ -41,6 +41,7 @@ dependencies {
     //if (!isModule.toBoolean()) {
     implementation project(":module_main")
     implementation project(":module_poem")
+    implementation project(":module_art")
     implementation project(":module_profile")
     // }
     annotationProcessor rootProject.ext.annotationLibs

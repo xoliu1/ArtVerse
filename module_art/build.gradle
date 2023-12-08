@@ -1,13 +1,14 @@
+//当我们在组件模式开发时，业务组件应处于application属性，这时的业务组件就是一个 Android App，可以独立开发和调试；而当我们转换到集成模式开发时，业务组件应该处于 library 属性
 if (isModule.toBoolean()) {
     apply plugin: 'com.android.application'
 } else {
     apply plugin: 'com.android.library'
 }
 
-
 android {
     namespace 'com.xoliu.module_art'
     compileSdk 33
+
     sourceSets {
         main {
             // 单独调试与集成调试时使用不同的 AndroidManifest.xml 文件
@@ -58,6 +59,4 @@ dependencies {
     implementation project(':func_network')
     annotationProcessor rootProject.ext.annotationLibs
 
-    //ViewPager2
-    implementation "androidx.viewpager2:viewpager2:1.0.0"
 }

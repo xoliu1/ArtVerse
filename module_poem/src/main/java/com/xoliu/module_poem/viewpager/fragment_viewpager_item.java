@@ -169,10 +169,7 @@ public class fragment_viewpager_item extends Fragment {
         imageButton_comment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 dialog.show(getFragmentManager(), "CommentBottomSheetDialog");
-
-
             }
         });
 

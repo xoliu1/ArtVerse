@@ -46,6 +46,7 @@ public class main_shell extends AppCompatActivity {
     private void initPrePare(){
         fragmentList = new ArrayList<>();
         fragmentList.add((Fragment) ARouter.getInstance().build("/poem/fragment").navigation());
+        fragmentList.add((Fragment) ARouter.getInstance().build("/art/main").navigation());
         fragmentList.add((Fragment) ARouter.getInstance().build("/profile/main").navigation());
     }
 
@@ -62,13 +63,14 @@ public class main_shell extends AppCompatActivity {
                     return true;
                 }else if(id == R.id.navigation_item_art) {
                     // 艺术作品
+                    changeMainUI(fragmentList.get(1));
                     return true;
                 }else if(id == R.id.navigation_item_community) {
                     // 社区
                     return true;
                 }else if(id == R.id.navigation_item_profile) {
                     // 个人资料
-                    changeMainUI(fragmentList.get(1));
+                    changeMainUI(fragmentList.get(2));
                     return true;
                 }else{
                     return false;
@@ -89,7 +91,6 @@ public class main_shell extends AppCompatActivity {
     private void changeMainUI(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentManager.findFragmentByTag("")
         fragmentTransaction.replace(R.id.fragment_container,fragment);
         fragmentTransaction.commit();
     }

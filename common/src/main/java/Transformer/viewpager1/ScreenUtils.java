@@ -1,4 +1,4 @@
-package TransAnim.test;
+package Transformer.viewpager1;
 
 import android.app.Activity;
 import android.content.Context;

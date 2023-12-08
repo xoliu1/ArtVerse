@@ -1,10 +1,11 @@
-package TransAnim.test;
+package Transformer.viewpager1;
 
 import android.view.View;
 
 import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
-public abstract class VerticalBaseTransformer implements ViewPager.PageTransformer {
+public abstract class VerticalBaseTransformer implements ViewPager2.PageTransformer {
     /**
      * Called each {@link #transformPage(View, float)}.
      *

@@ -1,14 +1,20 @@
-package TransAnim.test;
+package Transformer.viewpager1;
 
 import android.content.Context;
 import android.util.Log;
 import android.view.View;
 
+/***
+ * 层叠动画
+ * @author xoliu
+ * @create 23-12-8
+ **/
+
 public class VerticalStackTransformer extends VerticalBaseTransformer {
 
     private Context context;
     private int spaceBetweenFirAndSecWith = 10 * 2;//第一张卡片和第二张卡片宽度差  dp单位
-    private int spaceBetweenFirAndSecHeight = 10;//第一张卡片和第二张卡片高度差   dp单位
+    private int spaceBetweenFirAndSecHeight = 20;//第一张卡片和第二张卡片高度差   dp单位
 
     public VerticalStackTransformer(Context context) {
         this.context = context;
@@ -24,12 +30,12 @@ public class VerticalStackTransformer extends VerticalBaseTransformer {
     protected void onTransform(View page, float position) {
         if (position <= 0.0f) {
             page.setAlpha(1.0f);
-            Log.e("onTransform", "position <= 0.0f ==>" + position);
+            //Log.e("onTransform", "position <= 0.0f ==>" + position);
             page.setTranslationY(0f);
             //控制停止滑动切换的时候，只有最上面的一张卡片可以点击
             page.setClickable(true);
         } else if (position <= 3.0f) {
-            Log.e("onTransform", "position <= 3.0f ==>" + position);
+            //Log.e("onTransform", "position <= 3.0f ==>" + position);
             float scale = (float) (page.getWidth() - ScreenUtils.dp2px(context, spaceBetweenFirAndSecWith * position)) / (float) (page.getWidth());
             //控制下面卡片的可见度
             page.setAlpha(1.0f);

@@ -7,6 +7,9 @@ import androidx.room.Room;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 
+import java.util.List;
+
+import bean.CardPic;
 import db.AppDatabase;
 import utils.MVUtil;
 

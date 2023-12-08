@@ -46,9 +46,7 @@ public class fragment_viewpager_item extends Fragment {
 
     MySheetDialog dialog = new MySheetDialog();
 
-
-
-        CardViewModel cardViewModel;
+    CardViewModel cardViewModel;
 
 
 
@@ -87,6 +85,8 @@ public class fragment_viewpager_item extends Fragment {
         return view;
     }
 
+
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -122,10 +122,12 @@ public class fragment_viewpager_item extends Fragment {
 //        });
 
 
+
         cardViewModel.getCardPic().observe(getViewLifecycleOwner(), new Observer<CardPic>() {
             @Override
             public void onChanged(CardPic cardPicBean) {
-                Glide.with(getContext()).load(cardPicBean.getImgurl()).thumbnail(0.15f).into(topImage);
+                Glide.with(getContext()).load(cardPicBean.getImgurl()).thumbnail(0.5f).into(topImage);
+
 
 //                new Thread(new Runnable() {
 //                    @Override
@@ -147,7 +149,6 @@ public class fragment_viewpager_item extends Fragment {
 
             }
         });
-
 
         cardViewModel.getPoem().observe(getViewLifecycleOwner(), new Observer<Poem>() {
             @Override

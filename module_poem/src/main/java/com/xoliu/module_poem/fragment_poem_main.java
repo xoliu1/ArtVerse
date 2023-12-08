@@ -1,13 +1,13 @@
 package com.xoliu.module_poem;
 
+import android.graphics.Rect;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager2.widget.CompositePageTransformer;
-import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
@@ -22,10 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import TransAnim.DepthPageTransformer;
-import TransAnim.FadeInOutPageTransformer;
-import TransAnim.FlipPageTransformer;
-import TransAnim.ZoomOutPageTransformer;
+import Transformer.FadeInOutPageTransformer;
+import Transformer.viewpager1.VerticalStackTransformer;
 
 
 /***
@@ -42,6 +40,7 @@ public class fragment_poem_main extends Fragment {
 
 
     private ViewPager2 viewPager2;
+    private int currentItemPosition = 0;
 
 
     public fragment_poem_main() {
@@ -115,12 +114,16 @@ public class fragment_poem_main extends Fragment {
                 r.nextInt(70),
                 r.nextInt(300)));
 
+
+
          
 
         //关键-设置缓存数量
         viewPager2.setOffscreenPageLimit(5);
 
 
+
+        //报错原因解决：
         viewPager2.setSaveEnabled(false);
         //设置动画切换效果
         viewPager2.setPageTransformer(new FadeInOutPageTransformer());

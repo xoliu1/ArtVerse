@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment_art_main">
+    tools:context=".fragment_art_main"
+    android:orientation="vertical"
+    android:background="#F6F0F0">
 
 
-    <TextView
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/art_viewPager2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp" />
 
-</FrameLayout>
+</LinearLayout>

@@ -89,6 +89,7 @@ public class main_shell extends AppCompatActivity {
     private void changeMainUI(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentManager.findFragmentByTag("")
         fragmentTransaction.replace(R.id.fragment_container,fragment);
         fragmentTransaction.commit();
     }

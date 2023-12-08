@@ -5,6 +5,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.CompositePageTransformer;
+import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
@@ -19,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import TransAnim.DepthPageTransformer;
 import TransAnim.FadeInOutPageTransformer;
 import TransAnim.FlipPageTransformer;
 import TransAnim.ZoomOutPageTransformer;
@@ -116,10 +120,20 @@ public class fragment_poem_main extends Fragment {
         //关键-设置缓存数量
         viewPager2.setOffscreenPageLimit(5);
 
+
+        viewPager2.setSaveEnabled(false);
         //设置动画切换效果
         viewPager2.setPageTransformer(new FadeInOutPageTransformer());
 
+
+
         viewPager2.setAdapter(new CardAdapter(this, fragmentList));
+    }
+
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
     }
 
     @Override

@@ -56,5 +56,6 @@ dependencies {
 
     implementation project(':common')
     implementation project(':func_network')
-    annotationProcessor rootProject.ext.annotationLibs
+    annotationProcessor 'com.alibaba:arouter-compiler:1.5.1'
+
 }

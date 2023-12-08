@@ -31,4 +31,6 @@ public class CardAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         return list.get(position);
     }
+
+    
 }

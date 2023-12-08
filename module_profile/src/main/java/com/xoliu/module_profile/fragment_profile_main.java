@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.xoliu.module_profile.databinding.FragmentProfileMainBinding;
 
 @Route(path = "/profile/main")
 public class fragment_profile_main extends Fragment {
@@ -31,6 +32,7 @@ public class fragment_profile_main extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile_main, container, false);
+        FragmentProfileMainBinding binding =  FragmentProfileMainBinding.inflate(inflater);
+        return binding.getRoot();
     }
 }

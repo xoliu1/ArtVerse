@@ -1,4 +1,4 @@
-package Transformer.viewpager1;
+package Transformer;
 
 import android.view.View;
 

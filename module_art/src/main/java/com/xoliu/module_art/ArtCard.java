@@ -1,60 +1,54 @@
 package com.xoliu.module_art;
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.List;
+public class ArtCard {
+    private int artImgId;
+    private String artAuthor;
+    private String artName;
 
 
-/***
- * 艺术主界面的ViewPager适配器
- * @return
- * @author xoliu
- * @create 23-12-8
- **/
+    private String artContent;
 
-public class ArtCard extends RecyclerView.Adapter<ArtCard.ViewHolder> {
-    private List<String> data;
-    private Context context;
-
-    public ArtCard(List<String> data, Context context) {
-        this.data = data;
-        this.context = context;
+    public ArtCard(int artImgId, String artAuthor, String artName, String artContent) {
+        this.artImgId = artImgId;
+        this.artAuthor = artAuthor;
+        this.artName = artName;
+        this.artContent = artContent;
     }
-
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_art_card, parent, false);
-        return new ViewHolder(view);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        String item = data.get(position);
-        holder.textView.setText(item);
-
+    public ArtCard(){
 
     }
 
-    @Override
-    public int getItemCount() {
-        return data.size();
+
+
+    public String getArtContent() {
+        return artContent;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView textView;
+    public void setArtContent(String artContent) {
+        this.artContent = artContent;
+    }
 
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            textView = itemView.findViewById(R.id.artText);
-        }
+    public int getArtImgId() {
+        return artImgId;
+    }
+
+    public void setArtImgId(int artImgId) {
+        this.artImgId = artImgId;
+    }
+
+    public String getArtAuthor() {
+        return artAuthor;
+    }
+
+    public void setArtAuthor(String artAuthor) {
+        this.artAuthor = artAuthor;
+    }
+
+    public String getArtName() {
+        return artName;
+    }
+
+    public void setArtName(String artName) {
+        this.artName = artName;
     }
 }
-

@@ -1,15 +1,10 @@
 package com.xoliu.module_poem;
 
-import android.graphics.Rect;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
@@ -19,19 +14,16 @@ import android.view.ViewGroup;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.scwang.smart.refresh.header.BezierRadarHeader;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
-import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
+import com.sdsmdg.tastytoast.TastyToast;
 import com.xoliu.module_poem.viewpager.CardAdapter;
-import com.xoliu.module_poem.viewpager.CardViewModel;
 import com.xoliu.module_poem.viewpager.fragment_viewpager_item;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 import Transformer.FadeInOutPageTransformer;
-import Transformer.viewpager1.VerticalStackTransformer;
-import bean.Poem;
 
 
 /***
@@ -163,20 +155,26 @@ public class fragment_poem_main extends Fragment {
         initViewPager();
 
 
+        //设置刷新头
         RefreshLayout refreshLayout = (RefreshLayout)view.findViewById(R.id.poemRefreshLayout);
         refreshLayout.setRefreshHeader(new BezierRadarHeader(getContext()));
-        refreshLayout.setOnRefreshListener(new OnRefreshListener() {
-            @Override
-            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-
+        //在刷新的时候禁止列表的操作
+        refreshLayout.setDisableContentWhenRefresh(true);
+        refreshLayout.setOnRefreshListener(refreshLayout1 -> {
+            Random rand = new Random();
+            for (int i = 0; i < 5; i++) {
                 fragmentList.add(new fragment_viewpager_item(
-                        "当时年少春衫薄。骑马倚斜桥，满楼红袖招。",
-                        " - 韦庄 《菩萨蛮》-",
-                        1,2,3));
-
-                viewPager2.getAdapter().notifyDataSetChanged();
-                refreshLayout.finishRefresh();//执行完毕进行结束
+                        "1",
+                        " 1",
+                        rand.nextInt(20),
+                        rand.nextInt(70),
+                        rand.nextInt(300)));
             }
+
+            Objects.requireNonNull(viewPager2.getAdapter()).notifyDataSetChanged();
+            viewPager2.setCurrentItem(fragmentList.size() - 5,true);
+            refreshLayout1.finishRefresh();//执行完毕进行结束
+            TastyToast.makeText(getContext(), "已为您加载出新的字句！", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS).show();
         });
 
 

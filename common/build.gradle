@@ -48,7 +48,6 @@ dependencies {
     annotationProcessor 'androidx.room:room-compiler:2.3.0'
 
     //吐司框架
-    implementation 'com.sdsmdg.tastytoast:tastytoast:0.1.1'
-    //刷新界面三方库
+    api 'com.sdsmdg.tastytoast:tastytoast:0.1.1'
 
 }

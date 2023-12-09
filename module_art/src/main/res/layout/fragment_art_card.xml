@@ -6,21 +6,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ArtCardFragment"
     android:focusable="false"
-    android:orientation="vertical"
-
-    android:layout_margin="10dp"
-    android:background="@color/antiquewhite"
-    >
+    android:layout_margin="15dp"
+    android:background="@color/white"
+    android:orientation="vertical">
 
 
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/artCardView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:cardElevation="90dp"
-        android:focusable="false"
-        android:layout_margin="10dp">
 
 
         <ImageView
@@ -29,16 +20,33 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:maxHeight="520dp"
+            android:maxHeight="700dp"
             android:maxWidth="430dp"
             android:scaleType="fitCenter"
-            android:layout_gravity="center|top"/>
+            android:layout_gravity="center|top"
+            android:layout_margin="7dp"
+            android:background="@drawable/img_border"/>
 
         <TextView
-            android:id="@+id/artText"
-            android:layout_width="wrap_content"
+            android:id="@+id/artName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:fontFamily="@font/font10"
+            android:gravity="center"
+            android:text="作品名字"
+            android:textColor="@color/black"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/artAuthor"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:textSize="19sp"
+            android:text="Grace  Rose"
+            android:fontFamily="@font/hfpoet"
+            android:textColor="#3A3838"
             />
 
 
@@ -48,6 +56,6 @@
 
 
 
-    </androidx.cardview.widget.CardView>
+
 
 </LinearLayout>

@@ -20,13 +20,13 @@ import com.xoliu.module_art.databinding.FragmentArtMainBinding;
 import java.util.ArrayList;
 import java.util.List;
 
-import Transformer.viewpager1.VerticalStackTransformer;
+import Transformer.VerticalStackTransformer;
 
 @Route(path = "/art/main")
 public class fragment_art_main extends Fragment {
 
-    private ArtCard mArtCard;
-    private List<String> mFragments;
+    private ArtCardAdapter mArtCardAdapter;
+    private List<ArtCard> mFragments;
     FragmentArtMainBinding binding;
 
     public fragment_art_main() {
@@ -55,11 +55,19 @@ public class fragment_art_main extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mFragments = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            mFragments.add(String.valueOf(i));
-        }
-        mArtCard = new ArtCard( mFragments,getContext());
+
+
+        initData();
+        initViewPager();
+
+
+
+    }
+
+
+
+    private void initViewPager(){
+        mArtCardAdapter = new ArtCardAdapter( mFragments,getContext());
         //设置viewpager的方向为竖直
         binding.artViewPager2.setOrientation(ViewPager2.ORIENTATION_VERTICAL);
         //设置limit
@@ -85,12 +93,15 @@ public class fragment_art_main extends Fragment {
             }
         };
         binding.artViewPager2.addItemDecoration(itemDecoration);
-        binding.artViewPager2.setAdapter(mArtCard);
-
-
+        binding.artViewPager2.setAdapter(mArtCardAdapter);
 
     }
 
+    private void initData(){
+        mFragments = new ArrayList<>();
+        mFragments.add(new ArtCard());
+        mFragments.add(new ArtCard());
+    }
     @Override
     public void onDestroy() {
         super.onDestroy();

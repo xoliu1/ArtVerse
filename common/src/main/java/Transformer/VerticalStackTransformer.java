@@ -1,8 +1,10 @@
-package Transformer.viewpager1;
+package Transformer;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
+
+import Transformer.ScreenUtils;
+import Transformer.VerticalBaseTransformer;
 
 /***
  * 层叠动画

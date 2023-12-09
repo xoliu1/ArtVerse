@@ -17,11 +17,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.scwang.smart.refresh.header.BezierRadarHeader;
+import com.scwang.smart.refresh.layout.api.RefreshLayout;
+import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 import com.xoliu.module_poem.viewpager.CardAdapter;
 import com.xoliu.module_poem.viewpager.CardViewModel;
 import com.xoliu.module_poem.viewpager.fragment_viewpager_item;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -61,6 +65,8 @@ public class fragment_poem_main extends Fragment {
         super.onCreate(savedInstanceState);
 
     }
+
+
 
     /***
      * 初始化ViewPager2
@@ -155,6 +161,24 @@ public class fragment_poem_main extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         viewPager2 = view.findViewById(R.id.viewpager);
         initViewPager();
+
+
+        RefreshLayout refreshLayout = (RefreshLayout)view.findViewById(R.id.poemRefreshLayout);
+        refreshLayout.setRefreshHeader(new BezierRadarHeader(getContext()));
+        refreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+
+                fragmentList.add(new fragment_viewpager_item(
+                        "当时年少春衫薄。骑马倚斜桥，满楼红袖招。",
+                        " - 韦庄 《菩萨蛮》-",
+                        1,2,3));
+
+                viewPager2.getAdapter().notifyDataSetChanged();
+                refreshLayout.finishRefresh();//执行完毕进行结束
+            }
+        });
+
 
     }
 }

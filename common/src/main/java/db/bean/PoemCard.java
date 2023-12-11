@@ -2,6 +2,7 @@ package db.bean;
 
 import androidx.room.Entity;
 import androidx.room.Ignore;
+import androidx.room.Insert;
 import androidx.room.PrimaryKey;
 
 import bean.CardPic;
@@ -32,6 +33,15 @@ public class PoemCard {
         this.poemContext = poem.getHitokoto();
         this.poemContext = poem.getFrom();
     }
+
+    @Ignore
+    public PoemCard(String imgUrl, String poemContext, String poemAuthor) {
+        this.imgUrl = imgUrl;
+        this.poemContext = poemContext;
+        this.poemAuthor = poemAuthor;
+    }
+
+
 
     public int getId() {
         return id;

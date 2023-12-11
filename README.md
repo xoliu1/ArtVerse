@@ -14,7 +14,16 @@
 
 
 
-## Module_main
+## common
+
+- [x] 通用的依赖添加
+
+- [x] 仓库层和数据库层的封装
+- [x] 通用资源（color）
+
+
+
+## Module_main 
 
 - [x] 主体底部导航栏框架实现
 - [x] 点击事件实现
@@ -28,6 +37,8 @@
 - [x] 评论区实现（后期实现二级评论）//累skr人，多种转换，到处扭，各种小tips。
 - [x] Card的上层图片接入API ，ViewModel +LiveData+retrofit+rxjava
 - [x] 诗句的调用API，ViewModel +LiveData+retrofit+rxjava
+- [x] ViewPager2的切换淡入淡出动效
+- [x] 添加刷新头
 
 
 
@@ -42,6 +53,22 @@
 
 
 
+## Module_art 艺术画廊
+
+- [x] 图片竖直ViewPager2卡片
+
+- [x] ViewPager2的切换层叠效果动效(耗时很久)
+- [x] 点击事件进入艺术画廊的详情(Intent传递序列化后的对象)
+- [x] 进入艺术画廊，原图片放大到详情页面的图片大小//`ActivityOptionsCompat.makeScaleUpAnimation()`
+
+
+
+## Module_profile
+
+- [ ] 个人资料显示
+- [ ] 点赞的诗句显示(Room)
+- [ ] 点赞的图画显示(Room)
+
 
 
 
@@ -55,5 +82,5 @@
 - 评论区点赞后，重新打开，会被重置-> 将new的Dialog提前定义，这样不会每次点击后，才在点击事件中new，这样的话点赞信息未保存 -> bean类增加变量，记录是否点赞或者取消点赞，并更新。
 - 实现rxjava+retrofit网络框架，请求随机图片时，因为MainRepository内请求的方式基于观察者模式，在 `applySchedulers()` 未执行完毕就返回了结果，导致没有对LiveData数据进行赋值 ->  采取 `ViewModel` + `LiveData`， 在对应碎片中绑定`CardViewModel` (注意自定义ViewModel的初始化需要在碎片的主view加载完毕才可以，否则会出现错误)，在对碎片中的图片初始化时，调用`CardViewModel`中的`getCardPic()` -> 调用主仓库的`getCardPic()`进行异步请求。然后在主页面中调用`cardViewModel.getCardPic().observe()`进行监听，当收到数据，进行图片的实时加载。//解决完后，成就感非常强烈。
 - 选择的API图片4k,加载速度较慢 -> 利用Glide 的`.thumbnail(0.15f)` 加载略缩图，速度明显变快。
-- card图片加载不出来，查看日志，`java.net.SocketException: Socket is closed`，多次调试后，发现是图片太大，加载超时,自动关闭套接字 -> 改成另一个api
+- card图片加载不出来，查看日志，`java.net.SocketException: Socket is closed`，多次调试后，发现是图片太大，加载超时,自动关闭套接字（Socket） -> 改成另一个api
 - poem页面翻过几个后，再翻回之前的页面会重新进行网络请求，并且重绘 ---联想到ViewPager2和RecyclerView类似，所以缓存复用机制大差不差，应该是默认回收掉里的过远的Fragment，调用`setOffscreenPageLimit(int limit)` ，用于设置页面的缓存数量。问题得以解决。

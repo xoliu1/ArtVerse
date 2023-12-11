@@ -49,6 +49,12 @@ public class fragment_viewpager_item extends Fragment {
     CardViewModel cardViewModel;
 
 
+    //用来设置喜欢的存储信息，别问为什么不用现成的
+    private String aimPoemPicUrl;
+    private String aimPoemAuthor;
+    private String aimPoemContent;
+
+
 
     public fragment_viewpager_item() {
 
@@ -128,6 +134,7 @@ public class fragment_viewpager_item extends Fragment {
             @Override
             public void onChanged(CardPic cardPicBean) {
                 Glide.with(getContext()).load(cardPicBean.getImgurl()).thumbnail(0.5f).into(topImage);
+                aimPoemPicUrl = cardPicBean.getImgurl();
 
 
 //                new Thread(new Runnable() {
@@ -154,6 +161,10 @@ public class fragment_viewpager_item extends Fragment {
         cardViewModel.getPoem().observe(getViewLifecycleOwner(), new Observer<Poem>() {
             @Override
             public void onChanged(Poem poem) {
+                aimPoemAuthor = poem.getFromWho() == null ? "佚名" : poem.getFromWho();
+                aimPoemAuthor += "《"+ poem.getFrom() + "》";
+                aimPoemContent = poem.getHitokoto();
+
                 //诗句进行处理
                 String[] strings = poem.getHitokoto().toString().split("[，。？；]");
                 String str = "";
@@ -199,19 +210,37 @@ public class fragment_viewpager_item extends Fragment {
         ImageButton imageButton_like = (ImageButton) view.findViewById(R.id.btn_like);
         imageButton_like.setOnClickListener(new View.OnClickListener() {
             boolean isClicked = false;
-
             @Override
             public void onClick(View v) {
                 if (!isClicked) {
+                    //点击了喜欢
                     imageButton_like.setImageResource(R.drawable.like_checked);
                     num[0]++;
                     like_num.setText(num[0].toString());
                     isClicked = true;
+                    //塞进数据库
+                    new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        AppDatabase db = Room.databaseBuilder(getContext(), AppDatabase.class, "PoemCards").build();
+                        db.poemCardDao().insert(new PoemCard(aimPoemPicUrl,aimPoemContent,aimPoemAuthor));
+                        Log.d("存储数据", aimPoemPicUrl + "----"+ aimPoemAuthor +"----"+  aimPoemContent);
+                    }
+                }).start();
                 } else {
+                    //取消喜欢
                     imageButton_like.setImageResource(R.drawable.like);
                     num[0]--;
                     like_num.setText(num[0].toString());
                     isClicked = false;
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            AppDatabase db = Room.databaseBuilder(getContext(), AppDatabase.class, "PoemCards").build();
+                            db.poemCardDao().delete(new PoemCard(aimPoemPicUrl,aimPoemContent,aimPoemAuthor));
+                            Log.d("存储数据", aimPoemPicUrl + "----"+ aimPoemAuthor +"----"+  aimPoemContent);
+                        }
+                    }).start();
                 }
             }
         });

@@ -45,12 +45,10 @@ public class ArtCardAdapter extends RecyclerView.Adapter<ArtCardAdapter.ViewHold
         holder.mArtName.setText(artCard.getArtName());
         holder.mArtAuthor.setText(artCard.getArtAuthor());
 
-        holder.mArtImg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //进入到详情页面
-                context.startActivity(new Intent(context,ArtContentActivity.class).putExtra("obj",new ArtCard()));
-            }
+        holder.mArtImg.setOnClickListener(v -> {
+            //进入到详情页面,传入当前对应的卡片
+            context.startActivity(new Intent(context,ArtContentActivity.class).putExtra("theArtCardContentInfo",artCard.getArtContent()));
+
         });
     }
 

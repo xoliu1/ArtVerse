@@ -100,7 +100,9 @@ public class fragment_art_main extends Fragment {
     private void initData(){
         mFragments = new ArrayList<>();
         //手动添加死数据
-        mFragments.add(new ArtCard());
+        mFragments.add(new ArtCard(R.drawable.view_of_saint_mammes," View of Saint-Mammes","Alfred Sisley "," View of Saint-Mammes /圣马梅斯景观","Alfred Sisley / 阿尔弗莱德·西斯菜(英国1839-1899)","c.1880","布面油画","54.61x73.98 cm","一起看看印象派笔下的河滨风光吧。\n\n" +
+                "这幅画取景于圣马梅斯，一座处于塞纳河及卢万河交汇处的港口城市。1880年，被誉为[最纯粹的印象派画家]的阿尔弗菜德·西斯莱移居此地，每天从相似的地点描绘不同时间的圣马梅斯风景变化。\n\n" +
+                "这幅画便是西斯莱圣马梅斯系列作品之一。画面上半部分是广阔的天空，下半部分是波光熬熬的河面，河面上停泊着小船，河岸上排列着房屋。西斯莱用明亮的色调和密集的笔触，为我们展示这座港口城市的绚丽风景和生机活力。"));
         mFragments.add(new ArtCard());
     }
     @Override

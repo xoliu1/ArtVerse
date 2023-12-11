@@ -99,6 +99,7 @@ public class fragment_art_main extends Fragment {
 
     private void initData(){
         mFragments = new ArrayList<>();
+        //手动添加死数据
         mFragments.add(new ArtCard());
         mFragments.add(new ArtCard());
     }

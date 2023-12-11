@@ -36,14 +36,14 @@
             android:gravity="center"
             android:text="作品名字"
             android:textColor="@color/black"
-            android:textSize="22sp" />
+            android:textSize="25sp" />
 
         <TextView
             android:id="@+id/artAuthor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textSize="19sp"
+            android:textSize="22sp"
             android:text="Grace  Rose"
             android:fontFamily="@font/hfpoet"
             android:textColor="#3A3838"

@@ -1,9 +1,12 @@
 package com.xoliu.module_art;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,6 +40,18 @@ public class ArtCardAdapter extends RecyclerView.Adapter<ArtCardAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ArtCard artCard = artCards.get(position);
+        //对各个控件进行初始化
+        holder.mArtImg.setImageResource(artCard.getArtImgId());
+        holder.mArtName.setText(artCard.getArtName());
+        holder.mArtAuthor.setText(artCard.getArtAuthor());
+
+        holder.mArtImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //进入到详情页面
+                context.startActivity(new Intent(context,ArtContentActivity.class).putExtra("obj",new ArtCard()));
+            }
+        });
     }
 
     @Override
@@ -45,11 +60,15 @@ public class ArtCardAdapter extends RecyclerView.Adapter<ArtCardAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+        ImageView mArtImg;
+        TextView mArtName;
+        TextView mArtAuthor;
 
-
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-
+        public ViewHolder(@NonNull View v) {
+            super(v);
+            this.mArtImg = (ImageView) v.findViewById(R.id.artImg);
+            this.mArtName = (TextView) v.findViewById(R.id.artName);
+            this.mArtAuthor = (TextView) v.findViewById(R.id.artAuthor);
         }
     }
 }

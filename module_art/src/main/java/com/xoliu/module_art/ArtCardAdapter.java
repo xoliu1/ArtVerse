@@ -1,7 +1,11 @@
 package com.xoliu.module_art;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +13,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.view.ViewCompat;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -45,9 +52,15 @@ public class ArtCardAdapter extends RecyclerView.Adapter<ArtCardAdapter.ViewHold
         holder.mArtName.setText(artCard.getArtName());
         holder.mArtAuthor.setText(artCard.getArtAuthor());
 
+
         holder.mArtImg.setOnClickListener(v -> {
             //进入到详情页面,传入当前对应的卡片
-            context.startActivity(new Intent(context,ArtContentActivity.class).putExtra("theArtCardContentInfo",artCard.getArtContent()));
+            int startX = (int) v.getX(); // 起始位置的X坐标
+            int startY = (int) v.getY(); // 起始位置的Y坐标
+            int startWidth = v.getWidth(); // 起始宽度
+            int startHeight = v.getHeight(); // 起始高度
+            Bundle bundle = ActivityOptionsCompat.makeScaleUpAnimation(holder.mArtImg, startX, startY, startWidth, startHeight).toBundle();
+            context.startActivity(new Intent(context,ArtContentActivity.class).putExtra("theArtCardContentInfo",artCard.getArtContent()),bundle);
 
         });
     }

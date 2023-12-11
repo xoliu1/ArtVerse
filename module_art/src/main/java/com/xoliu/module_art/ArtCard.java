@@ -9,7 +9,7 @@ package com.xoliu.module_art;
  **/
 
 public class ArtCard{
-    private int artImgId = R.drawable.pic1;
+    private int artImgId;
     private String artAuthor;
     private String artName;
 

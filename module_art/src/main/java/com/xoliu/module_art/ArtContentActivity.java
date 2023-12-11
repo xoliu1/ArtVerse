@@ -1,6 +1,8 @@
 package com.xoliu.module_art;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.view.ViewCompat;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -39,23 +41,16 @@ public class ArtContentActivity extends AppCompatActivity {
         binding.artContentMaterial.setText(artContent.material);
         binding.artContentSize.setText(artContent.size);
         binding.artContentInfo.setText(artContent.content);
+        ViewCompat.setTransitionName(binding.artContentImg, "name");
 
         //设置返回
         binding.btnClose.setOnClickListener(v -> {
             finish();
         });
 
-        //设置缩放动画
-        binding.artContentImg.setVisibility(View.VISIBLE);
-        binding.artContentImg.animate()
-                .scaleX(1.5f)
-                .scaleY(1.5f)
-                .setDuration(1000)
-                .start();
 
 
-        // 设置进入动画，提出的不生效
-        overridePendingTransition(com.xoliu.common.R.anim.anim_enter, com.xoliu.common.R.anim.anim_exit);
+
     }
 
     private void initData() {
@@ -69,7 +64,6 @@ public class ArtContentActivity extends AppCompatActivity {
     @Override
     public void finish() {
         super.finish();
-        // 设置退出动画
         overridePendingTransition(com.xoliu.common.R.anim.anim_enter, com.xoliu.common.R.anim.anim_exit);
     }
 }

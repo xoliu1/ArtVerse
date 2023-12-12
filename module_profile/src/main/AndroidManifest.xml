@@ -5,6 +5,9 @@
         <activity
             android:name=".ImagePickerActivity"
             android:exported="false" />
+        <activity
+            android:name=".ArtContentActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

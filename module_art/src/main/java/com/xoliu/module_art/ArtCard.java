@@ -1,6 +1,8 @@
 package com.xoliu.module_art;
 
 
+import db.bean.ArtContent;
+
 /***
  * 艺术画廊卡片的实体对象(已实现序列化)
  *
@@ -33,13 +35,13 @@ public class ArtCard{
         this.artAuthor = artAuthor;
         this.artName = artName;
         this.artContent = new ArtContent();
-        this.artContent.artContentImg = artImgId;
-        this.artContent.name = name;
-        this.artContent.creator = creator;
-        this.artContent.year = year;
-        this.artContent.material = material;
-        this.artContent.size = size;
-        this.artContent.content = content;
+        this.artContent.setArtContentImg(artImgId);
+        this.artContent.setName(name);
+        this.artContent.setCreator(creator);
+        this.artContent.setYear(year);
+        this.artContent.setMaterial(material);
+        this.artContent.setSize(size);
+        this.artContent.setContent(content);
     }
 
 

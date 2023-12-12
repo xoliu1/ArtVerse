@@ -42,8 +42,8 @@ public class MySheetDialog extends BottomSheetDialogFragment {
         commentViewModel.getUserPic().observe(this, new Observer<CardPic>() {
             @Override
             public void onChanged(CardPic cardPicBean) {
-                comments.get(new Random().nextInt(9)).setUserIcon(cardPicBean.getImgurl());
-                adapter.notifyDataSetChanged();
+                //comments.get(new Random().nextInt(9)).setUserIcon(cardPicBean.getImgurl());
+                //adapter.notifyDataSetChanged();
             }
         });
 

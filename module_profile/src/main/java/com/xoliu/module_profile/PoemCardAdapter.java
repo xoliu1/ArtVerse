@@ -47,8 +47,9 @@ public class PoemCardAdapter extends RecyclerView.Adapter<PoemCardAdapter.ViewHo
         PoemCard poemCard = poemCardList.get(position);
         holder.content.setText(poemCard.getPoemContext());
         holder.author.setText(poemCard.getPoemAuthor());
-        holder.mainView.setOnClickListener(v -> {
+        holder.mainView.setOnLongClickListener(v -> {
             alertClick(v, poemCard);
+            return true;
         });
     }
 

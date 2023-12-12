@@ -1,32 +1,21 @@
 package com.xoliu.module_profile;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.room.Room;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-import android.provider.MediaStore;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.bumptech.glide.Glide;
+import com.google.android.material.tabs.TabLayout;
 import com.xoliu.module_profile.databinding.FragmentProfileMainBinding;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import db.AppDatabase;
-import db.bean.PoemCard;
 
 @Route(path = "/profile/main")
 public class fragment_profile_main extends Fragment {
@@ -63,27 +52,61 @@ public class fragment_profile_main extends Fragment {
 
 
     private void initView() {
+        //设置点击事件，进入选取图片
         binding.profileUserIcon.setOnClickListener(v -> {
             startActivity(new Intent(getContext(), ImagePickerActivity.class));
         });
 
-        List<PoemCard> poemCardList = new ArrayList<>();
-        new Thread(new Runnable() {
+        showPoemTab();
+        binding.profileTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
-            public void run() {
-                AppDatabase db = Room.databaseBuilder(getContext(), AppDatabase.class, "PoemCards").build();
-                List<PoemCard> list = db.poemCardDao().getAllPoemCards();
-                for (PoemCard card : list) {
-                    poemCardList.add(card);
+            public void onTabSelected(TabLayout.Tab tab) {
+                switch (tab.getPosition()) {
+                    case 0:
+                        showPoemTab();
+                        break;
+                    case 1:
+                        showArtTab();
+                        break;
                 }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
 
             }
-        }).start();
-        binding.profileRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        binding.profileRecyclerView.setAdapter(new PoemCardAdapter(poemCardList));
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+
+
+
 
     }
 
+
+    private void showPoemTab() {
+        // 创建Tab1的Fragment实例
+        ProfilePoemLikesFragment fragment = ProfilePoemLikesFragment.newInstance();
+        // 使用FragmentManager和FragmentTransaction切换页面
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.profile_tab_container, fragment);
+        fragmentTransaction.commit();
+    }
+    private void showArtTab() {
+        // 创建Tab1的Fragment实例
+        ProfileArtLikesFragment fragment = ProfileArtLikesFragment.newInstance();
+        // 使用FragmentManager和FragmentTransaction切换页面
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.profile_tab_container, fragment);
+        fragmentTransaction.commit();
+    }
 
 
     private void initData() {

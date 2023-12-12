@@ -1,8 +1,4 @@
-package com.xoliu.module_art;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.ViewCompat;
-import androidx.room.Room;
+package com.xoliu.module_profile;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,14 +6,15 @@ import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 
-import com.xoliu.module_art.databinding.ActivityArtContentBinding;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.ViewCompat;
+import androidx.room.Room;
 
-import java.util.List;
+
+import com.xoliu.module_profile.databinding.ActivityArtContentBinding;
 
 import db.AppDatabase;
 import db.bean.ArtContent;
-import db.bean.PoemCard;
-import db.dao.ArtContentDao;
 
 /***
  * 点击卡片进入的卡片详情界面

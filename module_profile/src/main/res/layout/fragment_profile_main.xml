@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragment_profile_main">
+    tools:context=".fragment_profile_main"
+    android:background="#F6F0F0">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,9 +14,10 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="250dp"
             android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:background="@drawable/milky">
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -25,7 +27,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:clickable="true"
-                android:src="@color/gold"/>
+                android:src="@drawable/wechat_icon"/>
             </androidx.cardview.widget.CardView>
 
             <TextView
@@ -33,18 +35,51 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:textSize="24sp"
-                android:textColor="@color/black"
-                android:text="用户名"/>
+                android:textSize="27sp"
+                android:textColor="@color/white"
+                android:text="xoliu"/>
 
 
 
         </LinearLayout>
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/profileRecyclerView"
+
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-         
+            android:layout_height="wrap_content"
+            android:text="我所同感"
+            android:textSize="26sp"
+            android:gravity="center"
+            android:fontFamily="@font/font2"
+            android:background="@color/white"
+            android:paddingBottom="20dp"
+            android:paddingTop="10dp"
+            android:textColor="@color/black"/>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/profile_tabLayout"
+            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            app:tabIndicator="@drawable/tab_shape"
+            app:tabIndicatorColor="@color/black"
+            app:tabSelectedTextColor="@color/black"
+            app:tabTextColor="@color/gray"
+            >
+
+            <com.google.android.material.tabs.TabItem
+                android:text="文集"
+                android:tooltipText="" />
+
+            <com.google.android.material.tabs.TabItem
+                android:text="画廊"
+                android:tooltipText=""/>
+
+        </com.google.android.material.tabs.TabLayout>
+        <FrameLayout
+            android:id="@+id/profile_tab_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
 
 
 

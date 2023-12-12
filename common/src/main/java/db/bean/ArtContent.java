@@ -1,9 +1,16 @@
-package com.xoliu.module_art;
+package db.bean;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class ArtContent implements Parcelable {
+    @PrimaryKey(autoGenerate = true)
+    public
+    int theId;
     int artContentImg;
 
     public int getArtContentImg() {

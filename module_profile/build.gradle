@@ -54,8 +54,26 @@ android {
 
 dependencies {
 
+    //图片选择器
+    implementation 'com.github.gzu-liyujiang.AndroidPicker:ImagePicker:4.1.13'
+
+    // PictureSelector 基础 (必须)
+    implementation 'io.github.lucksiege:pictureselector:v3.0.9'
+
+    // 图片压缩 (按需引入)
+    implementation 'io.github.lucksiege:compress:v3.0.9'
+
+    // 图片裁剪 (按需引入)
+    implementation 'io.github.lucksiege:ucrop:v3.0.9'
+
+    // 自定义相机 (按需引入)
+    implementation 'io.github.lucksiege:camerax:v3.0.9'
+
     implementation project(':common')
     implementation project(':func_network')
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     annotationProcessor 'com.alibaba:arouter-compiler:1.5.1'
 
 }

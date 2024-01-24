@@ -17,12 +17,13 @@
         android:layout_marginEnd="10dp"
         android:layout_marginStart="10dp"
         android:layout_height="580dp"
-        app:cardCornerRadius="40dp">
+        app:cardCornerRadius="40dp"
+        >
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraint_insert"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
+
             >
 
             <ImageView
@@ -53,18 +54,19 @@
 
             <TextView
                 android:id="@+id/tv_author"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="70dp"
                 android:fontFamily="@font/pomo"
                 android:gravity="center"
+                android:lineSpacingExtra="7sp"
                 android:text="刘亮程《一个人的存在》"
                 android:textColor="@color/gray"
                 android:textSize="18sp"
-                android:lineSpacingExtra="7sp"
                 app:layout_constraintBottom_toBottomOf="@id/constraint_insert"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_content" />
 
             <LinearLayout
                 android:id="@+id/icons_group"

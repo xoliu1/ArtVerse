@@ -1,10 +1,13 @@
 package com.xoliu.artverse;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.WindowInsetsCompat;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -20,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //getWindow().setStatusBarColor(Color.TRANSPARENT);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Button button = (Button) findViewById(R.id.btn);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -28,5 +33,6 @@ public class MainActivity extends AppCompatActivity {
                 ARouter.getInstance().build("/main/shell").navigation();
             }
         });
+        ARouter.getInstance().build("/main/shell").navigation();
     }
 }

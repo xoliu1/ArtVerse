@@ -11,6 +11,7 @@ import androidx.room.Room;
 
 
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -182,6 +183,7 @@ public class fragment_viewpager_item extends Fragment {
                 }
 
                 content.setText(str);
+                content.setGravity(16);
                 String tempStr = poem.getFromWho() == null ? "佚名" : poem.getFromWho();
                 author.setText("-" + tempStr + "-\n" + "《"+ poem.getFrom() + "》");
             }

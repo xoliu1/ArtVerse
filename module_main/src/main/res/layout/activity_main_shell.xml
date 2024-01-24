@@ -1,27 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".main_shell">
 
-    <FrameLayout
-        android:id="@+id/fragment_container"
+    <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        app:layout_constraintBottom_toTopOf="@id/btmnv_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
 
-    </FrameLayout>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <VideoView
+            android:id="@+id/bgVideoView"
+            android:layout_width="1380dp"
+            android:layout_height="match_parent"
+
+            />
+
+    </LinearLayout>
+    </HorizontalScrollView>
+
+<!--    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/btmnv_view"
-        android:layout_width="match_parent"
+        android:layout_width="800dp"
         android:layout_height="56dp"
         style="@style/Widget.Design.BottomNavigationView"
         app:itemIconTint="@drawable/btmnv_selector"
@@ -30,6 +41,136 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="@color/transparent"
         app:menu="@menu/btmnv_menu"
-        android:layout_marginBottom="0dp" />
+        android:layout_marginBottom="0dp" />-->
 
-</LinearLayout>
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/vip_bg"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="30dp"
+        android:elevation="100dp">
+
+        <ImageView
+            android:id="@+id/imgPoem"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:src="@drawable/foldfan"
+            android:layout_marginEnd="15dp"
+            />
+        <ImageView
+            android:id="@+id/imgMusic"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:src="@drawable/song"
+            android:layout_marginEnd="15dp"
+            />
+        <ImageView
+            android:id="@+id/imgDraw"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:src="@drawable/pw"
+            android:layout_marginEnd="15dp"
+            />
+        <ImageView
+            android:id="@+id/imgCommunity"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:src="@drawable/opened_book"
+            android:layout_marginEnd="15dp"
+            />
+        <ImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:src="@drawable/w5"
+
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="15dp"
+        android:elevation="100dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="句墨"
+            android:textSize="17sp"
+            android:gravity="center"
+            android:fontFamily="@font/font1"
+            android:textColor="@color/maroon"
+            android:layout_marginEnd="15dp"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="雅韵"
+            android:textSize="17sp"
+            android:gravity="center"
+            android:fontFamily="@font/font1"
+            android:textColor="@color/maroon"
+            android:layout_marginEnd="15dp"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="绘艺"
+            android:textSize="17sp"
+            android:gravity="center"
+            android:fontFamily="@font/font1"
+            android:textColor="@color/maroon"
+            android:layout_marginEnd="15dp"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="诗友"
+            android:textSize="17sp"
+            android:gravity="center"
+            android:fontFamily="@font/font1"
+            android:textColor="@color/maroon"
+            android:layout_marginEnd="15dp"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="我的"
+            android:textSize="17sp"
+            android:gravity="center"
+            android:fontFamily="@font/font1"
+            android:textColor="@color/maroon"
+            />
+
+
+    </LinearLayout>
+
+
+
+
+
+
+</RelativeLayout>

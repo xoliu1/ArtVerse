@@ -23,7 +23,7 @@ public class CardViewModel extends ViewModel {
     public MutableLiveData<CardPic> getCardPic() {
         if (cardPic == null){
             cardPic = repository.getCardPic();
-            Log.d("TAG", "View Model 获取卡片背景");
+           // Log.d("TAG", "View Model 获取卡片背景");
         }
         return cardPic;
     }
@@ -31,7 +31,7 @@ public class CardViewModel extends ViewModel {
     public MutableLiveData<Poem> getPoem() {
         if(poem == null){
             poem = repository.getPoem();
-            Log.d("TAG", "View Model 获取诗词正文");
+            Log.d("TAG", "View Model 获取诗词正文1" );
         }
         return poem;
     }

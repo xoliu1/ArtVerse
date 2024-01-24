@@ -10,8 +10,13 @@ import com.xoliu.func_network.BaseObserver;
 import com.xoliu.func_network.NetworkApi;
 import com.xoliu.module_poem.comment.CommentService;
 
+import java.util.concurrent.TimeUnit;
+
 import bean.CardPic;
 import bean.Poem;
+import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
+import io.reactivex.functions.Function;
 
 /***
  * 诗句页面的Main仓库
@@ -89,18 +94,47 @@ public class PoemMainRepository {
     public MutableLiveData<Poem> getPoem(){
         MutableLiveData<Poem> poemData = new MutableLiveData<>();
         CardPicService service = NetworkApi.createService(CardPicService.class);
-        service.getPoem("https://v1.hitokoto.cn/?c=i&c=k&encode=json").compose(NetworkApi.applySchedulers(new BaseObserver<Poem>() {
+        service.getPoem("https://v1.hitokoto.cn/?c=i&encode=json").compose(NetworkApi.applySchedulers(new BaseObserver<Poem>() {
             @Override
             public void onSuccess(Poem poem) {
                 Log.d("TAG", "获取了诗词,正文：" + poem.getHitokoto());
                 poemData.postValue(poem);
             }
 
+
+
             @Override
             public void onFailure(Throwable e) {
-
+                Log.e("TAG", "获取诗词正文失败！");
             }
         }));
+
+//            @Override
+//            public void onFailure(Throwable e) {
+//                Log.e("TAG", "获取诗词正文失败！");
+//
+//                // 发起下一次请求，最多重试3次
+//                Observable.just(true)
+//                        .delay(1000, TimeUnit.MILLISECONDS)
+//                        .flatMap((Function<Boolean, ObservableSource<Poem>>) aBoolean ->
+//                                service.getPoem("https://v1.hitokoto.cn/?c=i&c=k&encode=json")
+//                        )
+//                        .compose(NetworkApi.applySchedulers(new BaseObserver<Poem>() {
+//                            @Override
+//                            public void onSuccess(Poem poem) {
+//                                Log.d("TAG", "获取了诗词,正文：" + poem.getHitokoto());
+//                                poemData.postValue(poem);
+//                            }
+//
+//                            @Override
+//                            public void onFailure(Throwable e) {
+//                                Log.e("TAG", "再次获取诗词正文失败！");
+//                            }
+//                        }))
+//                        .retry(3) // 最多重试3次
+//                        .subscribe();
+//            }
+//        }));
 
         return poemData;
     }

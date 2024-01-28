@@ -1,4 +1,4 @@
-package com.xoliu.module_poem.viewpager;
+package com.xoliu.module_poem.model;
 
 
 import android.annotation.SuppressLint;
@@ -8,15 +8,12 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.xoliu.func_network.BaseObserver;
 import com.xoliu.func_network.NetworkApi;
-import com.xoliu.module_poem.comment.CommentService;
-
-import java.util.concurrent.TimeUnit;
+import com.xoliu.module_poem.model.bean.Poemt;
+import com.xoliu.module_poem.net.CardService;
+import com.xoliu.module_poem.net.CommentService;
 
 import bean.CardPic;
 import bean.Poem;
-import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
-import io.reactivex.functions.Function;
 
 /***
  * 诗句页面的Main仓库
@@ -41,8 +38,8 @@ public class PoemMainRepository {
     @SuppressLint("CheckResult")
     public MutableLiveData<CardPic> getCardPic() {
         MutableLiveData<CardPic> cardPic = new MutableLiveData<>();
-        CardPicService cardPicService = NetworkApi.createService(CardPicService.class);
-        cardPicService.getCardPic().compose(NetworkApi.applySchedulers(new BaseObserver<CardPic>() {
+        CardService cardService = NetworkApi.createService(CardService.class);
+        cardService.getCardPic().compose(NetworkApi.applySchedulers(new BaseObserver<CardPic>() {
             @Override
             public void onSuccess(CardPic cardPicBean) {
                 cardPic.setValue(cardPicBean);
@@ -91,13 +88,13 @@ public class PoemMainRepository {
 
     //https://v1.hitokoto.cn/?c=i&encode=json 为诗词的数据接口
     @SuppressLint("CheckResult")
-    public MutableLiveData<Poem> getPoem(){
-        MutableLiveData<Poem> poemData = new MutableLiveData<>();
-        CardPicService service = NetworkApi.createService(CardPicService.class);
-        service.getPoem("https://v1.hitokoto.cn/?c=i&encode=json").compose(NetworkApi.applySchedulers(new BaseObserver<Poem>() {
+    public MutableLiveData<Poemt> getPoem(){
+        MutableLiveData<Poemt> poemData = new MutableLiveData<>();
+        CardService service = NetworkApi.createService(CardService.class);
+        service.getPoem("https://open.saintic.com/api/sentence/").compose(NetworkApi.applySchedulers(new BaseObserver<Poemt>() {
             @Override
-            public void onSuccess(Poem poem) {
-                Log.d("TAG", "获取了诗词,正文：" + poem.getHitokoto());
+            public void onSuccess(Poemt poem) {
+                Log.d("TAG", "获取了诗词,正文：" + poem.getData().getSentence());
                 poemData.postValue(poem);
             }
 

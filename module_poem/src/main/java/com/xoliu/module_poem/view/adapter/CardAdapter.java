@@ -1,9 +1,10 @@
-package com.xoliu.module_poem.viewpager;
+package com.xoliu.module_poem.view.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
+
+import com.xoliu.module_poem.view.fragment.fragment_viewpager_item;
 
 import java.util.List;
 

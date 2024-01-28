@@ -1,4 +1,6 @@
-package com.xoliu.module_poem.viewpager;
+package com.xoliu.module_poem.net;
+
+import com.xoliu.module_poem.model.bean.Poemt;
 
 import bean.Poem;
 import bean.CardPic;
@@ -6,7 +8,7 @@ import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Url;
 
-public interface CardPicService {
+public interface CardService {
 
         /**
          * 博天随机图片
@@ -28,7 +30,7 @@ public interface CardPicService {
          * @create 23-11-22
          **/
         @GET
-        Observable<Poem> getPoem(@Url String url);
+        Observable<Poemt> getPoem(@Url String url);
 
 
 

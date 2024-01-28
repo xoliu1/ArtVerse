@@ -1,4 +1,4 @@
-package com.xoliu.module_poem.comment;
+package com.xoliu.module_poem.model.bean;
 
 /***
  * 评论的Bean类
@@ -8,9 +8,9 @@ package com.xoliu.module_poem.comment;
 
 public class commentItem {
     public String userIcon;
-    String userName;
-    String commentTime;
-    String commentContent;
+    public String userName;
+    public String commentTime;
+    public String commentContent;
 
     public commentItem(String userIcon, String userName, String commentTime, String commentContent) {
         this.userIcon = userIcon;

@@ -1,5 +1,6 @@
-package com.xoliu.module_poem.viewpager;
+package com.xoliu.module_poem.view.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,21 +12,20 @@ import androidx.room.Room;
 
 
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.xoliu.module_poem.R;
-import com.xoliu.module_poem.comment.MySheetDialog;
-import com.xoliu.module_poem.share.ShareDialog;
+import com.xoliu.module_poem.model.bean.Poemt;
+import com.xoliu.module_poem.view.activity.PoemInfo;
+import com.xoliu.module_poem.view.dialog.CommentsSheetDialog;
+import com.xoliu.module_poem.view.dialog.ShareDialog;
+import com.xoliu.module_poem.viewmodel.CardViewModel;
 
-import bean.Poem;
 import bean.CardPic;
 import db.AppDatabase;
 import db.bean.PoemCard;
@@ -45,7 +45,9 @@ public class fragment_viewpager_item extends Fragment {
     String commentNumStr;
     String likeNumStr;
 
-    MySheetDialog dialog = new MySheetDialog();
+    String fromStr;
+
+    CommentsSheetDialog dialog = new CommentsSheetDialog();
 
     CardViewModel cardViewModel;
 
@@ -54,6 +56,8 @@ public class fragment_viewpager_item extends Fragment {
     private String aimPoemPicUrl;
     private String aimPoemAuthor;
     private String aimPoemContent;
+
+    String PoemUrl;
 
 
 
@@ -69,6 +73,7 @@ public class fragment_viewpager_item extends Fragment {
         this.shareNumStr = String.valueOf(shareNum);
         this.commentNumStr = String.valueOf(commentNum);
         this.likeNumStr = String.valueOf(likeNum);
+        this.fromStr = "";
     }
 
 
@@ -105,8 +110,10 @@ public class fragment_viewpager_item extends Fragment {
         TextView share_num = (TextView) view.findViewById(R.id.tv_share_num);
         TextView comment_num = (TextView) view.findViewById(R.id.tv_comment_num);
         TextView like_num = (TextView) view.findViewById(R.id.tv_like_num);
-        ImageView topImage = (ImageView) view.findViewById(R.id.top_image);
+//        ImageView topImage = (ImageView) view.findViewById(R.id.top_image);
         ImageButton btn_share = (ImageButton) view.findViewById(R.id.btn_share);
+        TextView from = view.findViewById(R.id.tv_from);
+        ImageView btn_src = view.findViewById(R.id.btn_src);
 
         //设置图片
 //        Retrofit retrofit = new Retrofit.Builder()
@@ -115,7 +122,7 @@ public class fragment_viewpager_item extends Fragment {
 //                //设置数据解析器
 //                .addConverterFactory(GsonConverterFactory.create())
 //                .build();
-//        CardPicService service = retrofit.create(CardPicService.class);
+//        CardService service = retrofit.create(CardService.class);
 //        Call<CardPic> call = service.getCardPic();
 //        call.enqueue(new Callback<CardPic>() {
 //            @Override
@@ -134,7 +141,7 @@ public class fragment_viewpager_item extends Fragment {
         cardViewModel.getCardPic().observe(getViewLifecycleOwner(), new Observer<CardPic>() {
             @Override
             public void onChanged(CardPic cardPicBean) {
-                Glide.with(getContext()).load(cardPicBean.getImgurl()).thumbnail(0.5f).into(topImage);
+                //Glide.with(getContext()).load(cardPicBean.getImgurl()).thumbnail(0.5f).into(topImage);
                 aimPoemPicUrl = cardPicBean.getImgurl();
 
 
@@ -159,15 +166,12 @@ public class fragment_viewpager_item extends Fragment {
             }
         });
 
-        cardViewModel.getPoem().observe(getViewLifecycleOwner(), new Observer<Poem>() {
+        cardViewModel.getPoem().observe(getViewLifecycleOwner(), new Observer<Poemt>() {
             @Override
-            public void onChanged(Poem poem) {
-                aimPoemAuthor = poem.getFromWho() == null ? "佚名" : poem.getFromWho();
-                aimPoemAuthor += "《"+ poem.getFrom() + "》";
-                aimPoemContent = poem.getHitokoto();
+            public void onChanged(Poemt poem) {
 
                 //诗句进行处理
-                String[] strings = poem.getHitokoto().toString().split("[，。？；]");
+                String[] strings = poem.getData().getSentence().toString().split("[，。？；]");
                 String str = "";
                 for (int i = 0; i < strings.length; i++) {
                     String s = strings[i];
@@ -184,8 +188,12 @@ public class fragment_viewpager_item extends Fragment {
 
                 content.setText(str);
                 content.setGravity(16);
-                String tempStr = poem.getFromWho() == null ? "佚名" : poem.getFromWho();
-                author.setText("-" + tempStr + "-\n" + "《"+ poem.getFrom() + "》");
+                author.setText(poem.getData().getAuthor());
+                from.setText("《"+ poem.getData().getName() + "》");
+                PoemUrl = poem.getData().getSrcUrl();
+
+                aimPoemAuthor = poem.getData().getAuthor();
+                aimPoemContent = poem.getData().getSentence();
             }
         });
 
@@ -253,6 +261,11 @@ public class fragment_viewpager_item extends Fragment {
                 ShareDialog dialogFragment = new ShareDialog();
                 dialogFragment.show(getFragmentManager(), "bottomSheetDialog");
             }
+        });
+        btn_src.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), PoemInfo.class);
+            intent.putExtra("webUrl", PoemUrl);
+            startActivity(intent);
         });
     }
 }

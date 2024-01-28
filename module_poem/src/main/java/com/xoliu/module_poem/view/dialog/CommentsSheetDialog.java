@@ -1,4 +1,4 @@
-package com.xoliu.module_poem.comment;
+package com.xoliu.module_poem.view.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -16,14 +16,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.xoliu.module_poem.R;
+import com.xoliu.module_poem.viewmodel.CommentViewModel;
+import com.xoliu.module_poem.model.bean.commentItem;
+import com.xoliu.module_poem.view.adapter.commentAdapter;
 
 import bean.CardPic;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
-public class MySheetDialog extends BottomSheetDialogFragment {
+public class CommentsSheetDialog extends BottomSheetDialogFragment {
 
     private Context iContext;
 

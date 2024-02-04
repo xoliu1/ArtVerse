@@ -9,6 +9,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
 import android.media.MediaPlayer;
@@ -120,35 +122,45 @@ public class main_shell extends AppCompatActivity implements View.OnClickListene
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        Intent intent = new Intent(this, AimActivity.class);
-// 获取点击的坐标
+        Intent intent1 = new Intent(this, AimActivity.class);
+
+        // 获取点击的坐标
         int centerX = (v.getLeft() + v.getRight()) / 2;
         int centerY = (v.getTop() + v.getBottom()) / 2;
+        // 创建 ActivityOptionsCompat 对象并设置动画
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeScaleUpAnimation(v, centerX, centerY, 0, 0);
+        boolean temp = true;
 
         if(id == R.id.imgPoem) {
             // 诗句
-            intent.putExtra("fragmentType", "poem");
-        }else if(id == R.id.imgMusic) {
-            //音乐
-            intent.putExtra("fragmentType", "music");
+            intent1.putExtra("fragmentType", "poem");
         }else if(id == R.id.imgDraw) {
             // 艺术作品
-            intent.putExtra("fragmentType", "art");
-        }else if(id == R.id.imgCommunity) {
-            // 社区
-            intent.putExtra("fragmentType", "community");
+            intent1.putExtra("fragmentType", "art");
         }else if (id == R.id.imgProfile){
             // 个人资料
-            intent.putExtra("fragmentType", "profile");
+            intent1.putExtra("fragmentType", "profile");
+        }else{
+            temp = false;
         }
 
 
 
-        // 创建 ActivityOptionsCompat 对象并设置动画
-        ActivityOptionsCompat options = ActivityOptionsCompat.makeScaleUpAnimation(v, centerX, centerY, 0, 0);
 
-        // 启动目标活动
-        ActivityCompat.startActivity(this, intent, options.toBundle());
+
+        if (temp){
+            // 启动目标活动
+            ActivityCompat.startActivity(this, intent1, options.toBundle());
+        }else{
+            if(id == R.id.imgMusic) {
+                //音乐
+                ARouter.getInstance().build("/music/main").navigation();
+            }else if(id == R.id.imgCommunity) {
+                // 社区
+                ARouter.getInstance().build("/community/main").navigation();
+            }
+        }
+
 
     }
 

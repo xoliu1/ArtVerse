@@ -28,12 +28,8 @@ public class AimActivity extends AppCompatActivity {
         // 根据传入的参数选择要加载的碎片
         if ("poem".equals(fragmentType)) {
             fragment = (Fragment) ARouter.getInstance().build("/poem/fragment").navigation();
-        } else if ("music".equals(fragmentType)) {
-            fragment = (Fragment) ARouter.getInstance().build("/poem/fragment").navigation();
         } else if ("art".equals(fragmentType)) {
             fragment = (Fragment) ARouter.getInstance().build("/art/main").navigation();
-        } else if ("community".equals(fragmentType)) {
-            fragment = (Fragment) ARouter.getInstance().build("/poem/fragment").navigation();
         } else if ("profile".equals(fragmentType)) {
             fragment = (Fragment) ARouter.getInstance().build("/profile/main").navigation();
         }

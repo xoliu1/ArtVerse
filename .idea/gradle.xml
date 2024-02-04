@@ -15,7 +15,9 @@
             <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/func_network" />
             <option value="$PROJECT_DIR$/module_art" />
+            <option value="$PROJECT_DIR$/module_community" />
             <option value="$PROJECT_DIR$/module_main" />
+            <option value="$PROJECT_DIR$/module_music" />
             <option value="$PROJECT_DIR$/module_poem" />
             <option value="$PROJECT_DIR$/module_profile" />
           </set>

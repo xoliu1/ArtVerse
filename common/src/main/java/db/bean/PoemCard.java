@@ -2,11 +2,10 @@ package db.bean;
 
 import androidx.room.Entity;
 import androidx.room.Ignore;
-import androidx.room.Insert;
 import androidx.room.PrimaryKey;
 
-import bean.CardPic;
-import bean.Poem;
+import global.CardPic;
+import global.Poem;
 
 /***
  * 用来存数据库的bean类

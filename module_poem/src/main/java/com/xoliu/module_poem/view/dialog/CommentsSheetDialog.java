@@ -20,7 +20,7 @@ import com.xoliu.module_poem.viewmodel.CommentViewModel;
 import com.xoliu.module_poem.model.bean.commentItem;
 import com.xoliu.module_poem.view.adapter.commentAdapter;
 
-import bean.CardPic;
+import global.CardPic;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.xoliu.module_poem.net;
 
-import bean.CardPic;
+import global.CardPic;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;

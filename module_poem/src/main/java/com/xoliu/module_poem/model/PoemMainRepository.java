@@ -12,8 +12,7 @@ import com.xoliu.module_poem.model.bean.Poemt;
 import com.xoliu.module_poem.net.CardService;
 import com.xoliu.module_poem.net.CommentService;
 
-import bean.CardPic;
-import bean.Poem;
+import global.CardPic;
 
 /***
  * 诗句页面的Main仓库
@@ -30,7 +29,7 @@ public class PoemMainRepository {
 
     /***
      * 请求card的上层图片
-     * @return androidx.lifecycle.MutableLiveData<bean.CardPic>
+     * @return androidx.lifecycle.MutableLiveData<global.CardPic>
      * @author xoliu
      * @create 23-11-21
      **/
@@ -60,7 +59,7 @@ public class PoemMainRepository {
     /***
      * 获取用户头像
      *
-     * @return androidx.lifecycle.MutableLiveData<bean.CardPic>
+     * @return androidx.lifecycle.MutableLiveData<global.CardPic>
      * @author xoliu
      * @create 23-11-22
      **/

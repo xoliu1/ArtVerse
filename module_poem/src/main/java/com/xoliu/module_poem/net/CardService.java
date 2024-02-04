@@ -2,8 +2,7 @@ package com.xoliu.module_poem.net;
 
 import com.xoliu.module_poem.model.bean.Poemt;
 
-import bean.Poem;
-import bean.CardPic;
+import global.CardPic;
 import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Url;

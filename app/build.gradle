@@ -43,6 +43,8 @@ dependencies {
     implementation project(":module_poem")
     implementation project(":module_art")
     implementation project(":module_profile")
+    implementation project(":module_music")
+    implementation project(":module_community")
     // }
     annotationProcessor rootProject.ext.annotationLibs
 

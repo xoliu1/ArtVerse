@@ -8,8 +8,7 @@ import androidx.lifecycle.ViewModel;
 import com.xoliu.module_poem.model.PoemMainRepository;
 import com.xoliu.module_poem.model.bean.Poemt;
 
-import bean.Poem;
-import bean.CardPic;
+import global.CardPic;
 
 /***
  * 作为card的ViewModel，主要用于加载图片框架
@@ -26,7 +25,7 @@ public class CardViewModel extends ViewModel {
     /***
      * 因重构已弃用
      *
-     * @return androidx.lifecycle.MutableLiveData<bean.CardPic>
+     * @return androidx.lifecycle.MutableLiveData<global.CardPic>
      * @author xoliu
      * @create 24-1-28
      **/

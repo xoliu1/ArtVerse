@@ -26,7 +26,6 @@ import com.xoliu.module_poem.view.dialog.CommentsSheetDialog;
 import com.xoliu.module_poem.view.dialog.ShareDialog;
 import com.xoliu.module_poem.viewmodel.CardViewModel;
 
-import bean.CardPic;
 import db.AppDatabase;
 import db.bean.PoemCard;
 

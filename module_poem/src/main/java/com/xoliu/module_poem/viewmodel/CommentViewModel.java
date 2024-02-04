@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.xoliu.module_poem.model.PoemMainRepository;
 
-import bean.CardPic;
+import global.CardPic;
 
 public class CommentViewModel extends ViewModel {
     public MutableLiveData<CardPic> userPic = new MutableLiveData<>();

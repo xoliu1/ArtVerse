@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MusicActivity"
+    >
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dynasty_bg"
+            >
+
+            <!-- 放置标题栏或其他顶部元素 -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                app:cardCornerRadius="15dp"
+                android:layout_margin="20dp"
+                android:background="@drawable/dynasty_bg">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/bk_main"
+                    android:scaleType="fitXY"
+                    />
+
+
+
+            </androidx.cardview.widget.CardView>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <!-- 放置可滑动的内容 -->
+
+        </androidx.core.widget.NestedScrollView>
+
+        <!-- 底部播放栏 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
+
+            <ImageView
+                android:id="@+id/singerImage"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/bk_main"
+                android:scaleType="centerCrop"
+                />
+
+            <TextView
+                android:id="@+id/singerName"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="将进酒"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textColor="@color/goldenrod"
+                android:fontFamily="@font/font9"/>
+
+
+        </LinearLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

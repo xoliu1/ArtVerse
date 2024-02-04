@@ -109,6 +109,8 @@ public class ArtContentAdapter extends RecyclerView.Adapter<ArtContentAdapter.Vi
                         db.artContentDao().deletePaintingsByArtistName(artContent.getName());
                     }
                 }).start();
+                mArtItemList.remove(artContent);
+                notifyDataSetChanged();
                 dialog.cancel();
             }
         });

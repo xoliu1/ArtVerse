@@ -138,33 +138,33 @@ public class fragment_viewpager_item extends Fragment {
 
 
 
-        cardViewModel.getCardPic().observe(getViewLifecycleOwner(), new Observer<CardPic>() {
-            @Override
-            public void onChanged(CardPic cardPicBean) {
-                //Glide.with(getContext()).load(cardPicBean.getImgurl()).thumbnail(0.5f).into(topImage);
-                aimPoemPicUrl = cardPicBean.getImgurl();
-
-
-//                new Thread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        AppDatabase db = Room.databaseBuilder(getContext(), AppDatabase.class, "PoemCards").build();
-//                        db.poemCardDao().insert(new PoemCard(cardPicBean, new Poem()));
-//                    }
-//                }).start();
-
-//                new Thread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        AppDatabase db = Room.databaseBuilder(getContext(), AppDatabase.class, "PoemCards").build();
-//                        db.poemCardDao().insert(new PoemCard(cardPicBean, new Poem()));
-//                        String imgUrl = db.poemCardDao().getAllPoemCards().get(0).getImgUrl();
-//                    }
-//                }
-//                ).start();
-
-            }
-        });
+//        cardViewModel.getCardPic().observe(getViewLifecycleOwner(), new Observer<CardPic>() {
+//            @Override
+//            public void onChanged(CardPic cardPicBean) {
+//                //Glide.with(getContext()).load(cardPicBean.getImgurl()).thumbnail(0.5f).into(topImage);
+//                aimPoemPicUrl = cardPicBean.getImgurl();
+//
+//
+////                new Thread(new Runnable() {
+////                    @Override
+////                    public void run() {
+////                        AppDatabase db = Room.databaseBuilder(getContext(), AppDatabase.class, "PoemCards").build();
+////                        db.poemCardDao().insert(new PoemCard(cardPicBean, new Poem()));
+////                    }
+////                }).start();
+//
+////                new Thread(new Runnable() {
+////                    @Override
+////                    public void run() {
+////                        AppDatabase db = Room.databaseBuilder(getContext(), AppDatabase.class, "PoemCards").build();
+////                        db.poemCardDao().insert(new PoemCard(cardPicBean, new Poem()));
+////                        String imgUrl = db.poemCardDao().getAllPoemCards().get(0).getImgUrl();
+////                    }
+////                }
+////                ).start();
+//
+//            }
+//        });
 
         cardViewModel.getPoem().observe(getViewLifecycleOwner(), new Observer<Poemt>() {
             @Override
@@ -233,8 +233,8 @@ public class fragment_viewpager_item extends Fragment {
                     @Override
                     public void run() {
                         AppDatabase db = Room.databaseBuilder(getContext(), AppDatabase.class, "PoemCards").build();
-                        db.poemCardDao().insert(new PoemCard(aimPoemPicUrl,aimPoemContent,aimPoemAuthor));
-                        Log.d("存储数据", aimPoemPicUrl + "----"+ aimPoemAuthor +"----"+  aimPoemContent);
+                        db.poemCardDao().insert(new PoemCard(aimPoemContent,aimPoemAuthor));
+                        Log.d("存储数据",   aimPoemAuthor +"----"+  aimPoemContent);
                     }
                 }).start();
                 } else {
@@ -247,8 +247,8 @@ public class fragment_viewpager_item extends Fragment {
                         @Override
                         public void run() {
                             AppDatabase db = Room.databaseBuilder(getContext(), AppDatabase.class, "PoemCards").build();
-                            db.poemCardDao().delete(new PoemCard(aimPoemPicUrl,aimPoemContent,aimPoemAuthor));
-                            Log.d("存储数据", aimPoemPicUrl + "----"+ aimPoemAuthor +"----"+  aimPoemContent);
+                            db.poemCardDao().delete(new PoemCard(aimPoemContent,aimPoemAuthor));
+                            Log.d("存储数据",   aimPoemAuthor +"----"+  aimPoemContent);
                         }
                     }).start();
                 }

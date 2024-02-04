@@ -35,8 +35,7 @@ public class PoemCard {
     }
 
     @Ignore
-    public PoemCard(String imgUrl, String poemContext, String poemAuthor) {
-        this.imgUrl = imgUrl;
+    public PoemCard(String poemContext, String poemAuthor) {
         this.poemContext = poemContext;
         this.poemAuthor = poemAuthor;
     }

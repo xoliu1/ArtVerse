@@ -58,7 +58,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/font11"
                     android:padding="10dp"
-                    android:text="如同踏进一个满载诗词韵味的仙境。在此处您将邂逅李白、杜甫、李清照、苏轼等诸多古代文人，他们在莲花阁、桃花源、断桥残雪等场景中，怡然自得地吟诵诗词。"
+                    android:text="踏进一个满载诗词韵味的仙境。在此处您将邂逅李白、杜甫、李清照、苏轼等诸多古代文人，他们在莲花阁、桃花源、断桥残雪等场景中，怡然自得地吟诵诗词。现在你可同他们进行对话"
                     android:textSize="18sp" />
 
             </androidx.cardview.widget.CardView>

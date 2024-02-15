@@ -136,7 +136,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="智瞳"
+            android:text="吟游"
             android:textSize="17sp"
             android:gravity="center"
             android:fontFamily="@font/font1"

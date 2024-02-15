@@ -1,0 +1,14 @@
+<resources>
+    <string name="ap2p_name">Spinner</string>
+    <string-array name="poets">
+        <item>刘禹锡</item>
+        <item>白居易</item>
+        <item>苏轼</item>
+        <item>陶渊明</item>
+        <item>陆游</item>
+        <item>韩愈</item>
+        <item>李商隐</item>
+        <item>龚自珍</item>
+        <item>李清照</item>
+    </string-array>
+</resources>

@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -35,6 +36,8 @@ public class MusicActivity extends AppCompatActivity {
 
     MusicViewModel viewModel;
 
+    MediaPlayer mediaPlayer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,7 @@ public class MusicActivity extends AppCompatActivity {
         binding = ActivityMusicBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         viewModel = new ViewModelProvider(this).get(MusicViewModel.class);
+        mediaPlayer = MediaPlayer.create(MusicActivity.this, R.raw.libai_jiangjinjiu);
         initListener();
         initData();
         initView();
@@ -57,7 +61,14 @@ public class MusicActivity extends AppCompatActivity {
         });
 
         binding.btnOn.setOnClickListener(v -> {
+            if (!mediaPlayer.isPlaying()) {
+                mediaPlayer.start(); // 开始播放音乐
 
+                binding.btnOn.setImageResource(R.drawable.pause2);
+            } else {
+                mediaPlayer.pause(); // 暂停播放音乐
+                binding.btnOn.setImageResource(R.drawable.btn_on);
+            }
         });
     }
 
@@ -96,5 +107,14 @@ public class MusicActivity extends AppCompatActivity {
         binding.rvPopular.setLayoutManager(new LinearLayoutManager(this));
         binding.rvPopular.setAdapter(new SongAdapter(songList));
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mediaPlayer != null) {
+            mediaPlayer.release(); // 释放MediaPlayer资源
+            mediaPlayer = null;
+        }
     }
 }

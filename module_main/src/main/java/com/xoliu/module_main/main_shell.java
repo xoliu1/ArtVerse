@@ -65,7 +65,7 @@ public class main_shell extends AppCompatActivity implements View.OnClickListene
         videoView = binding.bgVideoView;
 
 
-        String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.back_video; // 替换为你的视频资源路径
+        String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.back_video1; // 替换为视频资源路径
         Uri uri = Uri.parse(videoPath);
         videoView.setVideoURI(uri);
 
@@ -86,6 +86,7 @@ public class main_shell extends AppCompatActivity implements View.OnClickListene
         fragmentList.add((Fragment) ARouter.getInstance().build("/poem/fragment").navigation());
         fragmentList.add((Fragment) ARouter.getInstance().build("/art/main").navigation());
         fragmentList.add((Fragment) ARouter.getInstance().build("/profile/main").navigation());
+        //为什么有的用碎片，因为能出动画。
     }
 
     private void initClick() {

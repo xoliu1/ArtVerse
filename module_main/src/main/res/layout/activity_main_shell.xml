@@ -6,10 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".main_shell">
 
-    <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+
 
 
 
@@ -23,13 +20,13 @@
 
         <VideoView
             android:id="@+id/bgVideoView"
-            android:layout_width="1380dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
 
             />
 
     </LinearLayout>
-    </HorizontalScrollView>
+
 
 <!--    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/btmnv_view"

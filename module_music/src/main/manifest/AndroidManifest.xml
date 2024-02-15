@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ArtVerse">
         <activity
-            android:name=".MusicActivity"
+            android:name=".view.activity.MusicActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

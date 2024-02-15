@@ -32,6 +32,8 @@ public class AimActivity extends AppCompatActivity {
             fragment = (Fragment) ARouter.getInstance().build("/art/main").navigation();
         } else if ("profile".equals(fragmentType)) {
             fragment = (Fragment) ARouter.getInstance().build("/profile/main").navigation();
+        } else if ("ai".equals(fragmentType)) {
+            fragment = (Fragment) ARouter.getInstance().build("/ai/main").navigation();
         }
 
 // 将碎片添加到容器中

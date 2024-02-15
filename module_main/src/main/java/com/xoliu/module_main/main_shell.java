@@ -89,7 +89,7 @@ public class main_shell extends AppCompatActivity implements View.OnClickListene
     }
 
     private void initClick() {
-        binding.imgDraw.setOnClickListener(this);
+        binding.imgAI.setOnClickListener(this);
         binding.imgPoem.setOnClickListener(this);
         binding.imgMusic.setOnClickListener(this);
         binding.imgCommunity.setOnClickListener(this);
@@ -134,9 +134,9 @@ public class main_shell extends AppCompatActivity implements View.OnClickListene
         if(id == R.id.imgPoem) {
             // 诗句
             intent1.putExtra("fragmentType", "poem");
-        }else if(id == R.id.imgDraw) {
+        }else if(id == R.id.imgAI) {
             // 艺术作品
-            intent1.putExtra("fragmentType", "art");
+            intent1.putExtra("fragmentType", "ai");
         }else if (id == R.id.imgProfile){
             // 个人资料
             intent1.putExtra("fragmentType", "profile");

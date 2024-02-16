@@ -1,6 +1,7 @@
 <resources>
     <string name="ap2p_name">Spinner</string>
     <string-array name="poets">
+        <item>李白</item>
         <item>刘禹锡</item>
         <item>白居易</item>
         <item>苏轼</item>

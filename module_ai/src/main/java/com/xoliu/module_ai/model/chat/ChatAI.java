@@ -3,7 +3,7 @@ package com.xoliu.module_ai.model.chat;
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.xoliu.module_ai.model.bean.Answer;
+import global.Answer;
 
 
 import org.json.JSONObject;

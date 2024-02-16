@@ -1,4 +1,4 @@
-package com.xoliu.module_ai.model.bean;
+package global;
 
 import com.google.gson.annotations.SerializedName;
 

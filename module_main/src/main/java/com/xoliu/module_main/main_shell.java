@@ -70,12 +70,7 @@ public class main_shell extends AppCompatActivity implements View.OnClickListene
         videoView.setVideoURI(uri);
 
         // 设置循环播放
-        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mediaPlayer) {
-                mediaPlayer.setLooping(true);
-            }
-        });
+        videoView.setOnPreparedListener(mediaPlayer -> mediaPlayer.setLooping(true));
 
         // 开始播放视频
         videoView.start();
@@ -95,6 +90,7 @@ public class main_shell extends AppCompatActivity implements View.OnClickListene
         binding.imgMusic.setOnClickListener(this);
         binding.imgCommunity.setOnClickListener(this);
         binding.imgProfile.setOnClickListener(this);
+        binding.imgComposeA.setOnClickListener(this);
     }
 
 
@@ -141,7 +137,7 @@ public class main_shell extends AppCompatActivity implements View.OnClickListene
         }else if (id == R.id.imgProfile){
             // 个人资料
             intent1.putExtra("fragmentType", "profile");
-        }else{
+        } else{
             temp = false;
         }
 
@@ -159,6 +155,12 @@ public class main_shell extends AppCompatActivity implements View.OnClickListene
             }else if(id == R.id.imgCommunity) {
                 // 社区
                 ARouter.getInstance().build("/community/main").navigation();
+            }else if (id == R.id.img_compose_a){
+                // 藏头诗
+                ARouter.getInstance().build("/compose/acrostic").navigation();
+            }else{
+                // 关键词生成诗
+                ARouter.getInstance().build("/compose/poems").navigation();
             }
         }
 

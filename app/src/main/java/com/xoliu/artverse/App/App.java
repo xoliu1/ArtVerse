@@ -14,7 +14,7 @@ public class App extends Application {
     //数据库
     //public static AppDatabase db;
 
-    //上下文
+
 
     public static Context context;
 

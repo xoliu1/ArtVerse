@@ -7,12 +7,6 @@
     tools:context=".main_shell">
 
 
-
-
-
-
-
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -28,70 +22,82 @@
     </LinearLayout>
 
 
-<!--    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/btmnv_view"
-        android:layout_width="800dp"
-        android:layout_height="56dp"
-        style="@style/Widget.Design.BottomNavigationView"
-        app:itemIconTint="@drawable/btmnv_selector"
-        app:itemTextColor="@drawable/btmnv_selector"
-        app:labelVisibilityMode="unlabeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@color/transparent"
-        app:menu="@menu/btmnv_menu"
-        android:layout_marginBottom="0dp" />-->
+    <ImageView
+        android:id="@+id/img_compose_a"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/_u"
+        >
 
+
+    </ImageView>
+
+
+    <!--    <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/btmnv_view"
+            android:layout_width="800dp"
+            android:layout_height="56dp"
+            style="@style/Widget.Design.BottomNavigationView"
+            app:itemIconTint="@drawable/btmnv_selector"
+            app:itemTextColor="@drawable/btmnv_selector"
+            app:labelVisibilityMode="unlabeled"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@color/transparent"
+            app:menu="@menu/btmnv_menu"
+            android:layout_marginBottom="0dp" />-->
 
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:layout_alignParentBottom="true"
-        android:src="@drawable/vip_bg"
-        />
+        android:src="@drawable/vip_bg" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:orientation="horizontal"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="30dp"
-        android:elevation="100dp">
+        android:elevation="100dp"
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/imgPoem"
             android:layout_width="0dp"
             android:layout_height="80dp"
-            android:layout_weight="1"
-            android:src="@drawable/foldfan"
             android:layout_marginEnd="15dp"
-            />
+            android:layout_weight="1"
+            android:src="@drawable/foldfan" />
+
         <ImageView
             android:id="@+id/imgMusic"
             android:layout_width="0dp"
             android:layout_height="80dp"
-            android:layout_weight="1"
-            android:src="@drawable/song"
             android:layout_marginEnd="15dp"
-            />
+            android:layout_weight="1"
+            android:src="@drawable/song" />
+
         <ImageView
             android:id="@+id/imgAI"
             android:layout_width="0dp"
             android:layout_height="80dp"
-            android:layout_weight="1"
-            android:src="@drawable/ai"
             android:layout_marginEnd="15dp"
-            />
+            android:layout_weight="1"
+            android:src="@drawable/ai" />
+
         <ImageView
             android:id="@+id/imgCommunity"
             android:layout_width="0dp"
             android:layout_height="80dp"
-            android:layout_weight="1"
-            android:src="@drawable/opened_book"
             android:layout_marginEnd="15dp"
-            />
+            android:layout_weight="1"
+            android:src="@drawable/opened_book" />
+
         <ImageView
             android:id="@+id/imgProfile"
             android:layout_width="0dp"
@@ -102,73 +108,73 @@
 
             />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="15dp"
-        android:elevation="100dp">
+        android:elevation="100dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="15dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/font1"
+            android:gravity="center"
+            android:text="句墨"
+            android:textColor="@color/maroon"
+            android:textSize="17sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="15dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/font1"
+            android:gravity="center"
+            android:text="雅韵"
+            android:textColor="@color/maroon"
+            android:textSize="17sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="15dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/font1"
+            android:gravity="center"
+            android:text="吟游"
+            android:textColor="@color/maroon"
+            android:textSize="17sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="15dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/font1"
+            android:gravity="center"
+            android:text="诗友"
+            android:textColor="@color/maroon"
+            android:textSize="17sp" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="句墨"
-            android:textSize="17sp"
-            android:gravity="center"
             android:fontFamily="@font/font1"
-            android:textColor="@color/maroon"
-            android:layout_marginEnd="15dp"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="雅韵"
-            android:textSize="17sp"
             android:gravity="center"
-            android:fontFamily="@font/font1"
-            android:textColor="@color/maroon"
-            android:layout_marginEnd="15dp"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="吟游"
-            android:textSize="17sp"
-            android:gravity="center"
-            android:fontFamily="@font/font1"
-            android:textColor="@color/maroon"
-            android:layout_marginEnd="15dp"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="诗友"
-            android:textSize="17sp"
-            android:gravity="center"
-            android:fontFamily="@font/font1"
-            android:textColor="@color/maroon"
-            android:layout_marginEnd="15dp"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
             android:text="我的"
-            android:textSize="17sp"
-            android:gravity="center"
-            android:fontFamily="@font/font1"
             android:textColor="@color/maroon"
-            />
+            android:textSize="17sp" />
 
 
     </LinearLayout>
-
-
-
-
 
 
 </RelativeLayout>

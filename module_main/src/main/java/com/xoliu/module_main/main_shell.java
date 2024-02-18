@@ -91,6 +91,9 @@ public class main_shell extends AppCompatActivity implements View.OnClickListene
         binding.imgCommunity.setOnClickListener(this);
         binding.imgProfile.setOnClickListener(this);
         binding.imgComposeA.setOnClickListener(this);
+        binding.imgComposeB.setOnClickListener(this);
+        binding.btnPoetsPYQ.setOnClickListener(this);
+        binding.imgArt.setOnClickListener(this);
     }
 
 
@@ -132,8 +135,11 @@ public class main_shell extends AppCompatActivity implements View.OnClickListene
             // 诗句
             intent1.putExtra("fragmentType", "poem");
         }else if(id == R.id.imgAI) {
-            // 艺术作品
+            // AI
             intent1.putExtra("fragmentType", "ai");
+        }else if(id == R.id.imgArt) {
+            // Art
+            intent1.putExtra("fragmentType", "art");
         }else if (id == R.id.imgProfile){
             // 个人资料
             intent1.putExtra("fragmentType", "profile");
@@ -158,9 +164,11 @@ public class main_shell extends AppCompatActivity implements View.OnClickListene
             }else if (id == R.id.img_compose_a){
                 // 藏头诗
                 ARouter.getInstance().build("/compose/acrostic").navigation();
-            }else{
+            }else if (id == R.id.img_compose_b){
                 // 关键词生成诗
                 ARouter.getInstance().build("/compose/poems").navigation();
+            }else{
+
             }
         }
 

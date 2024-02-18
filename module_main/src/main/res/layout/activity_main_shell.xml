@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,7 +8,8 @@
 
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
@@ -22,18 +23,108 @@
     </LinearLayout>
 
 
-    <ImageView
-        android:id="@+id/img_compose_a"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="40dp"
-        android:src="@drawable/_u"
+
+    <LinearLayout
+        android:layout_width="65dp"
+        android:layout_height="220dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:background="@drawable/t8">
+
+
+
+
+
+        <ImageView
+            android:id="@+id/btn_poetsPYQ"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/dn2"/>
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="20dp"
+            android:text="诗友圈"
+            android:fontFamily="@font/font2"
+            android:textSize="12sp"
+            android:layout_marginTop="-10dp"
+            android:gravity="center"
+            android:background="@drawable/text_bk"
+            android:layout_marginBottom="20dp"/>
+
+
+        <ImageView
+            android:id="@+id/imgArt"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/t9"/>
+
+        <TextView
+            android:layout_width="54dp"
+            android:layout_height="20dp"
+            android:text="西域画展"
+            android:fontFamily="@font/font2"
+            android:textSize="10sp"
+            android:layout_marginTop="-10dp"
+            android:gravity="center"
+            android:background="@drawable/text_bk"/>
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="65dp"
+        android:layout_height="210dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="320dp"
+        android:background="@drawable/fv1"
+        android:gravity="center"
         >
 
 
-    </ImageView>
+
+        <ImageView
+            android:id="@+id/img_compose_b"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/dn1"/>
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="20dp"
+            android:text="妙语"
+            android:fontFamily="@font/font2"
+            android:textSize="12sp"
+            android:layout_marginTop="-10dp"
+            android:gravity="center"
+            android:background="@drawable/text_bk"
+            android:layout_marginBottom="20dp"/>
+
+
+        <ImageView
+            android:id="@+id/img_compose_a"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/dn5"
+            android:background="@drawable/dn3"
+            />
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="20dp"
+            android:text="藏头诗"
+            android:fontFamily="@font/font2"
+            android:textSize="12sp"
+            android:layout_marginTop="-10dp"
+            android:gravity="center"
+            android:background="@drawable/text_bk"/>
+
+
+    </LinearLayout>
 
 
     <!--    <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -51,10 +142,12 @@
 
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:layout_alignParentBottom="true"
-        android:src="@drawable/vip_bg" />
+        android:src="@drawable/vip_bg"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -64,7 +157,8 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="30dp"
         android:elevation="100dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageView
             android:id="@+id/imgPoem"
@@ -110,6 +204,7 @@
     </LinearLayout>
 
     <LinearLayout
+        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -177,4 +272,4 @@
     </LinearLayout>
 
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

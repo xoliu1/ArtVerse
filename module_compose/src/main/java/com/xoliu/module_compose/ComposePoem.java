@@ -39,7 +39,7 @@ public class ComposePoem {
     public ComposePoem(String content){
         clear();
         msg.put("role", "user");
-        msg.put("content", "写一首藏头诗，附带赏析，句头的字是：" + content);
+        msg.put("content", content);
         messages.add(msg);
         getPoem();
     }

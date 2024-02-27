@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <application
-
-        android:theme="@style/Theme.ArtVerse">
+    <application android:theme="@style/Theme.ArtVerse">
+        <activity
+            android:name=".Compose2Activity"
+            android:exported="false" />
         <activity
             android:name=".ComposeActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>

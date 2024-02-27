@@ -85,6 +85,8 @@ public class PoemCardAdapter extends RecyclerView.Adapter<PoemCardAdapter.ViewHo
                         db.poemCardDao().delete(poemCard);
                     }
                 }).start();
+                poemCardList.remove(poemCard);
+                notifyDataSetChanged();
                 dialog.cancel();
             }
         });

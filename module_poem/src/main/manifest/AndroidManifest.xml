@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ArtVerse">
         <activity
-            android:name=".poem_main"
+            android:name=".view.activity.PoemInfo"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

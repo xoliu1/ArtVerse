@@ -2,11 +2,10 @@ package db.bean;
 
 import androidx.room.Entity;
 import androidx.room.Ignore;
-import androidx.room.Insert;
 import androidx.room.PrimaryKey;
 
-import bean.CardPic;
-import bean.Poem;
+import global.CardPic;
+import global.Poem;
 
 /***
  * 用来存数据库的bean类
@@ -35,8 +34,7 @@ public class PoemCard {
     }
 
     @Ignore
-    public PoemCard(String imgUrl, String poemContext, String poemAuthor) {
-        this.imgUrl = imgUrl;
+    public PoemCard(String poemContext, String poemAuthor) {
         this.poemContext = poemContext;
         this.poemAuthor = poemAuthor;
     }

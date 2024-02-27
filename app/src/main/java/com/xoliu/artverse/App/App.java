@@ -3,22 +3,18 @@ package com.xoliu.artverse.App;
 import android.app.Application;
 import android.content.Context;
 
-import androidx.room.Room;
+
 
 import com.alibaba.android.arouter.launcher.ARouter;
 
-import java.util.List;
 
-import bean.CardPic;
-import db.AppDatabase;
-import utils.MVUtil;
 
 public class App extends Application {
 
     //数据库
     //public static AppDatabase db;
 
-    //上下文
+
 
     public static Context context;
 

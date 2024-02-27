@@ -31,15 +31,11 @@ public class CDActivity extends AppCompatActivity {
     private void initListener() {
         binding.btnStart.setOnClickListener(v -> {
             if (!mediaPlayer.isPlaying()) {
-                mediaPlayer.start(); // 开始播放音乐
                 startMusicPlayback();
                 binding.btnStart.setImageResource(R.drawable.pause);
-                binding.ivCd.startAnimation(animation);
             } else {
-                mediaPlayer.pause(); // 暂停播放音乐
                 stopMusicPlayback();
                 binding.btnStart.setImageResource(R.drawable.n2);
-                binding.ivCd.clearAnimation();
             }
         });
 
@@ -121,15 +117,18 @@ public class CDActivity extends AppCompatActivity {
 
     private void startMusicPlayback() {
         // 初始化音乐播放器，开始播放音乐
-
+        mediaPlayer.start(); // 开始播放音乐
         // 启动定时器
         handler.post(updateSeekBar);
+        binding.ivCd.startAnimation(animation);
+
     }
 
     private void stopMusicPlayback() {
         // 停止音乐播放器
-
+        mediaPlayer.pause(); // 暂停播放音乐
         // 停止定时器
+        binding.ivCd.clearAnimation();
         handler.removeCallbacks(updateSeekBar);
     }
 

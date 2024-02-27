@@ -37,6 +37,11 @@ android {
             }
         }
     }
+    aaptOptions {
+
+        useNewCruncher  false
+        cruncherEnabled false
+    }
 
     buildTypes {
         release {

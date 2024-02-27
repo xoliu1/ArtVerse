@@ -11,7 +11,7 @@ android {
         minSdk 24
         targetSdk 33
         versionCode 1
-        versionName "1.0"
+        versionName "1.1"
 
         testInstrumentationRunner "androidx.viewpager1.runner.AndroidJUnitRunner"
         javaCompileOptions {
@@ -19,8 +19,14 @@ android {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
         }
+
     }
 
+    aaptOptions {
+
+        useNewCruncher  false
+        cruncherEnabled false
+    }
     buildTypes {
         release {
             minifyEnabled false

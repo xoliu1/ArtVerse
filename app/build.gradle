@@ -11,7 +11,7 @@ android {
         minSdk 24
         targetSdk 33
         versionCode 1
-        versionName "1.1"
+        versionName "1.2"
 
         testInstrumentationRunner "androidx.viewpager1.runner.AndroidJUnitRunner"
         javaCompileOptions {
@@ -55,6 +55,7 @@ dependencies {
     implementation project(":module_compose")
     implementation project(":module_login")
     // }
+
     annotationProcessor rootProject.ext.annotationLibs
 
 

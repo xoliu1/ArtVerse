@@ -11,10 +11,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.concurrent.CountDownLatch;
 
-import okhttp3.Call;
-import okhttp3.Callback;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -30,11 +27,11 @@ import okhttp3.Response;
  **/
 
 public class ChatAI {
-    private static final OkHttpClient HTTP_CLIENT = new OkHttpClient().newBuilder().build();
+    private  OkHttpClient HTTP_CLIENT;
 
-    private final static String ACCESS_TOKEN = "24.858343a6678e8c7f4ad36aa1d77b8d3a.2592000.1711351810.282335-47847035";
+    private final static String ACCESS_TOKEN = "24.a6d731d62af533618e82e84e703260c9.2592000.1713180800.282335-47847035";
 
-    private final String url = "https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/ernie_bot_8k";
+    private final String url = "https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/ernie-3.5-8k-1222";
     private ArrayList<HashMap<String, String>> messages;
 
     private HashMap<String, Object> requestBody;
@@ -48,6 +45,7 @@ public class ChatAI {
 
     public ChatAI() {
         mediaType = MediaType.parse("application/json");
+        this.HTTP_CLIENT = new OkHttpClient().newBuilder().build();
         this.requestBody = new HashMap<>();
         this.messages = new ArrayList<>();
     }
@@ -70,51 +68,31 @@ public class ChatAI {
         messages.add(msg);
     }
 
-    String a;
-    public String  chatCall() throws InterruptedException {
-        requestBody = new HashMap<>();
+    public String chatCall() throws InterruptedException {
         requestBody.put("messages", messages);
 
-        Log.d("123",requestBody.toString());
-
-        body = RequestBody.create(mediaType, new JSONObject(requestBody).toString());
-        request = new Request.Builder()
+        RequestBody body = RequestBody.create(mediaType, new JSONObject(requestBody).toString());
+        Request request = new Request.Builder()
                 .url(url + "?access_token=" + ACCESS_TOKEN)
                 .post(body)
                 .addHeader("Content-Type", "application/json")
                 .addHeader("Accept", "application/json")
                 .build();
 
-        final CountDownLatch latch = new CountDownLatch(1);
-        final String[] answerStr = {null};
-
-        HTTP_CLIENT.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
-                latch.countDown();
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
+        try {
+            Response response = HTTP_CLIENT.newCall(request).execute(); // 同步请求改为使用execute()
+            if (response.isSuccessful() && response.body() != null) {
                 final String responseBody = response.body().string();
-                // 在这里处理响应数据
-                try {
-                    Answer answer = gson.fromJson(responseBody, Answer.class);
-
-                    answerStr[0] = answer.getResult();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    latch.countDown();
-                }
+                Answer answer = gson.fromJson(responseBody, Answer.class);
+                addMsg(answer.getResult()); // 假设Answer类有getResult()方法获取答案
+                return answer.getResult();
+            } else {
+                // 处理错误情况，如网络错误或服务器返回错误
+                return "服务器响应失败";
             }
-        });
-
-        latch.await();
-        if (answerStr[0] != null){
-            addMsg(answerStr[0]);
+        } catch (IOException e) {
+            // 处理网络请求异常
+            return "网络请求出错";
         }
-        return answerStr[0] == null ? "服务器响应失败" : answerStr[0];
     }
 }

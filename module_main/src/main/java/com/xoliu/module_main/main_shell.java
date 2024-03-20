@@ -167,8 +167,8 @@ public class main_shell extends AppCompatActivity implements View.OnClickListene
             }else if (id == R.id.img_compose_b){
                 // 关键词生成诗
                 ARouter.getInstance().build("/compose/poems").navigation();
-            }else{
-
+            }else if(id == R.id.btn_poetsPYQ){
+                ARouter.getInstance().build("/poetryMoments/main").navigation();
             }
         }
 

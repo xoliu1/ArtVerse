@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ArtCardFragment"
+    android:focusable="false"
+    android:layout_margin="15dp"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+
+
+
+
+        <ImageView
+            android:id="@+id/artImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:maxHeight="700dp"
+            android:maxWidth="430dp"
+            android:scaleType="fitCenter"
+            android:layout_gravity="center|top"
+            android:layout_margin="7dp"
+            android:background="@drawable/img_border"
+            android:transitionName="name"/>
+
+        <TextView
+            android:id="@+id/artName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:fontFamily="@font/font10"
+            android:gravity="center"
+            android:text="作品名字"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/artAuthor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="22sp"
+            android:text="Grace  Rose"
+            android:fontFamily="@font/hfpoet"
+            android:textColor="#3A3838"
+            android:layout_marginTop="20dp"
+            />
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>

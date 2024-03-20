@@ -1,0 +1,52 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    namespace 'com.xoliu.common'
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 24
+
+        testInstrumentationRunner "androidx.viewpager1.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    api rootProject.ext.BaseLib
+    api rootProject.ext.annotationLibs
+    api rootProject.ext.networkLib
+    //annotationProcessor
+    annotationProcessor 'com.alibaba:arouter-compiler:1.5.1'
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
+    annotationProcessor 'androidx.room:room-compiler:2.3.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+
+
+    //Room数据库
+    api 'androidx.room:room-runtime:2.3.0'
+    annotationProcessor 'androidx.room:room-compiler:2.3.0'
+
+    //吐司框架
+    api 'com.sdsmdg.tastytoast:tastytoast:0.1.1'
+
+}

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/gray"/>
+<LinearLayout
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/comment_userIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:round="90dp"
+        android:src="@color/gray"/>
+    <LinearLayout
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/comment_username"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/cornflowerblue"
+            android:text="周某人"
+            android:fontFamily="@font/pomo"
+            android:textSize="18sp"/>
+        <TextView
+            android:id="@+id/comment_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:layout_marginStart="5dp"
+            android:text="11-20"
+            />
+        <TextView
+            android:id="@+id/comment_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:text="阿斯达我去问的钱王拳王到期\n打的哇哇的缺乏"/>
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btn_dianzan"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/transparent"
+        android:foreground="@drawable/dianzan_unchecked"/>
+
+
+</LinearLayout>
+
+</LinearLayout>

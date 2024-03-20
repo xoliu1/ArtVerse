@@ -1,0 +1,65 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.xoliu.artverse'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.xoliu.artverse"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.2"
+
+        testInstrumentationRunner "androidx.viewpager1.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+
+    }
+
+    aaptOptions {
+
+        useNewCruncher  false
+        cruncherEnabled false
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+
+    implementation project(":common")
+    //集成开发下，添加所有功能模块
+    //if (!isModule.toBoolean()) {
+    implementation project(":module_main")
+    implementation project(":module_poem")
+    implementation project(":module_art")
+    implementation project(":module_profile")
+    implementation project(":module_music")
+    implementation project(":module_community")
+    implementation project(":module_ai")
+    implementation project(":module_compose")
+    implementation project(":module_login")
+    // }
+
+    annotationProcessor rootProject.ext.annotationLibs
+
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.viewpager1.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.viewpager1.espresso:espresso-core:3.5.1'
+}

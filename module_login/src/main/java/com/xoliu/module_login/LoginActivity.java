@@ -111,25 +111,28 @@ public class LoginActivity extends AppCompatActivity implements mView {
             @Override
             public void onClick(View v) {
                 String pop = textInputLayout6.getEditText().getText().toString();
+                if(pop != null){
+                    transform1.model.logat(pop,handlerS);
 
-                transform1.model.logat(pop,handlerS);
+                    new CountDownTimer(60000,1000){
+                        @Override
+                        public void onTick(long millisUntilFinished) {
+                            button8.setClickable(false);
+                            button8.setEnabled(false);
+                            button8.setText(millisUntilFinished / 1000 + "重新发送");
+                        }
 
-                new CountDownTimer(60000,1000){
-                    @Override
-                    public void onTick(long millisUntilFinished) {
-                        button8.setClickable(false);
-                        button8.setEnabled(false);
-                        button8.setText(millisUntilFinished / 1000 + "重新发送");
-                    }
-
-                    @Override
-                    public void onFinish() {
-                        button8.setText("发送验证码");
-                        button8.setClickable(true);
-                        button8.setEnabled(true);
-                        cancel();
-                    }
-                }.start();
+                        @Override
+                        public void onFinish() {
+                            button8.setText("发送验证码");
+                            button8.setClickable(true);
+                            button8.setEnabled(true);
+                            cancel();
+                        }
+                    }.start();
+                } else {
+                    Toast.makeText(getApplicationContext(),"邮箱不正确",Toast.LENGTH_SHORT).show();
+                }
             }
         });
         button9.setOnClickListener(new View.OnClickListener() {

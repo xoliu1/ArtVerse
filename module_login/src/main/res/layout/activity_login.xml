@@ -6,11 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
-    <pl.droidsonroids.gif.GifImageView
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY"
-        android:src="@drawable/login"/>
+        android:src="@drawable/xin"/>
     <include layout="@layout/register"
         android:visibility="gone"
         />

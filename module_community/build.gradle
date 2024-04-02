@@ -61,5 +61,9 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     implementation 'io.github.youth5201314:banner:2.2.2'
+
+    implementation 'io.github.scwang90:refresh-layout-kernel:2.1.0'
+    implementation 'io.github.scwang90:refresh-header-classics:2.1.0'
+    implementation 'io.github.scwang90:refresh-footer-classics:2.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }

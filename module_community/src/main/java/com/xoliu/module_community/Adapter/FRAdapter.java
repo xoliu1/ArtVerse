@@ -2,10 +2,14 @@ package com.xoliu.module_community.Adapter;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.Paint;
+
 import android.graphics.Typeface;
+
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.text.Spannable;
-import android.text.SpannableString;
+
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
@@ -19,11 +23,16 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
+import com.xoliu.module_community.Present.MyBottomSheetFragment;
+import com.xoliu.module_community.Present.commentNet;
 import com.xoliu.module_community.R;
 import com.xoliu.module_community.mModel.base;
+import com.xoliu.module_community.mModel.date;
 import com.youth.banner.Banner;
 import com.youth.banner.adapter.BannerImageAdapter;
 import com.youth.banner.holder.BannerImageHolder;
@@ -35,6 +44,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class FRAdapter extends RecyclerView.Adapter {
 
     List<base> list;
@@ -42,6 +52,8 @@ public class FRAdapter extends RecyclerView.Adapter {
     List<Integer> integerList;
 
     Context context;
+
+    private FragmentManager fragmentManager;
 
     private static final int  INT_TYPE = 1;
     private static final int  s_TYPE = 0;
@@ -108,6 +120,25 @@ public class FRAdapter extends RecyclerView.Adapter {
                     }
                 }
             });
+            viewHolder.imageView3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    commentNet commentNet1 = new commentNet();
+                    Handler handler = new Handler(Looper.myLooper()){
+                        @Override
+                        public void handleMessage(@NonNull Message msg) {
+                            super.handleMessage(msg);
+                            String fgh = (String) msg.obj;
+                            Log.d("TAD", "handleMessage: " + fgh);
+                            Gson gson = new Gson();
+                            date datelist = gson.fromJson(fgh, date.class);
+                            MyBottomSheetFragment myBottomSheetFragment = new MyBottomSheetFragment(integerList,datelist.getBase(),context);
+                            myBottomSheetFragment.show(fragmentManager, "Sheet1");
+                        }
+                    };
+                    commentNet1.getComment(handler);
+                }
+            });
         }
     }
 
@@ -122,7 +153,7 @@ public class FRAdapter extends RecyclerView.Adapter {
         return x;
     }
 
-    public FRAdapter(List<base> list, Context context) {
+    public FRAdapter(List<base> list, Context context,FragmentManager fragmentManager) {
         this.list = list;
         this.context = context;
         integerList = new ArrayList<>();
@@ -134,12 +165,14 @@ public class FRAdapter extends RecyclerView.Adapter {
         integerList.add(R.drawable.tx6);
         integerList.add(R.drawable.tx7);
         Log.d("TAD", "FRAdapter: " + integerList);
+        this.fragmentManager = fragmentManager;
     }
 
 
     public class PeoPoem extends RecyclerView.ViewHolder{
         ImageView imageView;
         ImageView imageView2;
+        ImageView imageView3;
         TextView textView;
         TextView  textView2;
         TextView textView3;
@@ -148,6 +181,7 @@ public class FRAdapter extends RecyclerView.Adapter {
         public PeoPoem(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.figer);
+            imageView3 = itemView.findViewById(R.id.messageP);
             imageView2 = itemView.findViewById(R.id.picture);
             textView = itemView.findViewById(R.id.people);
             textView2 = itemView.findViewById(R.id.peoplePoem);

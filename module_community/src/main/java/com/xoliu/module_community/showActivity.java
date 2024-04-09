@@ -54,18 +54,18 @@ public class showActivity extends AppCompatActivity {
                     Gson gson = new Gson();
                     datelist = gson.fromJson(fgh, date.class);
                     Log.d("10086", "handleMessage: " + datelist);
-                    personAdapter frAdapter = new personAdapter(getApplicationContext(),name,string,datelist.getBase());
+                    personAdapter frAdapter = new personAdapter(getApplicationContext(),name,string,datelist.getBase(),getSupportFragmentManager());
                     recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false));
                     recyclerView.setAdapter(frAdapter);
                     imageView.setImageResource(name);
-                    Spannable spannable = Spannable.Factory.getInstance().newSpannable(string );
-                    ForegroundColorSpan foregroundColorSpan = new ForegroundColorSpan(Color.parseColor("#1296db"));
+                    Spannable spannable = Spannable.Factory.getInstance().newSpannable(string);
+                    ForegroundColorSpan foregroundColorSpan = new ForegroundColorSpan(Color.parseColor("#46a2ff"));
                     StyleSpan styleSpan = new StyleSpan(Typeface.ITALIC);
-                    RelativeSizeSpan relativeSizeSpanBig = new RelativeSizeSpan(2.0f);
+                    RelativeSizeSpan relativeSizeSpanBig = new RelativeSizeSpan(1.6f);
                     spannable.setSpan(foregroundColorSpan,0,string.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
                     spannable.setSpan(relativeSizeSpanBig,0,string.length(),Spanned.SPAN_INCLUSIVE_INCLUSIVE);
                     spannable.setSpan(styleSpan,0,string.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
-                    textView.setText(string);
+                    textView.setText(spannable);
                 }
             }
         };

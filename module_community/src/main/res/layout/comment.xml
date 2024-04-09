@@ -14,17 +14,20 @@
     app:layout_constraintTop_toTopOf="parent"
     app:cardElevation="8dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="11"
         android:layout_height="wrap_content">
 
         <androidx.cardview.widget.CardView
@@ -39,12 +42,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/tx2"
-                android:id="@+id/picture"
+                android:id="@+id/commentName"
                 android:scaleType="centerCrop"/>
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/people"
+            android:id="@+id/commentText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="瞻仰sjdj/n03-30"
@@ -53,50 +56,18 @@
             />
     </LinearLayout>
 
+    <ImageView
+        android:layout_weight="1"
+        android:src="@drawable/support"
+        android:id="@+id/commentButton"
+        android:layout_gravity="end|center_horizontal"
+        android:layout_width="0dp"
+        android:layout_height="25dp"/>
+    </LinearLayout>
     <TextView
-        android:id="@+id/peoplePoem"
+        android:id="@+id/commentPoem"
         android:layout_marginLeft="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-
-    <RelativeLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/figer"
-            android:src="@drawable/support"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="90dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:layout_toLeftOf="@id/messageP"
-            android:id="@+id/messageK"
-            android:textColor="@color/pxc"
-            android:layout_marginRight="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <ImageView
-            android:id="@+id/messageP"
-            android:layout_width="wrap_content"
-            android:layout_marginRight="40dp"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/message"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:id="@+id/textInput"
-            android:layout_alignParentRight="true"
-            android:text="62"
-            android:textColor="@color/pop"
-            android:layout_marginRight="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-    </RelativeLayout>
-    </LinearLayout>
-
+</LinearLayout>
 </androidx.cardview.widget.CardView>

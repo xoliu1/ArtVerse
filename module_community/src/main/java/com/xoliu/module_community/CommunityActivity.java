@@ -50,7 +50,7 @@ public class CommunityActivity extends AppCompatActivity  {
                     Gson gson = new Gson();
                     datelist = gson.fromJson(fgh, date.class);
                     Log.d("10086", "handleMessage: " + datelist);
-                    FRAdapter frAdapter = new FRAdapter(datelist.getBase(), getApplicationContext());
+                    FRAdapter frAdapter = new FRAdapter(datelist.getBase(), getApplicationContext(),getSupportFragmentManager());
                     recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false));
                     recyclerView.setAdapter(frAdapter);
                 }

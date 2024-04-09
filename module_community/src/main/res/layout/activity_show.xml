@@ -7,9 +7,8 @@
     tools:context=".showActivity">
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="wrap_content">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/collapsing"
@@ -62,9 +61,6 @@
                 android:layout_height="50dp"
                 app:layout_collapseMode="pin"
                 android:id="@+id/tool">
-
-
-
             </androidx.appcompat.widget.Toolbar>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>

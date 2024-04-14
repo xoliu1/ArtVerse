@@ -36,7 +36,7 @@ public class AimActivity extends AppCompatActivity {
             fragment = (Fragment) ARouter.getInstance().build("/ai/main").navigation();
         }
 
-// 将碎片添加到容器中
+        // 将碎片添加到容器中
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, fragment)
                 .commit();

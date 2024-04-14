@@ -60,6 +60,10 @@ public class MusicActivity extends AppCompatActivity {
             startActivity(new Intent(this, CDActivity.class));
         });
 
+        binding.singerImage.setOnClickListener(v -> {
+            startActivity(new Intent(this, CDActivity.class));
+        });
+
         binding.btnOn.setOnClickListener(v -> {
             if (!mediaPlayer.isPlaying()) {
                 mediaPlayer.start(); // 开始播放音乐

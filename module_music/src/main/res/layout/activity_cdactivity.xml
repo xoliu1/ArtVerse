@@ -74,30 +74,36 @@
 
         <ImageView
             android:src="@drawable/share"
-            android:layout_width="50dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="50dp"
-            android:layout_marginEnd="20dp"/>
+            android:layout_marginEnd="20dp"
+            />
         <ImageView
             android:src="@drawable/last"
-            android:layout_width="50dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="50dp"
             android:layout_marginEnd="20dp"/>
 
         <ImageView
             android:id="@+id/btn_start"
             android:src="@drawable/n2"
-            android:layout_width="90dp"
+            android:layout_width="0dp"
+            android:layout_weight="2"
             android:layout_height="90dp"
             android:layout_marginEnd="20dp"/>
 
         <ImageView
             android:src="@drawable/next"
-            android:layout_width="50dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="50dp"
             android:layout_marginEnd="20dp"/>
         <ImageView
             android:src="@drawable/love"
-            android:layout_width="50dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="50dp" />
 
     </LinearLayout>

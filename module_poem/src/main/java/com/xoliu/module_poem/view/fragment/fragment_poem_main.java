@@ -10,8 +10,10 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.bumptech.glide.Glide;
 import com.scwang.smart.refresh.header.BezierRadarHeader;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.sdsmdg.tastytoast.TastyToast;
@@ -160,6 +162,9 @@ public class fragment_poem_main extends Fragment {
             TastyToast.makeText(getContext(), "已为您加载出新的字句！", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS).show();
         });
 
+        Glide.with(this).load(R.drawable.temp5).into((ImageView) view.findViewById(R.id.ImageView1));
+        Glide.with(this).load(R.drawable.temp1).into((ImageView) view.findViewById(R.id.ImageView2));
+        Glide.with(this).load(R.drawable.temp7).into((ImageView) view.findViewById(R.id.ImageView3));
 
     }
 }

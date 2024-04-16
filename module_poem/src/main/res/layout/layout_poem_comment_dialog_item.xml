@@ -18,12 +18,12 @@
     android:paddingBottom="10dp">
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/comment_userIcon"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         app:round="90dp"
         android:src="@color/gray"/>
     <LinearLayout
-        android:layout_width="260dp"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:orientation="vertical">
@@ -33,6 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/cornflowerblue"
+            android:layout_marginStart="10dp"
             android:text="周某人"
             android:fontFamily="@font/pomo"
             android:textSize="18sp"/>
@@ -41,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="12sp"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="20dp"
             android:text="11-20"
             />
         <TextView
@@ -50,6 +51,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="10dp"
             android:textSize="15sp"
+            android:fontFamily="@font/font8"
             android:textColor="@color/black"
             android:text="阿斯达我去问的钱王拳王到期\n打的哇哇的缺乏"/>
 

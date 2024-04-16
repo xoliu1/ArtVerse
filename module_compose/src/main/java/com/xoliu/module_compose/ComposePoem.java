@@ -25,7 +25,7 @@ import okhttp3.ResponseBody;
 
 public class ComposePoem {
     private static final String URL = "https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/ernie-3.5-8k-1222";
-    private static final String ACCESS_TOKEN = "24.a6d731d62af533618e82e84e703260c9.2592000.1713180800.282335-47847035";
+    private static final String ACCESS_TOKEN = "24.c49cd01711ca87181af2036b438493e1.2592000.1715826132.282335-47847035";
     private static final OkHttpClient HTTP_CLIENT = new OkHttpClient().newBuilder()
             .connectTimeout(30, TimeUnit.SECONDS) // 增加连接超时时间
             .readTimeout(30, TimeUnit.SECONDS)    // 增加读取超时时间
@@ -74,7 +74,6 @@ public class ComposePoem {
                 e.printStackTrace();
                 // 使用Log打印异常信息
                 Log.e("ComposePoem", "Error fetching poem", e);
-
                 poemLiveData.postValue("Error fetching poem: " + e.getMessage());
             }
 
@@ -83,9 +82,11 @@ public class ComposePoem {
                 try (ResponseBody responseBody = response.body()) {
                     if (responseBody != null) {
                         String responseBodyString = responseBody.string();
+                        Log.d("Compose", "onResponse: " + responseBodyString);
                         Answer answer = new Gson().fromJson(responseBodyString, Answer.class);
                         poemLiveData.postValue(answer.getResult());
                     } else {
+                        Log.d("Compose", "responseBody == null");
                         poemLiveData.postValue("Error: Response body is null");
                     }
                 } catch (Exception e) {

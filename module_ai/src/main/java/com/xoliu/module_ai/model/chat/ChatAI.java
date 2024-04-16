@@ -29,7 +29,7 @@ import okhttp3.Response;
 public class ChatAI {
     private  OkHttpClient HTTP_CLIENT;
 
-    private final static String ACCESS_TOKEN = "24.a6d731d62af533618e82e84e703260c9.2592000.1713180800.282335-47847035";
+    private final static String ACCESS_TOKEN = "24.c49cd01711ca87181af2036b438493e1.2592000.1715826132.282335-47847035";
 
     private final String url = "https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/ernie-3.5-8k-1222";
     private ArrayList<HashMap<String, String>> messages;

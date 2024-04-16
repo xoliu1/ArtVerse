@@ -28,6 +28,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import utils.MVUtil;
 
 @Route(path = "/login/main")
 public class LoginActivity extends AppCompatActivity implements mView {
@@ -236,6 +237,7 @@ public class LoginActivity extends AppCompatActivity implements mView {
                 Log.d("10086", "handleMessage: " + data);
                 if(data.getCode() == 200){
                     ARouter.getInstance().build("/main/shell").navigation();
+                    MVUtil.getInstance().put("Logined", true);
                 }else {
                     Toast.makeText(getApplicationContext(),"密码不正确或账号未注册",Toast.LENGTH_SHORT).show();
                 }

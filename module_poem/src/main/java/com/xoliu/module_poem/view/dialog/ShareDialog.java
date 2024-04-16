@@ -31,6 +31,8 @@ public class ShareDialog extends BottomSheetDialogFragment {
 
     }
 
+
+
     private void initClick(View view) {
         Button cancel = (Button) view.findViewById(R.id.btn_cancel_dialog);
         cancel.setOnClickListener(new View.OnClickListener() {

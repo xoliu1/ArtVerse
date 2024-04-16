@@ -46,7 +46,7 @@ public class fragment_viewpager_item extends Fragment {
 
     String fromStr;
 
-    CommentsSheetDialog dialog = new CommentsSheetDialog();
+    CommentsSheetDialog dialog;
 
     CardViewModel cardViewModel;
 
@@ -210,6 +210,7 @@ public class fragment_viewpager_item extends Fragment {
         imageButton_comment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dialog = new CommentsSheetDialog(Integer.valueOf(commentNumStr));
                 dialog.show(getFragmentManager(), "CommentBottomSheetDialog");
             }
         });
@@ -246,7 +247,7 @@ public class fragment_viewpager_item extends Fragment {
                         @Override
                         public void run() {
                             AppDatabase db = Room.databaseBuilder(getContext(), AppDatabase.class, "PoemCards").build();
-                            db.poemCardDao().delete(new PoemCard(aimPoemContent,aimPoemAuthor));
+                            db.poemCardDao().deletePoemCardByContext(aimPoemContent);
                             Log.d("存储数据",   aimPoemAuthor +"----"+  aimPoemContent);
                         }
                     }).start();

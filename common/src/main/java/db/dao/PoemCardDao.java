@@ -31,6 +31,9 @@ public interface PoemCardDao {
     @Delete
     void delete(PoemCard poemCard);
 
+    @Query("DELETE FROM PoemCard WHERE poemContext = :poemContext")
+    int deletePoemCardByContext(String poemContext);
+
     @Query("SELECT * FROM PoemCard")
     List<PoemCard> getAllPoemCards();
 

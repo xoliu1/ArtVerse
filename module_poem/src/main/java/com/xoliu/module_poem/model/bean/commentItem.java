@@ -11,7 +11,7 @@ import java.util.Random;
  **/
 
 public class commentItem {
-    public String userIcon;
+    public String userIcon = "https://s2.loli.net/2024/05/27/9hqHXRxztVmTniQ.jpg";
     public String userName;
     public String commentTime;
     public String commentContent;
@@ -159,6 +159,12 @@ public class commentItem {
 
     public commentItem(String userIcon, String userName, String commentTime, String commentContent) {
         this.userIcon = userIcon;
+        this.userName = userName;
+        this.commentTime = commentTime;
+        this.commentContent = commentContent;
+    }
+
+    public commentItem(String userName, String commentTime, String commentContent) {
         this.userName = userName;
         this.commentTime = commentTime;
         this.commentContent = commentContent;

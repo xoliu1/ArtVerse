@@ -80,18 +80,15 @@ public class personAdapter extends RecyclerView.Adapter<personAdapter.PoetryItem
         holder.textView2.setText(spannable2);
         holder.imageView2.setImageResource(integer);
         holder.textView3.setText("65");
-        holder.imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (holder.aBoolean) {
-                    holder.imageView.setImageResource(R.drawable.unsupport);
-                    holder.aBoolean = false;
-                    holder.textView3.setText("66");
-                } else {
-                    holder.imageView.setImageResource(R.drawable.support);
-                    holder.aBoolean = true;
-                    holder.textView3.setText("65");
-                }
+        holder.imageView.setOnClickListener(v -> {
+            if (holder.aBoolean) {
+                holder.imageView.setImageResource(R.drawable.unsupport);
+                holder.aBoolean = false;
+                holder.textView3.setText("66");
+            } else {
+                holder.imageView.setImageResource(R.drawable.support);
+                holder.aBoolean = true;
+                holder.textView3.setText("65");
             }
         });
         holder.imageView3.setOnClickListener(new View.OnClickListener() {

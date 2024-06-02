@@ -3,6 +3,14 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent">
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_add"
+        android:layout_gravity="top|end"
+        android:layout_margin="30dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/add"
+        />
 
     <TextView
         android:layout_width="match_parent"
@@ -21,5 +29,7 @@
         android:layout_width="match_parent"
         android:id="@+id/remark"
         android:layout_height="wrap_content"/>
+
+
 
 </LinearLayout>

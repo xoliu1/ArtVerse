@@ -17,6 +17,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import utils.Constant;
 
 /***
  * 获取文心一言的对话类
@@ -29,7 +30,7 @@ import okhttp3.Response;
 public class ChatAI {
     private  OkHttpClient HTTP_CLIENT;
 
-    private final static String ACCESS_TOKEN = "24.c49cd01711ca87181af2036b438493e1.2592000.1715826132.282335-47847035";
+    private final static String ACCESS_TOKEN = Constant.token;
 
     private final String url = "https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/ernie-3.5-8k-1222";
     private ArrayList<HashMap<String, String>> messages;

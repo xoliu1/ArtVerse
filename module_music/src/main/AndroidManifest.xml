@@ -3,11 +3,14 @@
 
     <application android:theme="@style/Theme.ArtVerse">
         <activity
+            android:name=".view.activity.FenLeiActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.activity.CDActivity"
             android:exported="false" />
         <activity
             android:name=".view.activity.MusicActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

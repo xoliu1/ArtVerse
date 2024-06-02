@@ -83,7 +83,8 @@ public class FRAdapter extends RecyclerView.Adapter {
             recycAdapter adapter = new recycAdapter(context,strings);
             view.recyclerView.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false));
             view.recyclerView.setAdapter(adapter);
-        }else if (holder instanceof PeoPoem) {
+            view.recyclerView.setVisibility(View.GONE);
+        } else if (holder instanceof PeoPoem) {
             PeoPoem viewHolder = (PeoPoem) holder;
             String x = list.get(position).getPoem();
             String y = list.get(position).getName();

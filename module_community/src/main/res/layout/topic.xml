@@ -13,11 +13,14 @@
     app:contentPaddingBottom="10dp"
     app:contentPaddingTop="10dp"
     app:layout_constraintTop_toTopOf="parent"
-    app:cardElevation="8dp">
+    app:cardElevation="8dp"
+    android:visibility="gone"
+    >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
 
     <LinearLayout

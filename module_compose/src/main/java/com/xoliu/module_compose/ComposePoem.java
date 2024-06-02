@@ -22,10 +22,11 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
+import utils.Constant;
 
 public class ComposePoem {
     private static final String URL = "https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/ernie-3.5-8k-1222";
-    private static final String ACCESS_TOKEN = "24.c49cd01711ca87181af2036b438493e1.2592000.1715826132.282335-47847035";
+    private static final String ACCESS_TOKEN = Constant.token;
     private static final OkHttpClient HTTP_CLIENT = new OkHttpClient().newBuilder()
             .connectTimeout(30, TimeUnit.SECONDS) // 增加连接超时时间
             .readTimeout(30, TimeUnit.SECONDS)    // 增加读取超时时间

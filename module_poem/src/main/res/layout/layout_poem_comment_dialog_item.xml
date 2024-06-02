@@ -58,10 +58,12 @@
     </LinearLayout>
 
     <ImageButton
+        android:layout_margin="20dp"
         android:id="@+id/btn_dianzan"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginTop="10dp"
+        android:layout_gravity="center"
         android:background="@color/transparent"
         android:foreground="@drawable/dianzan_unchecked"/>
 

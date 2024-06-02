@@ -22,12 +22,12 @@ public class MainActivity extends AppCompatActivity {
         MMKV.initialize(this);
         //getWindow().setStatusBarColor(Color.TRANSPARENT);
         //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        if (!MVUtil.getInstance().getBoolean("Logined", false)){
-            //跳转到登录界面
+//        if (!MVUtil.getInstance().getBoolean("Logined", false)){
+//            //跳转到登录界面
             ARouter.getInstance().build("/login/main").navigation();
-        }else{
-            ARouter.getInstance().build("/main/shell").navigation();
-        }
+//        }else{
+//            ARouter.getInstance().build("/main/shell").navigation();
+//        }
 
         finish();
 

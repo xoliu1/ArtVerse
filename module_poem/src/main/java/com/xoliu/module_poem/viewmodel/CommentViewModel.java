@@ -9,6 +9,8 @@ import global.CardPic;
 
 public class CommentViewModel extends ViewModel {
     public MutableLiveData<CardPic> userPic = new MutableLiveData<>();
+
+
     public MutableLiveData<CardPic> getUserPic() {
 
         userPic = new PoemMainRepository().getuserIcon();

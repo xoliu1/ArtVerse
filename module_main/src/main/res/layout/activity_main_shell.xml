@@ -4,14 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main_shell">
+    tools:context=".main_shell"
+    android:background="@drawable/background_main">
 
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="invisible">
 
         <VideoView
             android:id="@+id/bgVideoView"
@@ -254,7 +256,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/font1"
             android:gravity="center"
-            android:text="诗友"
+            android:text="话题"
             android:textColor="@color/maroon"
             android:textSize="17sp" />
 

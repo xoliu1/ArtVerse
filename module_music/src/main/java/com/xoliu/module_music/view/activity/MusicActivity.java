@@ -77,15 +77,15 @@ public class MusicActivity extends AppCompatActivity {
     }
 
     private void initData() {
-//        viewModel.getRecitationList().observe(this, new Observer<List<Recitation>>() {
+//        viewModel.getRecitationList().observe(this, new Observer<list<Recitation>>() {
 //            @Override
-//            public void onChanged(List<Recitation> recitations) {
+//            public void onChanged(list<Recitation> recitations) {
 //                recitationList = recitations;
 //            }
 //        });
-//        viewModel.getSongList().observe(this, new Observer<List<Song>>() {
+//        viewModel.getSongList().observe(this, new Observer<list<Song>>() {
 //            @Override
-//            public void onChanged(List<Song> songs) {
+//            public void onChanged(list<Song> songs) {
 //                songList = songs;
 //            }
 //        });

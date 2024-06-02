@@ -3,6 +3,9 @@ package com.xoliu.module_community;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,7 +20,10 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.google.gson.Gson;
 import com.xoliu.module_community.Adapter.FRAdapter;
 import com.xoliu.module_community.Present.parenteral;
+import com.xoliu.module_community.ViewModel.TopicAdapter;
+import com.xoliu.module_community.ViewModel.TopicViewModel;
 import com.xoliu.module_community.databinding.ActivityCommunityBinding;
+import com.xoliu.module_community.mModel.Topic;
 import com.xoliu.module_community.mModel.date;
 
 import okhttp3.OkHttpClient;
@@ -32,6 +38,10 @@ public class CommunityActivity extends AppCompatActivity  {
     private ActivityCommunityBinding binding;
     private RecyclerView recyclerView;
     date datelist;
+
+    private TopicViewModel viewModel;
+    TopicAdapter adapter;
+    private MutableLiveData<Topic> topicM = new MutableLiveData<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,9 +67,22 @@ public class CommunityActivity extends AppCompatActivity  {
             }
         };
         present.gethodel(handler);
+
+        viewModel = new ViewModelProvider(this).get(TopicViewModel.class);
+        binding.topics.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new TopicAdapter(this, new Topic());
+        binding.topics.setAdapter(adapter);
+        viewModel.getTopicList(1).observe(this, topic -> updateData(topic));
+
+        binding.change.setOnClickListener(v -> {
+            viewModel.getTopicList(2);
+        });
     }
 
-
+    private void updateData(Topic topic) {
+        topicM.postValue(topic);
+        binding.topics.setAdapter(new TopicAdapter(this, topicM.getValue()));
+    }
 
 
 }

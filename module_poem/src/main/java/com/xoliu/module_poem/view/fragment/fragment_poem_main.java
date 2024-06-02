@@ -1,18 +1,18 @@
 package com.xoliu.module_poem.view.fragment;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.bumptech.glide.Glide;
 import com.scwang.smart.refresh.header.BezierRadarHeader;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
@@ -138,6 +138,13 @@ public class fragment_poem_main extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         viewPager2 = view.findViewById(R.id.viewpager);
         initViewPager();
+
+        view.findViewById(R.id.poemCardView).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build("/fenlei/main").navigation();
+            }
+        });
 
 
         //设置刷新头

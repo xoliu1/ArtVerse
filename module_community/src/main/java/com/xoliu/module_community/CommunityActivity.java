@@ -1,20 +1,18 @@
 package com.xoliu.module_community;
 
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.google.gson.Gson;
@@ -26,11 +24,6 @@ import com.xoliu.module_community.databinding.ActivityCommunityBinding;
 import com.xoliu.module_community.mModel.Topic;
 import com.xoliu.module_community.mModel.date;
 
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-
-
 
 @Route(path = "/community/main")
 public class CommunityActivity extends AppCompatActivity  {
@@ -38,7 +31,7 @@ public class CommunityActivity extends AppCompatActivity  {
     private ActivityCommunityBinding binding;
     private RecyclerView recyclerView;
     date datelist;
-
+    private int topicId = 0;
     private TopicViewModel viewModel;
     TopicAdapter adapter;
     private MutableLiveData<Topic> topicM = new MutableLiveData<>();
@@ -70,19 +63,23 @@ public class CommunityActivity extends AppCompatActivity  {
 
         viewModel = new ViewModelProvider(this).get(TopicViewModel.class);
         binding.topics.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new TopicAdapter(this, new Topic());
+        Topic topic1 = new Topic();
+
+
+        adapter = new TopicAdapter(this, topic1);
+        Log.d("TAG", "getItemCount: " + topic1);
         binding.topics.setAdapter(adapter);
-        viewModel.getTopicList(1).observe(this, topic -> updateData(topic));
+        viewModel.getTopicList(topicId).observe(this, topic -> {
+            Log.d("TAG", "onCreate: " + "更新数据");
+            adapter.updateData(topic);
+        });
 
         binding.change.setOnClickListener(v -> {
-            viewModel.getTopicList(2);
+            topicId++; // 自增ID
+            viewModel.loadNewTopic(topicId); // 请求新数据
         });
     }
 
-    private void updateData(Topic topic) {
-        topicM.postValue(topic);
-        binding.topics.setAdapter(new TopicAdapter(this, topicM.getValue()));
-    }
 
 
 }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TabLayoutTextStyle">
+        <item name="android:textSize">@dimen/textsizi</item>
+    </style>
+
+    <dimen name="textsizi">20dp</dimen>
+</resources>

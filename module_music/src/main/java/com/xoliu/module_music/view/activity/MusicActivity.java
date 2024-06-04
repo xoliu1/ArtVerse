@@ -1,14 +1,13 @@
 package com.xoliu.module_music.view.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.bumptech.glide.Glide;
@@ -49,7 +48,21 @@ public class MusicActivity extends AppCompatActivity {
         initListener();
         initData();
         initView();
+        setSupportActionBar(binding.toolbar);
 
+        // Enable the Up button
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        // Set the toolbar navigation click listener
+        binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle back button press
+                onBackPressed();
+            }
+        });
 
 
     }
@@ -105,11 +118,11 @@ public class MusicActivity extends AppCompatActivity {
                 .into(binding.singerImage);
 
         binding.rvOrigin.setLayoutManager(new LinearLayoutManager(this));
-        binding.rvOrigin.setAdapter(new RecitationAdapter(recitationList));
+        binding.rvOrigin.setAdapter(new RecitationAdapter(this, recitationList));
 
 
         binding.rvPopular.setLayoutManager(new LinearLayoutManager(this));
-        binding.rvPopular.setAdapter(new SongAdapter(songList));
+        binding.rvPopular.setAdapter(new SongAdapter(this, songList));
 
     }
 

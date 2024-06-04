@@ -7,10 +7,25 @@
     tools:context=".fragment_profile_main"
     android:background="#F6F0F0">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/transparent"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:textSize="27sp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:text="xoliu"/>
 
 
@@ -206,4 +221,5 @@
 
 
     </LinearLayout>
+    </FrameLayout>
 </androidx.core.widget.NestedScrollView>

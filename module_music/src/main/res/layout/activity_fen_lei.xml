@@ -9,8 +9,9 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs_poetry"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:tabMode="fixed"
+        android:layout_height="55dp"
+        app:tabMode="scrollable"
+        app:tabTextAppearance="@style/TabLayoutTextStyle"
         app:tabGravity="fill"/>
 
     <androidx.viewpager2.widget.ViewPager2

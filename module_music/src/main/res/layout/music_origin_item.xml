@@ -29,6 +29,7 @@
             android:textColor="@color/darkgreen"/>
 
         <ImageView
+            android:id="@+id/btn_start"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/btn_on2"

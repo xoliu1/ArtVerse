@@ -1,7 +1,5 @@
 package com.xoliu.module_music.model;
 
-import androidx.lifecycle.MutableLiveData;
-
 import com.xoliu.module_music.R;
 import com.xoliu.module_music.model.bean.Recitation;
 import com.xoliu.module_music.model.bean.Song;
@@ -19,12 +17,14 @@ public class MusicRepository {
         songs.add(new Song("月夜忆舍弟","杜甫 〔唐代〕"));
         songs.add(new Song("江南","汉乐府 〔两汉〕"));
         songs.add(new Song("如意娘","武则天 〔唐代〕"));
-        recitations.add(new Recitation("朗诵-将近酒", R.drawable.bg_1));
+        songs.add(new Song("鸿雁","诗经(先秦)"));
+        songs.add(new Song("骊山有感", "唐-李商隐"));
+        recitations.add(new Recitation("朗诵-蟾宫曲·春情", R.drawable.bg_1));
         recitations.add(new Recitation("朗诵-浣溪沙·谁念西风独自凉", R.drawable.bg_2));
-        recitations.add(new Recitation("作画-折桂令·春情", R.drawable.bg_3));
-        recitations.add(new Recitation("唱曲-蝶恋花·伫倚危楼风细细", R.drawable.bg_4));
-        recitations.add(new Recitation("朗诵-三五七言", R.drawable.bg_5));
-        recitations.add(new Recitation("吟诗-江南", R.drawable.bg_6));
+        recitations.add(new Recitation("作画-虞美人·琵琶-宋-苏轼", R.drawable.bg_3));
+        recitations.add(new Recitation("唱曲-古宴曲-唐-于濆", R.drawable.bg_4));
+        recitations.add(new Recitation("朗诵-思母-元-与恭", R.drawable.bg_5));
+        recitations.add(new Recitation("吟诗-过华清宫绝句三首-唐-杜牧", R.drawable.bg_6));
     }
 
     public static MusicRepository getInstance() {

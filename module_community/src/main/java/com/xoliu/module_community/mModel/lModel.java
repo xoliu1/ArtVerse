@@ -4,10 +4,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
-import java.io.IOException;
-
-import okhttp3.Call;
-import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -23,7 +19,7 @@ public class lModel implements mModel{
                 try{
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://8.130.118.185:6666/api/user/poetry")
+                            .url("http://1.92.123.214:16666/api/user/poetry")
                             .get()
                             .build();
                     Response response = client.newCall(request).execute();

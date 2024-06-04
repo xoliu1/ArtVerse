@@ -1,7 +1,5 @@
 package com.xoliu.module_music.view.fragment;
 
-import static java.lang.Thread.sleep;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,54 +14,59 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.xoliu.module_music.R;
-import com.xoliu.module_music.view.adapter.XPoemAdapter;
+import com.xoliu.module_music.view.adapter.XPoemBAdapter;
 import com.xoliu.module_music.viewmodel.PoetryViewModel;
 
 import java.util.ArrayList;
 
+import global.XPoemB;
 
-public class PoetryListFragment extends Fragment {
+
+public class PoetListFragment extends Fragment {
+
     private String url;
     PoetryViewModel viewModel;
-    public PoetryListFragment(String url) {
+
+    public PoetListFragment(String url) {
         this.url = url;
     }
-    XPoemAdapter adapter;
+
+    XPoemBAdapter adapter;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        adapter = new XPoemAdapter(new ArrayList<>());
-        try {
-            init();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        XPoemB xPoemB = new XPoemB();
+        xPoemB.setCode(1);
+        XPoemB.Data data = new XPoemB.Data();
+        ArrayList<XPoemB.Data> datas = new ArrayList<>();
+        datas.add(data);
+        xPoemB.setData(datas);
+
+        adapter = new XPoemBAdapter(xPoemB);
+
+        init();
+
         RecyclerView recy = view.findViewById(R.id.recycleView);
         recy.setAdapter(adapter);
         recy.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
-    private void init() throws InterruptedException {
+    private void init() {
         viewModel = new ViewModelProvider(this).get(PoetryViewModel.class);
-        viewModel.poetryListLiveData.observe(getViewLifecycleOwner(), poetryList -> {
+        viewModel.poetListLiveData.observe(getViewLifecycleOwner(), poetryList -> {
             // 更新RecyclerView的Adapter
-            Log.d("TAG", "init: " + "更新RecyclerView的Adapter" );
+            Log.d("TAG", "init: " + "更新RecyclerView的Adapter");
             adapter.addPoems(poetryList);
         });
-        viewModel.fetchPoetryList(url);
-        new Thread(() -> {
-            try {
-                sleep(8000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            viewModel.fetchPoetryList(url);
-        }).start();
+        viewModel.fetchPoetList(url);
     }
 
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_poetry_list, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_poet_list, container, false);
     }
 }

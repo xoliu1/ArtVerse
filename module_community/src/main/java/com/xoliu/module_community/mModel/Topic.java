@@ -20,6 +20,14 @@ public class Topic {
         this.code = code;
     }
 
+    @Override
+    public String toString() {
+        return "Topic{" +
+                "code=" + code +
+                ", data=" + data +
+                '}';
+    }
+
     public List<DataItem> getData() {
         return data;
     }
@@ -28,7 +36,15 @@ public class Topic {
         this.data = data;
     }
 
-    public static class DataItem {
+     public static class DataItem {
+        @Override
+        public String toString() {
+            return "DataItem{" +
+                    "id=" + id +
+                    ", cid=" + cid +
+                    ", topic='" + topic + '\'' +
+                    '}';
+        }
 
         @SerializedName("ID")
         private int id;

@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
 import global.XPoemA;
+import global.XPoemB;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -26,6 +27,8 @@ import okhttp3.Response;
 public class PoetryViewModel extends ViewModel {
 
     public MutableLiveData<List<XPoemA>> poetryListLiveData = new MutableLiveData<>();
+    public MutableLiveData<List<XPoemB.Data>> poetListLiveData = new MutableLiveData<>();
+
 
     public LiveData<List<XPoemA>> getPoetryList() {
         return poetryListLiveData;
@@ -70,4 +73,31 @@ public class PoetryViewModel extends ViewModel {
             }
         }).start();
     }
+
+
+    public void fetchPoetList(String url) {
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                Log.d("TAG", "onFailure: " + e);
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                if (response.isSuccessful() && response.body() != null) {
+                    String responseData = response.body().string();
+                    XPoemB poetry = new Gson().fromJson(responseData, XPoemB.class);
+                    Log.d("TAG", "onSuccess: " + poetry);
+                    poetListLiveData.postValue(poetry.getData());
+                }
+
+            }
+        });
+    }
+
+
 }

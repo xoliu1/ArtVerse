@@ -1,14 +1,13 @@
 package com.xoliu.module_compose;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.xoliu.module_compose.databinding.ActivityCompose2Binding;
@@ -26,6 +25,21 @@ public class Compose2Activity extends AppCompatActivity {
         setContentView(binding.getRoot());
         initListener();
         initData();
+        setSupportActionBar(binding.toolbar);
+
+        // Enable the Up button
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        // Set the toolbar navigation click listener
+        binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle back button press
+                onBackPressed();
+            }
+        });
     }
 
     private void initView() {

@@ -54,6 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="25dp"
+            android:layout_marginTop="50dp"
             android:id="@+id/registerButton"
             android:background="@drawable/button"
             android:text="注册"
@@ -71,18 +72,19 @@
             android:layout_marginLeft="25dp"
             android:textColor="@color/white"
             android:text="登录"
+            android:layout_marginTop="50dp"
             />
 
     </LinearLayout>
 
     <android.widget.Button
-        android:layout_marginTop="10dp"
         android:id="@+id/RetrieveButton"
-        android:layout_width="wrap_content"
+        android:layout_width="463dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-380dp"
         android:background="@drawable/button"
+        android:text="欢迎来到吾爱诗词"
         android:textColor="@color/white"
-        android:textStyle="bold"
         android:textSize="20sp"
-        android:text="忘记密码"
-        android:layout_height="wrap_content"/>
+        android:textStyle="bold" />
 </LinearLayout>

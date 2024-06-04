@@ -1,8 +1,5 @@
 package com.xoliu.module_login;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -14,6 +11,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.google.android.material.textfield.TextInputLayout;
@@ -23,10 +23,12 @@ import com.xoliu.module_login.databinding.ActivityLoginBinding;
 import com.xoliu.module_login.model.reDate;
 import com.xoliu.module_login.presenter.transForm;
 
-import okhttp3.FormBody;
+import java.io.IOException;
+
+import global.ProfileUser;
+import okhttp3.Call;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
 import utils.MVUtil;
 
@@ -42,7 +44,7 @@ public class LoginActivity extends AppCompatActivity implements mView {
     private TextInputLayout password;
     private Button button1;
     private Button button2;
-    private Button button3;
+//    private Button button3;
 
     private Button button4;
 
@@ -65,6 +67,7 @@ public class LoginActivity extends AppCompatActivity implements mView {
     private TextInputLayout textInputLayout7;
 
     private reDate data;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,7 +84,7 @@ public class LoginActivity extends AppCompatActivity implements mView {
         password = findViewById(R.id.password);
         button1 = findViewById(R.id.registerButton);
         button2 = findViewById(R.id.logAt);
-        button3 = findViewById(R.id.RetrieveButton);
+//        button3 = findViewById(R.id.RetrieveButton);
         login = findViewById(R.id.longAt);
         register = findViewById(R.id.register);
         retrieve = findViewById(R.id.RetrieveL);
@@ -112,10 +115,10 @@ public class LoginActivity extends AppCompatActivity implements mView {
             @Override
             public void onClick(View v) {
                 String pop = textInputLayout6.getEditText().getText().toString();
-                if(pop != null){
-                    transform1.model.logat(pop,handlerS);
+                if (pop != null) {
+                    transform1.model.logat(pop, handlerS);
 
-                    new CountDownTimer(60000,1000){
+                    new CountDownTimer(60000, 1000) {
                         @Override
                         public void onTick(long millisUntilFinished) {
                             button8.setClickable(false);
@@ -132,7 +135,7 @@ public class LoginActivity extends AppCompatActivity implements mView {
                         }
                     }.start();
                 } else {
-                    Toast.makeText(getApplicationContext(),"邮箱不正确",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "邮箱不正确", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -141,7 +144,7 @@ public class LoginActivity extends AppCompatActivity implements mView {
             public void onClick(View v) {
                 String x = textInputLayout6.getEditText().getText().toString();
                 String y = textInputLayout7.getEditText().getText().toString();
-                transform1.model.login(x,y,handler);
+                transform1.model.login(x, y, handler);
             }
         });
         button4.setOnClickListener(new View.OnClickListener() {
@@ -160,10 +163,10 @@ public class LoginActivity extends AppCompatActivity implements mView {
                 String pass = textInputLayout3.getEditText().getText().toString();
                 String word = textInputLayout4.getEditText().getText().toString();
                 String horse = textInputLayout5.getEditText().getText().toString();
-                if(pass.equals(word)){
-                    transform1.model.reg(name,pass,email,horse,handlerT);
-                }else {
-                    Toast.makeText(getApplicationContext(),"两次输入密码不一致",Toast.LENGTH_SHORT).show();
+                if (pass.equals(word)) {
+                    transform1.model.reg(name, pass, email, horse, handlerT);
+                } else {
+                    Toast.makeText(getApplicationContext(), "两次输入密码不一致", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -172,9 +175,9 @@ public class LoginActivity extends AppCompatActivity implements mView {
             public void onClick(View v) {
                 String pop = textInputLayout2.getEditText().getText().toString();
 
-                transform1.model.logat(pop,handlerS);
+                transform1.model.logat(pop, handlerS);
 
-                new CountDownTimer(60000,1000){
+                new CountDownTimer(60000, 1000) {
 
                     @Override
                     public void onTick(long millisUntilFinished) {
@@ -206,17 +209,17 @@ public class LoginActivity extends AppCompatActivity implements mView {
             public void onClick(View v) {
                 String x = email0.getEditText().getText().toString();
                 String y = password.getEditText().getText().toString();
-                transform1.model.login(x,y,handler);
+                transform1.model.login(x, y, handler);
             }
         });
-        button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                login.setVisibility(View.GONE);
-                retrieve.setVisibility(View.VISIBLE);
-                register.setVisibility(View.GONE);
-            }
-        });
+//        button3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                login.setVisibility(View.GONE);
+//                retrieve.setVisibility(View.VISIBLE);
+//                register.setVisibility(View.GONE);
+//            }
+//        });
 
 
 //        binding.btnLogin.setOnClickListener(v -> {
@@ -225,57 +228,83 @@ public class LoginActivity extends AppCompatActivity implements mView {
 //        });
 
     }
-    public Handler handler = new Handler(Looper.myLooper()){
+
+    public Handler handler = new Handler(Looper.myLooper()) {
         @Override
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
-            if (msg.what == 1){
+            if (msg.what == 1) {
                 String fgh = (String) msg.obj;
                 Log.d("TAD", "handleMessage: " + fgh);
                 Gson gson = new Gson();
-                data = gson.fromJson(fgh,reDate.class);
+                data = gson.fromJson(fgh, reDate.class);
                 Log.d("10086", "handleMessage: " + data);
-                if(data.getCode() == 200){
+                if (data.getCode() == 200) {
                     ARouter.getInstance().build("/main/shell").navigation();
                     MVUtil.getInstance().put("Logined", true);
-                }else {
-                    Toast.makeText(getApplicationContext(),"密码不正确或账号未注册",Toast.LENGTH_SHORT).show();
+                    //登陆成功逻辑
+                    OkHttpClient client = new OkHttpClient();
+                    Request request = new Request.Builder()
+                            .url("http://1.92.123.214:16666/api/user/userinfo?username=" + email0.getEditText().getText().toString())
+                            .build();
+                    client.newCall(request).enqueue(new okhttp3.Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                            Log.d("TAG", "onFailure: " + e);
+                        }
+
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+                            String body = response.body().string();
+                            if (response!=null){
+                                Log.d("TAG", "onResponse: != null" + response);
+                            }
+                            //Log.d("TAG", "onResponse: " + response.body().string());
+                            Log.d("TAG", "onResponse: " + response.body());
+                            ProfileUser profileUser = new Gson().fromJson(body, ProfileUser.class);
+                            MVUtil.getInstance().put("profileName", profileUser.getData().getUsername());
+                        }
+                    });
                 }
+            } else {
+                Toast.makeText(getApplicationContext(), "密码不正确或账号未注册", Toast.LENGTH_SHORT).show();
             }
         }
+
+
     };
-    public Handler handlerT = new Handler(Looper.myLooper()){
+    public Handler handlerT = new Handler(Looper.myLooper()) {
         @Override
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
-            if (msg.what == 10){
+            if (msg.what == 10) {
                 String fgh = (String) msg.obj;
                 Log.d("TAD", "handleMessage: " + fgh);
                 Gson gson = new Gson();
-                data = gson.fromJson(fgh,reDate.class);
+                data = gson.fromJson(fgh, reDate.class);
                 Log.d("10086", "handleMessage: " + data);
-                if(data.getCode() == 200){
+                if (data.getCode() == 200) {
                     ARouter.getInstance().build("/main/shell").navigation();
-                }else {
-                    Toast.makeText(getApplicationContext(),"验证码不正确",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "验证码不正确", Toast.LENGTH_SHORT).show();
                 }
             }
         }
     };
-    public Handler handlerS = new Handler(Looper.myLooper()){
+    public Handler handlerS = new Handler(Looper.myLooper()) {
         @Override
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
-            if (msg.what == 100){
+            if (msg.what == 100) {
                 String fgh = (String) msg.obj;
                 Log.d("TAD", "handleMessage: " + fgh);
                 Gson gson = new Gson();
-                data = gson.fromJson(fgh,reDate.class);
+                data = gson.fromJson(fgh, reDate.class);
                 Log.d("10086", "handleMessage: " + data);
-                if(data.getCode() == 200){
-                    Toast.makeText(getApplicationContext(),"验证码已发送，请注意查收!",Toast.LENGTH_SHORT).show();
-                }else {
-                    Toast.makeText(getApplicationContext(),"验证码发送失败",Toast.LENGTH_SHORT).show();
+                if (data.getCode() == 200) {
+                    Toast.makeText(getApplicationContext(), "验证码已发送，请注意查收!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "验证码发送失败", Toast.LENGTH_SHORT).show();
                 }
             }
         }

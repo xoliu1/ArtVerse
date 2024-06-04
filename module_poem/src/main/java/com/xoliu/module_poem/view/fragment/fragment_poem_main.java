@@ -8,6 +8,7 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -18,6 +19,7 @@ import com.scwang.smart.refresh.header.BezierRadarHeader;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.xoliu.module_poem.R;
+import com.xoliu.module_poem.databinding.FragmentPoemMainBinding;
 import com.xoliu.module_poem.view.adapter.CardAdapter;
 
 import java.util.ArrayList;
@@ -129,6 +131,24 @@ public class fragment_poem_main extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        FragmentPoemMainBinding binding = FragmentPoemMainBinding.inflate(inflater);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(binding.toolbar);
+
+        // Enable the Up button
+        if (((AppCompatActivity) getActivity()).getSupportActionBar() != null) {
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        // Set the toolbar navigation click listener
+        binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle back button press
+                getActivity().onBackPressed();
+            }
+        });
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_poem_main, container, false);
     }

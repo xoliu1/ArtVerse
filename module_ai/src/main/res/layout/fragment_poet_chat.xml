@@ -24,6 +24,7 @@
             android:id="@+id/spinner"
             android:layout_gravity="center"
             android:gravity="center"
+            android:visibility="gone"
             android:layout_centerInParent="true"
             />
 

@@ -37,7 +37,7 @@ public class mPassword implements mModel{
                             .add("code",k)
                             .build();
                     Request request = new Request.Builder()
-                            .url("http://8.130.118.185:6666/api/user/register")
+                            .url("http://1.92.123.214:16666/api/user/register")
                             .method("POST",requestBody)
                             .build();
                     Response response = client.newCall(request).execute();
@@ -66,7 +66,7 @@ public class mPassword implements mModel{
                             .add("email",c)
                             .build();
                     Request request = new Request.Builder()
-                            .url("http://8.130.118.185:6666/api/user/register-email")
+                            .url("http://1.92.123.214:16666/api/user/register-email")
                             .method("POST",requestBody)
                             .build();
                     Response response = client.newCall(request).execute();

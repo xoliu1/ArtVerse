@@ -135,21 +135,17 @@ public class fragment_poem_main extends Fragment {
         FragmentPoemMainBinding binding = FragmentPoemMainBinding.inflate(inflater);
         ((AppCompatActivity) getActivity()).setSupportActionBar(binding.toolbar);
 
-        // Enable the Up button
         if (((AppCompatActivity) getActivity()).getSupportActionBar() != null) {
             ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        // Set the toolbar navigation click listener
         binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Handle back button press
                 getActivity().onBackPressed();
             }
         });
 
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_poem_main, container, false);
     }
 

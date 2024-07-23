@@ -3,6 +3,14 @@ package com.xoliu.module_ai.model.bean;
 public class ChatMsg {
     private String role;
 
+    @Override
+    public String toString() {
+        return "ChatMsg{" +
+                "role='" + role + '\'' +
+                ", content='" + content + '\'' +
+                '}';
+    }
+
     private String content;
 
     public ChatMsg(int times, String content) {

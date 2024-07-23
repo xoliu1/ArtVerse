@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -25,21 +26,9 @@ public class Compose2Activity extends AppCompatActivity {
         setContentView(binding.getRoot());
         initListener();
         initData();
-        setSupportActionBar(binding.toolbar);
 
-        // Enable the Up button
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
 
-        // Set the toolbar navigation click listener
-        binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle back button press
-                onBackPressed();
-            }
-        });
+
     }
 
     private void initView() {
@@ -71,6 +60,11 @@ public class Compose2Activity extends AppCompatActivity {
 
     private void initListener() {
         binding.yes.setOnClickListener(v -> {
+            InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            View v1 = getWindow().peekDecorView();
+            if (null != v1) {
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+            }
             String keyWord = binding.edText.getText().toString().trim();
             if (!keyWord.isEmpty()) {
                 showProgressDialog(this, "正在快马加鞭创作中");

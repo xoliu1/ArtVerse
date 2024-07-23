@@ -1,36 +1,35 @@
 package com.xoliu.module_main;
 
-import androidx.annotation.NonNull;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
+import android.widget.VideoView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager.widget.ViewPager;
-
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Point;
-import android.media.MediaPlayer;
-import android.net.Uri;
-import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.Display;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.VideoView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.gson.Gson;
 import com.xoliu.module_main.databinding.ActivityMainShellBinding;
 
+import java.io.IOException;
 import java.util.ArrayList;
+
+import global.BDToken;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+import utils.MVUtil;
 
 @Route(path = "/main/shell")
 public class main_shell extends AppCompatActivity implements View.OnClickListener {
@@ -107,6 +106,30 @@ public class main_shell extends AppCompatActivity implements View.OnClickListene
         if (videoView != null && !videoView.isPlaying()) {
             videoView.start();
         }
+        new Thread(() -> {
+            OkHttpClient HTTP_CLIENT = new OkHttpClient().newBuilder().build();
+            MediaType mediaType = MediaType.parse("application/json");
+            RequestBody body = RequestBody.create(mediaType, "");
+            Request request = new Request.Builder()
+                    .url("https://aip.baidubce.com/oauth/2.0/token?client_id=eFF0tiKAnzx6w7V7IumRGGye&client_secret=usUqmc2F5n9bGHwwl0QwYB0WiLrbHKiH&grant_type=client_credentials")
+                    .method("POST", body)
+                    .addHeader("Content-Type", "application/json")
+                    .addHeader("Accept", "application/json")
+                    .build();
+            HTTP_CLIENT.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    Toast.makeText(getApplication(), "Token更新失败", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    BDToken bdToken = new Gson().fromJson(response.body().string(), BDToken.class);
+                    MVUtil.getInstance().put("accessToken", bdToken.getAccessToken());
+                    Log.d("TAG", "onResponse: 鉴权 = " + bdToken.getAccessToken());
+                }
+            });
+        }).start();
     }
 
 

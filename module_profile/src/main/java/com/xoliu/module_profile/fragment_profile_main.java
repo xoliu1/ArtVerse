@@ -43,7 +43,6 @@ public class fragment_profile_main extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding =  FragmentProfileMainBinding.inflate(inflater);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(binding.toolbar);
 
         // Enable the Up button
         if (((AppCompatActivity) getActivity()).getSupportActionBar() != null) {
@@ -51,13 +50,7 @@ public class fragment_profile_main extends Fragment {
         }
 
         // Set the toolbar navigation click listener
-        binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle back button press
-                getActivity().onBackPressed();
-            }
-        });
+
         return binding.getRoot();
     }
 

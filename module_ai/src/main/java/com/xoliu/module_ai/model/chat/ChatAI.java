@@ -3,21 +3,22 @@ package com.xoliu.module_ai.model.chat;
 import android.util.Log;
 
 import com.google.gson.Gson;
-import global.Answer;
-
 
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
+import global.Answer;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import utils.Constant;
+import utils.MVUtil;
 
 /***
  * 获取文心一言的对话类
@@ -30,9 +31,9 @@ import utils.Constant;
 public class ChatAI {
     private  OkHttpClient HTTP_CLIENT;
 
-    private final static String ACCESS_TOKEN = Constant.token;
+    private final static String ACCESS_TOKEN = MVUtil.getString("accessToken");
 
-    private final String url = "https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/ernie-3.5-8k-1222";
+    private final String url = Constant.baseUrl;
     private ArrayList<HashMap<String, String>> messages;
 
     private HashMap<String, Object> requestBody;
@@ -46,7 +47,12 @@ public class ChatAI {
 
     public ChatAI() {
         mediaType = MediaType.parse("application/json");
-        this.HTTP_CLIENT = new OkHttpClient().newBuilder().build();
+        this.HTTP_CLIENT = new OkHttpClient()
+                .newBuilder()
+                .readTimeout(30, TimeUnit.SECONDS)
+                .connectTimeout(30, TimeUnit.SECONDS)
+                .writeTimeout(30, TimeUnit.SECONDS)
+                .build();
         this.requestBody = new HashMap<>();
         this.messages = new ArrayList<>();
     }
@@ -69,7 +75,7 @@ public class ChatAI {
         messages.add(msg);
     }
 
-    public String chatCall() throws InterruptedException {
+    public String chatCall() {
         requestBody.put("messages", messages);
 
         RequestBody body = RequestBody.create(mediaType, new JSONObject(requestBody).toString());
@@ -83,15 +89,18 @@ public class ChatAI {
         try {
             Response response = HTTP_CLIENT.newCall(request).execute(); // 同步请求改为使用execute()
             if (response.isSuccessful() && response.body() != null) {
-                final String responseBody = response.body().string();
+                String responseBody = response.body().string();
+                Log.d("TAG", "chatCall: " + responseBody);
                 Answer answer = gson.fromJson(responseBody, Answer.class);
                 addMsg(answer.getResult()); // 假设Answer类有getResult()方法获取答案
                 return answer.getResult();
             } else {
+                Log.d("TAG", "服务器响应失败");
                 // 处理错误情况，如网络错误或服务器返回错误
                 return "服务器响应失败";
             }
         } catch (IOException e) {
+            Log.d("TAG", "chatCall: 出错 + " + e);
             // 处理网络请求异常
             return "网络请求出错";
         }

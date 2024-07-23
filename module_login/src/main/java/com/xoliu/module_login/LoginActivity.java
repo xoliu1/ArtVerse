@@ -260,7 +260,7 @@ public class LoginActivity extends AppCompatActivity implements mView {
                                 Log.d("TAG", "onResponse: != null" + response);
                             }
                             //Log.d("TAG", "onResponse: " + response.body().string());
-                            Log.d("TAG", "onResponse: " + response.body());
+                            Log.d("TAG", "onResponse: " + body);
                             ProfileUser profileUser = new Gson().fromJson(body, ProfileUser.class);
                             MVUtil.getInstance().put("profileName", profileUser.getData().getUsername());
                         }

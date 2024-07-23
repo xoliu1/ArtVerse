@@ -1,0 +1,276 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "com.xoliu.module_art.ArtContentActivity",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_114236481 { 
+   	label=xoliu
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_515786275 { 
+   	label=module_art
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   ArtContentActivity765776214[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ArtContentActivity</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   artContent: ArtContent [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   binding: ActivityArtContentBinding [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   isClicked: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   mHandler: Handler [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ finish()</TD></TR>
+<TR><TD ALIGN="LEFT" >- initData()</TD></TR>
+<TR><TD ALIGN="LEFT" >- initView()</TD></TR>
+<TR><TD ALIGN="LEFT" ># onCreate(savedInstanceState: Bundle)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+subgraph cluster_3019696 { 
+   	label=bean
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   ArtContent1407213344[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ArtContent</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   artContentImg: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   content: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   creator: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   material: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   name: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   size: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   theId: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   year: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ describeContents(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ readFromParcel(source: Parcel)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ writeToParcel(dest: Parcel, flags: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PoemCard1407213344[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PoemCard</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   id: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   imgUrl: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   poemAuthor: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   poemContext: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_3198 { 
+   	label=db
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   AppDatabase3198[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AppDatabase</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ artContentDao(): ArtContentDao</TD></TR>
+<TR><TD ALIGN="LEFT" >+ poemCardDao(): PoemCardDao</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+AppDatabase_Impl3198[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AppDatabase_Impl</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   _artContentDao: ArtContentDao [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   _poemCardDao: PoemCardDao [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ artContentDao(): ArtContentDao</TD></TR>
+<TR><TD ALIGN="LEFT" >+ clearAllTables()</TD></TR>
+<TR><TD ALIGN="LEFT" ># createInvalidationTracker(): InvalidationTracker</TD></TR>
+<TR><TD ALIGN="LEFT" ># createOpenHelper(configuration: DatabaseConfiguration): SupportSQLiteOpenHelper</TD></TR>
+<TR><TD ALIGN="LEFT" >+ poemCardDao(): PoemCardDao</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_99218 { 
+   	label=dao
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   ArtContentDao_Impl1340077534[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ArtContentDao_Impl</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   __db: RoomDatabase [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   __deletionAdapterOfArtContent: EntityDeletionOrUpdateAdapter&lt;ArtContent&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   __insertionAdapterOfArtContent: EntityInsertionAdapter&lt;ArtContent&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   __preparedStmtOfDeletePaintingsByArtistName: SharedSQLiteStatement [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   __updateAdapterOfArtContent: EntityDeletionOrUpdateAdapter&lt;ArtContent&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ checkNameExists(name: String): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ delete(artContent: ArtContent)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ deletePaintingsByArtistName(name: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getArtContentByName(name: String): List&lt;ArtContent&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ insert(artContent: ArtContent)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(artContent: ArtContent)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PoemCardDao_Impl1340077534[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PoemCardDao_Impl</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   __db: RoomDatabase [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   __deletionAdapterOfPoemCard: EntityDeletionOrUpdateAdapter&lt;PoemCard&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   __insertionAdapterOfPoemCard: EntityInsertionAdapter&lt;PoemCard&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   __preparedStmtOfDeletePoemCardByContext: SharedSQLiteStatement [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   __updateAdapterOfPoemCard: EntityDeletionOrUpdateAdapter&lt;PoemCard&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ delete(poemCard: PoemCard)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ deletePoemCardByContext(poemContext: String): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getPoemCardById(id: int): PoemCard</TD></TR>
+<TR><TD ALIGN="LEFT" >+ insert(poemCard: PoemCard)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(poemCard: PoemCard)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+AppDatabase3198 -> AppDatabase_Impl3198[arrowhead=none, arrowtail=empty, dir=both];
+AppDatabase_Impl3198 -> PoemCardDao_Impl1340077534[arrowhead=none];
+ArtContentActivity765776214 -> ArtContent1407213344[label="artContent
+[0..1]"];
+ArtContentActivity765776214 -> ArtContentDao_Impl1340077534[arrowhead=none];
+ArtContentDao_Impl1340077534 -> ArtContent1407213344[label="__deletionAdapterOfArtContent
+[0..1]"];
+ArtContentDao_Impl1340077534 -> ArtContent1407213344[label="__insertionAdapterOfArtContent
+[0..1]"];
+ArtContentDao_Impl1340077534 -> ArtContent1407213344[label="__updateAdapterOfArtContent
+[0..1]"];
+PoemCardDao_Impl1340077534 -> PoemCard1407213344[label="__deletionAdapterOfPoemCard
+[0..1]"];
+PoemCardDao_Impl1340077534 -> PoemCard1407213344[label="__insertionAdapterOfPoemCard
+[0..1]"];
+PoemCardDao_Impl1340077534 -> PoemCard1407213344[label="__updateAdapterOfPoemCard
+[0..1]"];
+    
+}
+@enduml

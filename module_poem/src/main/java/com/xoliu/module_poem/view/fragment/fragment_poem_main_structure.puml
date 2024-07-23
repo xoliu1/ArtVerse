@@ -1,0 +1,506 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "com.xoliu.module_poem.view.fragment.fragment_poem_main",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_114236481 { 
+   	label=xoliu
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_1190938285 { 
+   	label=module_poem
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   CardViewModel1458307402[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)CardViewModel</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+   cardPic: MutableLiveData&lt;CardPic&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   poem: MutableLiveData&lt;Poemt&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   repository: PoemMainRepository [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+CommentViewModel1458307402[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)CommentViewModel</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+   userPic: MutableLiveData&lt;CardPic&gt; [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+CommentsSheetDialog1662650557[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)CommentsSheetDialog</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   adapter: commentAdapter [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   commentItem: commentItem [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   commentViewModel: CommentViewModel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   comments: List&lt;commentItem&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   et: EditText [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   formattedTime: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   iContext: Context [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   num: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- checkContentLegality(content: String)</TD></TR>
+<TR><TD ALIGN="LEFT" ># initData()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isLegal(content: String): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ onCreate(savedInstanceState: Bundle)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ onCreateDialog(savedInstanceState: Bundle): Dialog</TD></TR>
+<TR><TD ALIGN="LEFT" >+ onViewCreated(view: View, savedInstanceState: Bundle)</TD></TR>
+<TR><TD ALIGN="LEFT" >- sendStr()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Data790395682[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Data</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   author: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   authorPinyin: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   catalog: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   catalogPinyin: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   ctime: Integer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   id: Integer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   name: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   sentence: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   srcUrl: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   theme: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   themePinyin: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PoemMainRepository1427786949[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PoemMainRepository</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Poemt924214915[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Poemt</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   code: Integer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   data: Data [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   msg: Object [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   q: Q [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Q790395682[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Q</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   author: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   catalog: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   suffix: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   theme: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+commentAdapter1486874804[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)commentAdapter</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   comments: List&lt;commentItem&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   mContext: Context [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ onBindViewHolder(holder: ViewHolder, position: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ onCreateViewHolder(parent: ViewGroup, viewType: int): ViewHolder</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+commentItem924214915[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)commentItem</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+   commentContent: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   commentContents: List&lt;String&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   commentTime: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   commentTimes: List&lt;String&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   userIcon: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   userIcons: List&lt;String&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   userName: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   userNames: List&lt;String&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getArray(num: int): List&lt;commentItem&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+fragment_poem_main1495774837[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)fragment_poem_main</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   currentItemPosition: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   fragmentList: List&lt;fragment_viewpager_item&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   viewPager2: ViewPager2 [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- initViewPager()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ newInstance(): fragment_poem_main</TD></TR>
+<TR><TD ALIGN="LEFT" >+ onCreate(savedInstanceState: Bundle)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ onCreateView(inflater: LayoutInflater, container: ViewGroup, savedInstanceState: Bundle): View</TD></TR>
+<TR><TD ALIGN="LEFT" >+ onSaveInstanceState(outState: Bundle)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ onViewCreated(view: View, savedInstanceState: Bundle)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+fragment_viewpager_item1495774837[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)fragment_viewpager_item</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   PoemUrl: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   aimPoemAuthor: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   aimPoemContent: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   aimPoemPicUrl: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   authorStr: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   cardViewModel: CardViewModel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   commentNumStr: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   contentStr: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   dialog: CommentsSheetDialog [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   fromStr: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   likeNumStr: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   shareNumStr: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   url: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ newInstance(): fragment_viewpager_item</TD></TR>
+<TR><TD ALIGN="LEFT" >+ onCreate(savedInstanceState: Bundle)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ onCreateView(inflater: LayoutInflater, container: ViewGroup, savedInstanceState: Bundle): View</TD></TR>
+<TR><TD ALIGN="LEFT" >+ onViewCreated(view: View, savedInstanceState: Bundle)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+subgraph cluster_1243020381 { 
+   	label=global
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   CardPic1243020381[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)CardPic</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   code: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   height: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   imgurl: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   width: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_3019696 { 
+   	label=bean
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   ArtContent1407213344[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ArtContent</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   artContentImg: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   content: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   creator: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   material: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   name: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   size: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   theId: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   year: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ describeContents(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ readFromParcel(source: Parcel)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ writeToParcel(dest: Parcel, flags: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PoemCard1407213344[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PoemCard</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   id: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   imgUrl: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   poemAuthor: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   poemContext: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_3198 { 
+   	label=db
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   AppDatabase3198[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AppDatabase</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ artContentDao(): ArtContentDao</TD></TR>
+<TR><TD ALIGN="LEFT" >+ poemCardDao(): PoemCardDao</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+AppDatabase_Impl3198[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AppDatabase_Impl</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   _artContentDao: ArtContentDao [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   _poemCardDao: PoemCardDao [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ artContentDao(): ArtContentDao</TD></TR>
+<TR><TD ALIGN="LEFT" >+ clearAllTables()</TD></TR>
+<TR><TD ALIGN="LEFT" ># createInvalidationTracker(): InvalidationTracker</TD></TR>
+<TR><TD ALIGN="LEFT" ># createOpenHelper(configuration: DatabaseConfiguration): SupportSQLiteOpenHelper</TD></TR>
+<TR><TD ALIGN="LEFT" >+ poemCardDao(): PoemCardDao</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_99218 { 
+   	label=dao
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   ArtContentDao_Impl1340077534[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ArtContentDao_Impl</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   __db: RoomDatabase [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   __deletionAdapterOfArtContent: EntityDeletionOrUpdateAdapter&lt;ArtContent&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   __insertionAdapterOfArtContent: EntityInsertionAdapter&lt;ArtContent&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   __preparedStmtOfDeletePaintingsByArtistName: SharedSQLiteStatement [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   __updateAdapterOfArtContent: EntityDeletionOrUpdateAdapter&lt;ArtContent&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ checkNameExists(name: String): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ delete(artContent: ArtContent)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ deletePaintingsByArtistName(name: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getArtContentByName(name: String): List&lt;ArtContent&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ insert(artContent: ArtContent)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(artContent: ArtContent)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PoemCardDao_Impl1340077534[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PoemCardDao_Impl</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   __db: RoomDatabase [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   __deletionAdapterOfPoemCard: EntityDeletionOrUpdateAdapter&lt;PoemCard&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   __insertionAdapterOfPoemCard: EntityInsertionAdapter&lt;PoemCard&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   __preparedStmtOfDeletePoemCardByContext: SharedSQLiteStatement [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   __updateAdapterOfPoemCard: EntityDeletionOrUpdateAdapter&lt;PoemCard&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ delete(poemCard: PoemCard)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ deletePoemCardByContext(poemContext: String): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getPoemCardById(id: int): PoemCard</TD></TR>
+<TR><TD ALIGN="LEFT" >+ insert(poemCard: PoemCard)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(poemCard: PoemCard)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+AppDatabase3198 -> AppDatabase_Impl3198[arrowhead=none, arrowtail=empty, dir=both];
+AppDatabase_Impl3198 -> ArtContentDao_Impl1340077534[arrowhead=none];
+ArtContentDao_Impl1340077534 -> ArtContent1407213344[label="__deletionAdapterOfArtContent
+[0..1]"];
+ArtContentDao_Impl1340077534 -> ArtContent1407213344[label="__insertionAdapterOfArtContent
+[0..1]"];
+ArtContentDao_Impl1340077534 -> ArtContent1407213344[label="__updateAdapterOfArtContent
+[0..1]"];
+CardViewModel1458307402 -> CardPic1243020381[label="cardPic
+[0..1]"];
+CardViewModel1458307402 -> PoemMainRepository1427786949[label="repository
+[0..1]"];
+CardViewModel1458307402 -> Poemt924214915[label="poem
+[0..1]"];
+CommentViewModel1458307402 -> CardPic1243020381[label="userPic
+[0..1]"];
+CommentsSheetDialog1662650557 -> CommentViewModel1458307402[label="commentViewModel
+[0..1]"];
+CommentsSheetDialog1662650557 -> commentAdapter1486874804[label="adapter
+[0..1]"];
+CommentsSheetDialog1662650557 -> commentItem924214915[label="commentItem
+[0..1]"];
+CommentsSheetDialog1662650557 -> commentItem924214915[label="comments
+[0..*]"];
+PoemCardDao_Impl1340077534 -> PoemCard1407213344[label="__deletionAdapterOfPoemCard
+[0..1]"];
+PoemCardDao_Impl1340077534 -> PoemCard1407213344[label="__insertionAdapterOfPoemCard
+[0..1]"];
+PoemCardDao_Impl1340077534 -> PoemCard1407213344[label="__updateAdapterOfPoemCard
+[0..1]"];
+Poemt924214915 -> Data790395682[label="data
+[0..1]"];
+Poemt924214915 -> Q790395682[label="q
+[0..1]"];
+commentAdapter1486874804 -> commentItem924214915[label="comments
+[0..*]"];
+fragment_poem_main1495774837 -> fragment_viewpager_item1495774837[label="fragmentList
+[0..*]"];
+fragment_viewpager_item1495774837 -> CardViewModel1458307402[label="cardViewModel
+[0..1]"];
+fragment_viewpager_item1495774837 -> CommentsSheetDialog1662650557[label="dialog
+[0..1]"];
+fragment_viewpager_item1495774837 -> PoemCardDao_Impl1340077534[arrowhead=none];
+    
+}
+@enduml

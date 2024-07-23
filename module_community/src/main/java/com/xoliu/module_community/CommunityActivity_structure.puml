@@ -1,0 +1,257 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "com.xoliu.module_community.CommunityActivity",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_114236481 { 
+   	label=xoliu
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_2001890275 { 
+   	label=module_community
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   CommunityActivity551703280[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)CommunityActivity</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   adapter: TopicAdapter [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   binding: ActivityCommunityBinding [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   datelist: date [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   recyclerView: RecyclerView [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   topicId: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   topicM: MutableLiveData&lt;Topic&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   viewModel: TopicViewModel [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># onCreate(savedInstanceState: Bundle)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DataItem179712411[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DataItem</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   cid: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   id: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   topic: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Topic1076325242[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Topic</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   code: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   data: List&lt;DataItem&gt; [0..*]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+TopicAdapter1007842842[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)TopicAdapter</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   context: Context [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   strings: String[] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   topic: Topic [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- addStr()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ onBindViewHolder(holder: TopicViewHolder, position: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ onCreateViewHolder(parent: ViewGroup, viewType: int): TopicViewHolder</TD></TR>
+<TR><TD ALIGN="LEFT" >- showDialog(message: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateData(newTopic: Topic)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+TopicViewModel1007842842[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)TopicViewModel</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   gson: Gson [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   topicLiveData: MutableLiveData&lt;Topic&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getTopicList(id: int): LiveData&lt;Topic&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- loadData(id: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ loadNewTopic(id: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+base1076325242[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)base</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   name: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   poem: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+date1076325242[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)date</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   base: List&lt;base&gt; [0..*]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+lModel1076325242[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)lModel</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getPoem(handler: Handler)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+parenteral89031581[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)parenteral</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+   model: lModel [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ gethodel(handler: Handler)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+'edges    
+CommunityActivity551703280 -> Topic1076325242[label="topicM
+[0..1]"];
+CommunityActivity551703280 -> TopicAdapter1007842842[label="adapter
+[0..1]"];
+CommunityActivity551703280 -> TopicViewModel1007842842[label="viewModel
+[0..1]"];
+CommunityActivity551703280 -> date1076325242[label="datelist
+[0..1]"];
+CommunityActivity551703280 -> parenteral89031581[label="onCreate() -> gethodel()"];
+Topic1076325242 -> DataItem179712411[label="data
+[0..*]"];
+TopicAdapter1007842842 -> Topic1076325242[label="topic
+[0..1]"];
+TopicViewModel1007842842 -> Topic1076325242[label="topicLiveData
+[0..1]"];
+date1076325242 -> base1076325242[label="base
+[0..*]"];
+parenteral89031581 -> lModel1076325242[label="model
+[0..1]"];
+    
+}
+@enduml

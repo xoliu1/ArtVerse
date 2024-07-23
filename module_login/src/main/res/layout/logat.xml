@@ -83,7 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="-380dp"
         android:background="@drawable/button"
-        android:text="欢迎来到吾爱诗词"
+        android:text="欢迎来到《艺韵》"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold" />

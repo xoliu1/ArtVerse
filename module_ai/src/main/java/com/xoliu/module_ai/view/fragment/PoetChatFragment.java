@@ -1,24 +1,24 @@
 package com.xoliu.module_ai.view.fragment;
 
+import static android.content.Context.INPUT_METHOD_SERVICE;
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.widget.ContentLoadingProgressBar;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
+import android.view.inputmethod.InputMethodManager;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-
-import com.xoliu.module_ai.R;
 import com.xoliu.module_ai.databinding.FragmentPoetChatBinding;
 import com.xoliu.module_ai.model.bean.ChatMsg;
 import com.xoliu.module_ai.model.chat.ChatAI;
@@ -77,16 +77,21 @@ public class PoetChatFragment extends Fragment {
 
     private void initData() {
         // 使用线程池执行耗时操作
-        executorService = Executors.newCachedThreadPool();
+        executorService = Executors.newSingleThreadExecutor();
         executorService.execute(() -> {
             try {
                 String s = ai.addAndCall("现在你是" + poet + "，和我进行沟通");
                 if (isAdded()) { // 检查Fragment是否仍然与Activity关联
                     getActivity().runOnUiThread(() -> {
-                        messages.add(new ChatMsg(times, removeBeforeFirstNewLine(s)));
-                        adapter.notifyDataSetChanged();
+                        Log.d("TAG", "initData: " + s);
+                        ChatMsg msg = new ChatMsg(times, s);
+                        if (msg.getContent().contains("\n\n")){
+                            msg.setContent(removeBeforeFirstNewLine(msg.getContent()));
+                        }
+                        messages.add(msg);
+                        adapter = new ChatAdapter(messages, getContext());
+                        adapter.notifyItemInserted(messages.size() - 1);
                         dismissProgressDialog();
-                        //关闭加载框
 
                     });
                 }
@@ -99,7 +104,13 @@ public class PoetChatFragment extends Fragment {
 
     private void initListener() {
         binding.btnSend.setOnClickListener(v -> {
+            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
+            View v1 = getActivity().getWindow().peekDecorView();
+            if (null != v1) {
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+            }
             String msg = binding.edText.getText().toString();
+
             if (!msg.isEmpty()) {
                 // 清空输入框
                 binding.edText.setText("");
@@ -108,29 +119,38 @@ public class PoetChatFragment extends Fragment {
                 addMessageAndUpdate(new ChatMsg(times++, msg));
 
                 // 在后台线程中处理网络请求
-                executorService.execute(() -> {
+                new Thread(() -> {
                     try {
                         // 发送消息并等待响应
                         String answer = ai.addAndCall(msg);
                         if (answer != null && !answer.isEmpty()) {
                             // 收到回复后更新RecyclerView
-                            addMessageAndUpdate(new ChatMsg(times++, answer));
+                            ChatMsg chatMsg = new ChatMsg(times++, answer);
+                            Log.d("TAG1", "测试 +  获取信息" + chatMsg);
+                            addMessageAndUpdate(chatMsg);
                         }
                     } catch (InterruptedException e) {
                         // 异常处理...
                     }
-                });
+                }).start();
             }
         });
     }
 
     // 将新消息添加到messages列表并通知适配器更新的方法
     private void addMessageAndUpdate(ChatMsg message) {
-        getActivity().runOnUiThread(() -> {
-            messages.add(message);
-            adapter.notifyItemInserted(messages.size() - 1);
-            scrollToBottom(); // 滚动到新消息位置
-        });
+        Handler handler = new Handler(Looper.getMainLooper());
+        messages.add(message);
+        Log.d("TA", "addMessageAndUpdate: " + messages);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Log.d("TAG1", "测试 +  更新RecyclerView");
+                adapter = new ChatAdapter(messages, getContext());
+                adapter.notifyItemInserted(messages.size() - 1);
+                scrollToBottom(); // 滚动到新消息位置
+            }
+        }, 1000);
     }
 
     // 滚动RecyclerView到底部的方法
@@ -170,7 +190,7 @@ public class PoetChatFragment extends Fragment {
 
     public String removeBeforeFirstNewLine(String input) {
         int index = input.indexOf("\n\n");
-        if (index >= 0) {
+        if (index > 0) {
             return input.substring(index + 2);
         }
         return input;

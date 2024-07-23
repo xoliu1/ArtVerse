@@ -1,0 +1,194 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "com.xoliu.module_music.view.activity.MusicActivity",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_114236481 { 
+   	label=xoliu
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_1738197217 { 
+   	label=module_music
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   MusicActivity187359626[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MusicActivity</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   binding: ActivityMusicBinding [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   mediaPlayer: MediaPlayer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   recitationList: List&lt;Recitation&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   songList: List&lt;Song&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   viewModel: MusicViewModel [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- initData()</TD></TR>
+<TR><TD ALIGN="LEFT" >- initListener()</TD></TR>
+<TR><TD ALIGN="LEFT" >- initView()</TD></TR>
+<TR><TD ALIGN="LEFT" ># onCreate(savedInstanceState: Bundle)</TD></TR>
+<TR><TD ALIGN="LEFT" ># onDestroy()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+MusicRepository1322884249[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MusicRepository</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   recitations: List&lt;Recitation&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   songs: List&lt;Song&gt; [0..*]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+MusicViewModel1105770722[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MusicViewModel</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   recitationList: MutableLiveData&lt;List&lt;Recitation&gt;&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   repository: MusicRepository [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   songList: MutableLiveData&lt;List&lt;Song&gt;&gt; [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Recitation1193741865[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Recitation</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   Name: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   bgImgId: int [1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Song1193741865[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Song</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   From: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   Name: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+'edges    
+MusicActivity187359626 -> MusicViewModel1105770722[label="viewModel
+[0..1]"];
+MusicActivity187359626 -> Recitation1193741865[label="recitationList
+[0..*]"];
+MusicActivity187359626 -> Song1193741865[label="songList
+[0..*]"];
+MusicRepository1322884249 -> Recitation1193741865[label="recitations
+[0..*]"];
+MusicRepository1322884249 -> Song1193741865[label="songs
+[0..*]"];
+MusicViewModel1105770722 -> MusicRepository1322884249[label="repository
+[0..1]"];
+MusicViewModel1105770722 -> Recitation1193741865[label="recitationList
+[0..1]"];
+MusicViewModel1105770722 -> Song1193741865[label="songList
+[0..1]"];
+    
+}
+@enduml

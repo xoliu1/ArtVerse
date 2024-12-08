@@ -43,7 +43,7 @@ public class CommunityActivity extends AppCompatActivity  {
         setContentView(binding.getRoot());
         parenteral present = new parenteral();
         recyclerView = binding.master;
-        Handler handler = new Handler(Looper.myLooper()){
+        Handler handler = new Handler(Looper.getMainLooper()){
             @Override
             public void handleMessage(@NonNull Message msg) {
                 super.handleMessage(msg);

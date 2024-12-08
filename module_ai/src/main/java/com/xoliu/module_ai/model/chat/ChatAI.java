@@ -31,7 +31,7 @@ import utils.MVUtil;
 public class ChatAI {
     private  OkHttpClient HTTP_CLIENT;
 
-    private final static String ACCESS_TOKEN = MVUtil.getString("accessToken");
+    private final static String ACCESS_TOKEN = MVUtil.getString("accessToken", "24.19352bc5df030bc7bbc37b89f9a82e98.2592000.1736244761.282335-47847035");
 
     private final String url = Constant.baseUrl;
     private ArrayList<HashMap<String, String>> messages;

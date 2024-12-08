@@ -3,7 +3,6 @@ package com.xoliu.module_music.view.activity;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -48,21 +47,7 @@ public class MusicActivity extends AppCompatActivity {
         initListener();
         initData();
         initView();
-        setSupportActionBar(binding.toolbar);
 
-        // Enable the Up button
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-
-        // Set the toolbar navigation click listener
-        binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle back button press
-                onBackPressed();
-            }
-        });
 
 
     }

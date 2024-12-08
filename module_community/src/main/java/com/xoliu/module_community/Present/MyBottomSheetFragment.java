@@ -3,7 +3,6 @@ package com.xoliu.module_community.Present;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -91,7 +90,7 @@ public class  MyBottomSheetFragment extends BottomSheetDialogFragment {
                         String json = gson.toJson(base1);
                         RequestBody body = RequestBody.create(MediaType.get("application/json; charset=utf-8"), json);
                         Request request = new Request.Builder()
-                                .url("http://8.130.118.185:6666/api/user/put/comment")
+                                .url("http://8.136.113.100:9999/api/user/put/comment")
                                 .post(body)
                                 .build();
                         client.newCall(request).enqueue(new Callback() {

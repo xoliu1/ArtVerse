@@ -35,7 +35,7 @@ public class TopicViewModel extends ViewModel {
     private void loadData(int id) {
         id = id % 3;
         id++;
-        String url = "http://1.92.123.214:16666/api/user/topic?page=" + id;
+        String url = "http://8.136.113.100:9999/api/user/topic?page=" + id;
         Request request = new Request.Builder()
                 .url(url)
                 .build();

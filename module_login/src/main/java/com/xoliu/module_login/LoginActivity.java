@@ -23,13 +23,6 @@ import com.xoliu.module_login.databinding.ActivityLoginBinding;
 import com.xoliu.module_login.model.reDate;
 import com.xoliu.module_login.presenter.transForm;
 
-import java.io.IOException;
-
-import global.ProfileUser;
-import okhttp3.Call;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 import utils.MVUtil;
 
 @Route(path = "/login/main")
@@ -212,6 +205,12 @@ public class LoginActivity extends AppCompatActivity implements mView {
                 transform1.model.login(x, y, handler);
             }
         });
+        findViewById(R.id.btn_none_user_login).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build("/main/shell").navigation();
+            }
+        });
 //        button3.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -242,29 +241,6 @@ public class LoginActivity extends AppCompatActivity implements mView {
                 if (data.getCode() == 200) {
                     ARouter.getInstance().build("/main/shell").navigation();
                     MVUtil.getInstance().put("Logined", true);
-                    //登陆成功逻辑
-                    OkHttpClient client = new OkHttpClient();
-                    Request request = new Request.Builder()
-                            .url("http://1.92.123.214:16666/api/user/userinfo?username=" + email0.getEditText().getText().toString())
-                            .build();
-                    client.newCall(request).enqueue(new okhttp3.Callback() {
-                        @Override
-                        public void onFailure(Call call, IOException e) {
-                            Log.d("TAG", "onFailure: " + e);
-                        }
-
-                        @Override
-                        public void onResponse(Call call, Response response) throws IOException {
-                            String body = response.body().string();
-                            if (response!=null){
-                                Log.d("TAG", "onResponse: != null" + response);
-                            }
-                            //Log.d("TAG", "onResponse: " + response.body().string());
-                            Log.d("TAG", "onResponse: " + body);
-                            ProfileUser profileUser = new Gson().fromJson(body, ProfileUser.class);
-                            MVUtil.getInstance().put("profileName", profileUser.getData().getUsername());
-                        }
-                    });
                 }
             } else {
                 Toast.makeText(getApplicationContext(), "密码不正确或账号未注册", Toast.LENGTH_SHORT).show();

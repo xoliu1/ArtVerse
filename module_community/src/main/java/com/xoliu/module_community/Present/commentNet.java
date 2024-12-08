@@ -16,7 +16,7 @@ public class commentNet {
                 try{
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://8.130.118.185:6666/api/user/signature")
+                            .url("http://8.136.113.100:9999/api/user/signature")
                             .get()
                             .build();
                     Response response = client.newCall(request).execute();

@@ -27,7 +27,7 @@ import utils.MVUtil;
 
 public class ComposePoem {
     private static final String URL = Constant.baseUrl;
-    private static final String ACCESS_TOKEN = MVUtil.getString("accessToken");
+    private static final String ACCESS_TOKEN = MVUtil.getString("accessToken", "24.19352bc5df030bc7bbc37b89f9a82e98.2592000.1736244761.282335-47847035");
     private static final OkHttpClient HTTP_CLIENT = new OkHttpClient().newBuilder()
             .connectTimeout(30, TimeUnit.SECONDS) // 增加连接超时时间
             .readTimeout(30, TimeUnit.SECONDS)    // 增加读取超时时间

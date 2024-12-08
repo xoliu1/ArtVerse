@@ -14,8 +14,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,17 +24,9 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.gson.Gson;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.xoliu.module_poem.R;
-import com.xoliu.module_poem.viewmodel.CommentViewModel;
 import com.xoliu.module_poem.model.bean.commentItem;
 import com.xoliu.module_poem.view.adapter.commentAdapter;
-
-import global.CardPic;
-import global.LegalResult;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+import com.xoliu.module_poem.viewmodel.CommentViewModel;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -46,6 +36,12 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import global.CardPic;
+import global.LegalResult;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class CommentsSheetDialog extends BottomSheetDialogFragment {
 
@@ -104,14 +100,9 @@ public class CommentsSheetDialog extends BottomSheetDialogFragment {
         Handler mainHandler = new Handler(Looper.getMainLooper());
 
         executorService.execute(() -> {
-            boolean result = false;
-            try {
-                result = isLegal(content);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
 
-            boolean finalResult = result;
+
+            boolean finalResult = true;
             mainHandler.post(() -> {
                 if (finalResult) {
                     sendStr();
@@ -136,8 +127,8 @@ public class CommentsSheetDialog extends BottomSheetDialogFragment {
             if (result.getResult().getConType().equals(1)) {
                 return true;
             } else {
-                Handler mainHandler = new Handler(Looper.getMainLooper());
-                mainHandler.post(() -> TastyToast.makeText(requireActivity(), result.getResult().getList().get(0).getMsg(), TastyToast.LENGTH_SHORT, TastyToast.ERROR).show());
+
+                TastyToast.makeText(getContext(), "不合规的评论", TastyToast.LENGTH_SHORT, TastyToast.ERROR).show();
                 return false;
             }
         } else {

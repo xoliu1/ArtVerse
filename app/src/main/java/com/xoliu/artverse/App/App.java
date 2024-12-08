@@ -3,10 +3,8 @@ package com.xoliu.artverse.App;
 import android.app.Application;
 import android.content.Context;
 
-
-
 import com.alibaba.android.arouter.launcher.ARouter;
-
+import com.tencent.mmkv.MMKV;
 
 
 public class App extends Application {
@@ -29,6 +27,7 @@ public class App extends Application {
         ARouter.init(this);
         //获取上下文
         context = getApplicationContext();
+        MMKV.initialize(context);
         //Room数据库初始化，创建本地数据库
         //db = Room.databaseBuilder(getApplicationContext(),AppDatabase.class, "PoemCards").build();
     }

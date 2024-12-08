@@ -123,7 +123,7 @@ public class fragment_profile_main extends Fragment {
 
 
     private void initData() {
-        String name = MVUtil.getInstance().getString("profileName");
+        String name = MVUtil.getInstance().getString("profileName", "user");
         binding.profileUserName.setText(name);
     }
 }

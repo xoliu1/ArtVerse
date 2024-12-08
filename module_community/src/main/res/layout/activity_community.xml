@@ -31,7 +31,9 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    >
 
                     <TextView
                         android:id="@+id/topic"
@@ -61,12 +63,13 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/topics"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    />
 
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/master"
-                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </LinearLayout>

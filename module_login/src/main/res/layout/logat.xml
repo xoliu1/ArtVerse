@@ -44,6 +44,7 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- ===== 原始按钮布局（已注释）=====
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -85,4 +86,47 @@
         android:textSize="20sp"
         android:text="忘记密码"
         android:layout_height="wrap_content"/>
+    ===== 原始按钮布局结束 ===== -->
+
+    <android.widget.Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/logAt"
+        android:background="@drawable/button"
+        android:text="Sign In"
+        android:textSize="16sp"
+        android:textColor="#555555"
+        android:textAllCaps="false"
+        />
+
+    <android.widget.Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="12dp"
+        android:id="@+id/registerButton"
+        android:background="@drawable/button"
+        android:text="Register"
+        android:textSize="16sp"
+        android:textColor="#555555"
+        android:textAllCaps="false"
+        />
+
+    <android.widget.Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="12dp"
+        android:id="@+id/RetrieveButton"
+        android:background="@drawable/button"
+        android:text="Forgot Password"
+        android:textSize="16sp"
+        android:textColor="#555555"
+        android:textAllCaps="false"
+        />
 </LinearLayout>

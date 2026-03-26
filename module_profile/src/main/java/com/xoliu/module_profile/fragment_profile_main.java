@@ -1,6 +1,7 @@
 package com.xoliu.module_profile;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -55,6 +56,22 @@ public class fragment_profile_main extends Fragment {
         //设置点击事件，进入选取图片
         binding.profileUserIcon.setOnClickListener(v -> {
             startActivity(new Intent(getContext(), ImagePickerActivity.class));
+        });
+
+        //设置"发现"点击事件，跳转到百度热搜（App 内 WebView）
+        binding.profileDiscover.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), WebViewActivity.class);
+            intent.putExtra(WebViewActivity.EXTRA_URL, "https://sou-yun.cn/");
+            intent.putExtra(WebViewActivity.EXTRA_TITLE, "发现");
+            startActivity(intent);
+        });
+
+        //设置"周边"点击事件，跳转到携程景点页面（App 内 WebView）
+        binding.profileNearby.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), WebViewActivity.class);
+            intent.putExtra(WebViewActivity.EXTRA_URL, "https://www.thechinajourney.com/zh_cn/%E6%99%AF%E7%82%B9/");
+            intent.putExtra(WebViewActivity.EXTRA_TITLE, "周边");
+            startActivity(intent);
         });
 
         showPoemTab();

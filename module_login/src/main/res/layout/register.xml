@@ -6,6 +6,7 @@
     android:id="@+id/register"
     android:layout_height="match_parent">
 
+    <!-- ===== 原始返回按钮（已注释）=====
     <android.widget.Button
         android:layout_marginTop="5dp"
         android:layout_marginLeft="10dp"
@@ -15,6 +16,23 @@
         android:textColor="@color/white"
         android:textSize="20sp"
         android:text="返回"
+        android:id="@+id/return2"
+        />
+    ===== 原始返回按钮结束 ===== -->
+
+    <android.widget.Button
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:background="@android:color/transparent"
+        android:drawableStart="@drawable/ic_arrow_back"
+        android:drawablePadding="6dp"
+        android:textColor="#555555"
+        android:textSize="16sp"
+        android:text="Back"
+        android:textAllCaps="false"
+        android:gravity="center_vertical"
         android:id="@+id/return2"
         />
     <com.google.android.material.textfield.TextInputLayout
@@ -106,6 +124,7 @@
             android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- ===== 原始底部按钮布局（已注释）=====
     <LinearLayout
         android:orientation="vertical"
         android:gravity="center_horizontal"
@@ -133,4 +152,31 @@
             android:textColor="@color/white"
             android:background="@drawable/button"/>
     </LinearLayout>
+    ===== 原始底部按钮布局结束 ===== -->
+
+    <android.widget.Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/registerB2"
+        android:text="Send Code"
+        android:textSize="16sp"
+        android:textColor="#555555"
+        android:textAllCaps="false"
+        android:background="@drawable/button"/>
+
+    <android.widget.Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="12dp"
+        android:id="@+id/registerB"
+        android:text="Register"
+        android:textSize="16sp"
+        android:textColor="#555555"
+        android:textAllCaps="false"
+        android:background="@drawable/button"/>
 </LinearLayout>

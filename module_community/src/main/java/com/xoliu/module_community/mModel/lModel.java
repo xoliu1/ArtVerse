@@ -23,7 +23,7 @@ public class lModel implements mModel{
                 try{
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://8.130.118.185:6666/api/user/poetry")
+                            .url("http://10.0.2.2:9999/api/user/poetry")
                             .get()
                             .build();
                     Response response = client.newCall(request).execute();

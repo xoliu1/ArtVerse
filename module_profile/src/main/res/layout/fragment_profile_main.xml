@@ -94,12 +94,15 @@
                     android:text="结伴"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/profileNearby"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:gravity="center"
                 android:layout_height="match_parent"
-                android:background="@color/white">
+                android:background="@color/white"
+                android:clickable="true"
+                android:focusable="true">
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
@@ -114,12 +117,15 @@
                     android:text="周边"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/profileDiscover"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:gravity="center"
                 android:layout_height="match_parent"
-                android:background="@color/white">
+                android:background="@color/white"
+                android:clickable="true"
+                android:focusable="true">
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"

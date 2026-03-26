@@ -136,14 +136,24 @@ public class LoginActivity extends AppCompatActivity implements mView {
                 }
             }
         });
+//        button9.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String x = textInputLayout6.getEditText().getText().toString();
+//                String y = textInputLayout7.getEditText().getText().toString();
+//                transform1.model.login(x,y,handler);
+//            }
+//        });
         button9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String x = textInputLayout6.getEditText().getText().toString();
-                String y = textInputLayout7.getEditText().getText().toString();
-                transform1.model.login(x,y,handler);
+                // 跳过后端验证，直接登录成功
+                MVUtil.getInstance().put("Logined", true);
+                ARouter.getInstance().build("/main/shell").navigation();
+                finish();
             }
         });
+
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -201,14 +211,24 @@ public class LoginActivity extends AppCompatActivity implements mView {
                 register.setVisibility(View.VISIBLE);
             }
         });
+//        button2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String x = email0.getEditText().getText().toString();
+//                String y = password.getEditText().getText().toString();
+//                transform1.model.login(x,y,handler);
+//            }
+//        });
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String x = email0.getEditText().getText().toString();
-                String y = password.getEditText().getText().toString();
-                transform1.model.login(x,y,handler);
+                // 跳过后端验证，直接登录成功
+                MVUtil.getInstance().put("Logined", true);
+                ARouter.getInstance().build("/main/shell").navigation();
+                finish();
             }
         });
+
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

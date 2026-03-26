@@ -23,7 +23,7 @@ public class netLink {
                             .add("password",y)
                             .build();
                     Request request = new Request.Builder()
-                            .url("http://8.130.118.185:6666/api/user/login")
+                            .url("http://10.0.2.2:9999/api/user/login")
                             .method("POST",requestBody)
                             .build();
                     Response response = client.newCall(request).execute();

@@ -13,6 +13,15 @@
         <activity
             android:name=".WebViewActivity"
             android:exported="false" />
+        <activity
+            android:name=".note.NoteListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".note.NoteEditActivity"
+            android:exported="false" />
+        <activity
+            android:name=".assistant.AssistantChatActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

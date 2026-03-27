@@ -74,7 +74,20 @@ public class ProfileArtLikesFragment extends Fragment {
                 AppDatabase db = Room.databaseBuilder(getContext(), AppDatabase.class, "PoemCards").build();
                 List<ArtContent> allArtContents = db.artContentDao().getAllArtContents();
 
-                // 如果数据库为空，插入假数据
+                // 更新已有数据的资源ID（资源ID在重新编译后可能变化）
+                if (allArtContents != null && !allArtContents.isEmpty()) {
+                    for (ArtContent art : allArtContents) {
+                        int oldImg = art.getArtContentImg();
+                        int newImg = getResIdByName(art.getName());
+                        if (newImg != 0 && newImg != oldImg) {
+                            art.setArtContentImg(newImg);
+                            db.artContentDao().update(art);
+                        }
+                    }
+                    allArtContents = db.artContentDao().getAllArtContents();
+                }
+
+                // 如果数据库为空，插入默认数据
                 if (allArtContents == null || allArtContents.isEmpty()) {
                     ArtContent a1 = new ArtContent();
                     a1.setArtContentImg(com.xoliu.module_art.R.drawable.soap_bubbles);
@@ -120,5 +133,20 @@ public class ProfileArtLikesFragment extends Fragment {
                 });
             }
         }).start();
+    }
+
+    /**
+     * 根据画作名称返回对应的最新资源ID
+     */
+    private int getResIdByName(String name) {
+        if (name == null) return 0;
+        if (name.contains("Soap Bubbles") || name.contains("肥皂泡")) {
+            return com.xoliu.module_art.R.drawable.soap_bubbles;
+        } else if (name.contains("Saint-Mammes") || name.contains("圣马梅斯")) {
+            return com.xoliu.module_art.R.drawable.view_of_saint_mammes;
+        } else if (name.contains("Vase with Flowers") || name.contains("花与花瓶")) {
+            return com.xoliu.module_art.R.drawable.vasewithflowers;
+        }
+        return 0;
     }
 }

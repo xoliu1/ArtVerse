@@ -27,6 +27,16 @@
             android:layout_centerInParent="true"
             />
 
+        <ImageView
+            android:id="@+id/btn_clear_chat"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="12dp"
+            android:src="@android:drawable/ic_menu_delete"
+            android:contentDescription="清除聊天记录"
+            android:clickable="true"
+            android:focusable="true" />
 
     </androidx.appcompat.widget.Toolbar>
 

@@ -30,7 +30,7 @@ public class PoemCard {
     public PoemCard(CardPic cardPic, Poem poem){
         this.imgUrl = cardPic.getImgurl();
         this.poemContext = poem.getHitokoto();
-        this.poemContext = poem.getFrom();
+        this.poemAuthor = poem.getFrom();
     }
 
     @Ignore

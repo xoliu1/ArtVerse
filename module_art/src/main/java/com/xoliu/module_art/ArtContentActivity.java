@@ -121,6 +121,8 @@ public class ArtContentActivity extends AppCompatActivity {
         //初始化信息
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
             artContent = getIntent().getParcelableExtra("theArtCardContentInfo", ArtContent.class);
+        } else {
+            artContent = getIntent().getParcelableExtra("theArtCardContentInfo");
         }
     }
 

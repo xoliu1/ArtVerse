@@ -10,8 +10,8 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -33,25 +33,25 @@ import utils.MVUtil;
 @Route(path = "/login/main")
 public class LoginActivity extends AppCompatActivity implements mView {
     private ActivityLoginBinding binding;
-    LinearLayout login;
-    LinearLayout register;
-    LinearLayout retrieve;
+    ScrollView login;
+    ScrollView register;
+    ScrollView retrieve;
 
     private TextInputLayout email0;
 
     private TextInputLayout password;
-    private Button button1;
-    private Button button2;
-    private Button button3;
+    private TextView button1;
+    private TextView button2;
+    private TextView button3;
 
-    private Button button4;
+    private TextView button4;
 
-    private Button button5;
+    private TextView button5;
 
-    private Button button6;
-    private Button button7;
-    private Button button8;
-    private Button button9;
+    private TextView button6;
+    private TextView button7;
+    private TextView button8;
+    private TextView button9;
     private TextInputLayout textInputLayout1;
 
     private TextInputLayout textInputLayout2;
@@ -82,9 +82,9 @@ public class LoginActivity extends AppCompatActivity implements mView {
         button1 = findViewById(R.id.registerButton);
         button2 = findViewById(R.id.logAt);
         button3 = findViewById(R.id.RetrieveButton);
-        login = findViewById(R.id.longAt);
-        register = findViewById(R.id.register);
-        retrieve = findViewById(R.id.RetrieveL);
+        login = findViewById(R.id.loginScrollView);
+        register = findViewById(R.id.registerScrollView);
+        retrieve = findViewById(R.id.retrieveScrollView);
         transForm transform1 = new transForm();
         transform1.setView(this);
         transform1.SetText(textInputLayout1);
@@ -120,39 +120,39 @@ public class LoginActivity extends AppCompatActivity implements mView {
                         public void onTick(long millisUntilFinished) {
                             button8.setClickable(false);
                             button8.setEnabled(false);
-                            button8.setText(millisUntilFinished / 1000 + "重新发送");
+                            button8.setText(millisUntilFinished / 1000 + "s Resend");
                         }
 
                         @Override
                         public void onFinish() {
-                            button8.setText("发送验证码");
+                            button8.setText("Send Code");
                             button8.setClickable(true);
                             button8.setEnabled(true);
                             cancel();
                         }
                     }.start();
                 } else {
-                    Toast.makeText(getApplicationContext(),"邮箱不正确",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Invalid email",Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+        button9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String x = textInputLayout6.getEditText().getText().toString();
+                String y = textInputLayout7.getEditText().getText().toString();
+                transform1.model.login(x,y,handler);
             }
         });
 //        button9.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                String x = textInputLayout6.getEditText().getText().toString();
-//                String y = textInputLayout7.getEditText().getText().toString();
-//                transform1.model.login(x,y,handler);
+//                // 跳过后端验证，直接登录成功
+//                MVUtil.getInstance().put("Logined", true);
+//                ARouter.getInstance().build("/main/shell").navigation();
+//                finish();
 //            }
 //        });
-        button9.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // 跳过后端验证，直接登录成功
-                MVUtil.getInstance().put("Logined", true);
-                ARouter.getInstance().build("/main/shell").navigation();
-                finish();
-            }
-        });
 
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -173,7 +173,7 @@ public class LoginActivity extends AppCompatActivity implements mView {
                 if(pass.equals(word)){
                     transform1.model.reg(name,pass,email,horse,handlerT);
                 }else {
-                    Toast.makeText(getApplicationContext(),"两次输入密码不一致",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Passwords do not match",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -190,12 +190,12 @@ public class LoginActivity extends AppCompatActivity implements mView {
                     public void onTick(long millisUntilFinished) {
                         button6.setClickable(false);
                         button6.setEnabled(false);
-                        button6.setText(millisUntilFinished / 1000 + "重新发送");
+                        button6.setText(millisUntilFinished / 1000 + "s Resend");
                     }
 
                     @Override
                     public void onFinish() {
-                        button6.setText("发送验证码");
+                        button6.setText("Send Code");
                         button6.setClickable(true);
                         button6.setEnabled(true);
                         cancel();
@@ -211,23 +211,23 @@ public class LoginActivity extends AppCompatActivity implements mView {
                 register.setVisibility(View.VISIBLE);
             }
         });
-//        button2.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                String x = email0.getEditText().getText().toString();
-//                String y = password.getEditText().getText().toString();
-//                transform1.model.login(x,y,handler);
-//            }
-//        });
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // 跳过后端验证，直接登录成功
-                MVUtil.getInstance().put("Logined", true);
-                ARouter.getInstance().build("/main/shell").navigation();
-                finish();
+                String x = email0.getEditText().getText().toString();
+                String y = password.getEditText().getText().toString();
+                transform1.model.login(x,y,handler);
             }
         });
+//        button2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // 跳过后端验证，直接登录成功
+//                MVUtil.getInstance().put("Logined", true);
+//                ARouter.getInstance().build("/main/shell").navigation();
+//                finish();
+//            }
+//        });
 
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -258,8 +258,12 @@ public class LoginActivity extends AppCompatActivity implements mView {
                 if(data.getCode() == 200){
                     ARouter.getInstance().build("/main/shell").navigation();
                     MVUtil.getInstance().put("Logined", true);
+                    MVUtil.getInstance().put("user_id", data.getUserId());
+                    MVUtil.getInstance().put("user_email", data.getUserEmail() != null ? data.getUserEmail() : "");
+                    MVUtil.getInstance().put("username", data.getUsername() != null ? data.getUsername() : "");
+                    MVUtil.getInstance().put("avatar_url", data.getAvatarUrl() != null ? data.getAvatarUrl() : "");
                 }else {
-                    Toast.makeText(getApplicationContext(),"密码不正确或账号未注册",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Incorrect password or unregistered account",Toast.LENGTH_SHORT).show();
                 }
             }
         }
@@ -275,9 +279,13 @@ public class LoginActivity extends AppCompatActivity implements mView {
                 data = gson.fromJson(fgh,reDate.class);
                 Log.d("10086", "handleMessage: " + data);
                 if(data.getCode() == 200){
-                    ARouter.getInstance().build("/main/shell").navigation();
+                    // 注册成功后回到登录页面，而不是直接进入主页
+                    Toast.makeText(getApplicationContext(),"Registration successful, please sign in",Toast.LENGTH_SHORT).show();
+                    login.setVisibility(View.VISIBLE);
+                    register.setVisibility(View.GONE);
+                    retrieve.setVisibility(View.GONE);
                 }else {
-                    Toast.makeText(getApplicationContext(),"验证码不正确",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Incorrect verification code",Toast.LENGTH_SHORT).show();
                 }
             }
         }
@@ -293,9 +301,9 @@ public class LoginActivity extends AppCompatActivity implements mView {
                 data = gson.fromJson(fgh,reDate.class);
                 Log.d("10086", "handleMessage: " + data);
                 if(data.getCode() == 200){
-                    Toast.makeText(getApplicationContext(),"验证码已发送，请注意查收!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Verification code sent, please check your email!",Toast.LENGTH_SHORT).show();
                 }else {
-                    Toast.makeText(getApplicationContext(),"验证码发送失败",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Failed to send verification code",Toast.LENGTH_SHORT).show();
                 }
             }
         }

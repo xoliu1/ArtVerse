@@ -1,7 +1,6 @@
 package com.xoliu.module_profile;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,8 +14,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.bumptech.glide.Glide;
 import com.google.android.material.tabs.TabLayout;
+import com.xoliu.module_profile.assistant.AssistantChatActivity;
 import com.xoliu.module_profile.databinding.FragmentProfileMainBinding;
+import com.xoliu.module_profile.note.NoteListActivity;
+
+import utils.MVUtil;
 
 @Route(path = "/profile/main")
 public class fragment_profile_main extends Fragment {
@@ -53,9 +58,19 @@ public class fragment_profile_main extends Fragment {
 
 
     private void initView() {
+        //设置"助手"点击事件，跳转到AI助手聊天页面
+        binding.profileAssistant.setOnClickListener(v -> {
+            startActivity(new Intent(getContext(), AssistantChatActivity.class));
+        });
+
         //设置点击事件，进入选取图片
         binding.profileUserIcon.setOnClickListener(v -> {
             startActivity(new Intent(getContext(), ImagePickerActivity.class));
+        });
+
+        //设置"笔记"点击事件，跳转到笔记列表页
+        binding.profileNote.setOnClickListener(v -> {
+            startActivity(new Intent(getContext(), NoteListActivity.class));
         });
 
         //设置"发现"点击事件，跳转到百度热搜（App 内 WebView）
@@ -72,6 +87,22 @@ public class fragment_profile_main extends Fragment {
             intent.putExtra(WebViewActivity.EXTRA_URL, "https://www.thechinajourney.com/zh_cn/%E6%99%AF%E7%82%B9/");
             intent.putExtra(WebViewActivity.EXTRA_TITLE, "周边");
             startActivity(intent);
+        });
+
+        // 退出登录
+        binding.btnLogout.setOnClickListener(v -> {
+            // 清除登录状态
+            MVUtil.getInstance().put("Logined", false);
+            MVUtil.getInstance().put("user_id", 0);
+            MVUtil.getInstance().put("user_email", "");
+            MVUtil.getInstance().put("username", "");
+            MVUtil.getInstance().put("avatar_url", "");
+            // 跳转到登录页面
+            ARouter.getInstance().build("/login/main").navigation();
+            // 关闭当前 Activity
+            if (getActivity() != null) {
+                getActivity().finish();
+            }
         });
 
         showPoemTab();
@@ -127,5 +158,35 @@ public class fragment_profile_main extends Fragment {
 
 
     private void initData() {
+        // 从 MMKV 读取登录时存储的用户名，动态显示
+        String username = MVUtil.getString("username", "");
+        if (username != null && !username.isEmpty()) {
+            binding.profileUserName.setText(username);
+        }
+        // 加载头像
+        loadAvatar();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        // 每次页面恢复时重新加载头像（从 ImagePickerActivity 返回时能及时刷新）
+        loadAvatar();
+    }
+
+    private void loadAvatar() {
+        String avatarUrl = MVUtil.getString("avatar_url", "");
+        if (avatarUrl != null && !avatarUrl.isEmpty()) {
+            // 后端返回的是网络 URL，用 Glide 加载
+            Glide.with(this)
+                    .load(avatarUrl)
+                    .centerCrop()
+                    .placeholder(R.drawable.wechat_icon)
+                    .error(R.drawable.wechat_icon)
+                    .into(binding.profileUserIcon);
+        } else {
+            // 头像为空或 null，显示默认头像
+            binding.profileUserIcon.setImageResource(R.drawable.wechat_icon);
+        }
     }
 }

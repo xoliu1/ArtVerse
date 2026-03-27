@@ -84,6 +84,8 @@ public class ProfilePoemLikesFragment extends Fragment {
             @Override
             public void run() {
                 AppDatabase db = Room.databaseBuilder(getContext(), AppDatabase.class, "PoemCards").build();
+                // 先清理数据库中的空记录
+                db.poemCardDao().deleteEmptyPoemCards();
                 List<PoemCard> list = db.poemCardDao().getAllPoemCards();
 
                 // 如果数据库为空，插入假数据
@@ -102,7 +104,10 @@ public class ProfilePoemLikesFragment extends Fragment {
                 }
 
                 for (PoemCard card : list) {
-                    poemCardList.add(card);
+                    // 过滤掉空数据（poemContext为空的记录不显示）
+                    if (card.getPoemContext() != null && !card.getPoemContext().trim().isEmpty()) {
+                        poemCardList.add(card);
+                    }
                 }
                 handler.post(new Runnable() {
                     @Override

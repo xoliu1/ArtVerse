@@ -39,5 +39,8 @@ public interface PoemCardDao {
 
     @Query("SELECT * FROM PoemCard WHERE id = :id")
     PoemCard getPoemCardById(int id);
+
+    @Query("DELETE FROM PoemCard WHERE poemContext IS NULL OR TRIM(poemContext) = ''")
+    void deleteEmptyPoemCards();
 }
 

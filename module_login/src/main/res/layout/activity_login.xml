@@ -11,13 +11,20 @@
         android:layout_height="match_parent"
         android:scaleType="fitXY"
         android:src="@drawable/xin"/>
+
     <include layout="@layout/register"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:visibility="gone"
         />
     <include layout="@layout/logat"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:visibility="visible"
         />
     <include layout="@layout/retrieve"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:visibility="gone"
         />
 

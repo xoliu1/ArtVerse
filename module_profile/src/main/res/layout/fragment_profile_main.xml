@@ -54,12 +54,15 @@
             >
 
             <LinearLayout
+                android:id="@+id/profileAssistant"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:gravity="center"
                 android:background="@color/white"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:focusable="true">
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
@@ -71,19 +74,22 @@
                     android:textColor="@color/peru"
                     android:gravity="center"
                     android:fontFamily="@font/font2"
-                    android:text="消息"/>
+                    android:text="助手"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/profileNote"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:gravity="center"
                 android:layout_height="match_parent"
-                android:background="@color/white">
+                android:background="@color/white"
+                android:clickable="true"
+                android:focusable="true">
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/jieban"/>
+                    android:src="@drawable/ic_note"/>
                 <TextView
                     android:layout_marginTop="5dp"
                     android:layout_width="50dp"
@@ -91,7 +97,7 @@
                     android:textColor="@color/peru"
                     android:gravity="center"
                     android:fontFamily="@font/font2"
-                    android:text="结伴"/>
+                    android:text="笔记"/>
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/profileNearby"
@@ -205,6 +211,22 @@
             android:id="@+id/profile_tab_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:text="退出登录"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:backgroundTint="#8B4513"
+            android:fontFamily="@font/font2" />
+
+
 
 
 

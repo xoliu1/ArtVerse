@@ -37,7 +37,13 @@ public class recycAdapter extends RecyclerView.Adapter<recycAdapter.talk> {
     @Override
     public void onBindViewHolder(@NonNull talk holder, int position) {
         String x = stringList.get(position);
-        Spannable spannable2 = Spannable.Factory.getInstance().newSpannable("#" + x.substring(0,16) + "\n\n#" + x.substring(16,x.length()) + "\n");
+        String displayText;
+        if (x.length() > 16) {
+            displayText = "#" + x.substring(0, 16) + "\n\n#" + x.substring(16) + "\n";
+        } else {
+            displayText = "#" + x + "\n";
+        }
+        Spannable spannable2 = Spannable.Factory.getInstance().newSpannable(displayText);
         holder.textView.setText(spannable2);
     }
 

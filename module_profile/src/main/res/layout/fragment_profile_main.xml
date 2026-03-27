@@ -207,10 +207,86 @@
                 android:tooltipText=""/>
 
         </com.google.android.material.tabs.TabLayout>
+        <!-- 诗集列表（文集Tab内容，直接内嵌） -->
         <FrameLayout
-            android:id="@+id/profile_tab_container"
+            android:id="@+id/poem_content_container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:minHeight="300dp">
+
+            <TextView
+                android:id="@+id/emptyHint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="40dp"
+                android:text="暂无文集，点击右下角 + 创建"
+                android:textSize="15sp"
+                android:textColor="#999999"
+                android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/profilePoemRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="24dp"
+                android:src="@android:drawable/ic_input_add"
+                android:contentDescription="添加文集"
+                app:backgroundTint="#46a2ff"
+                app:tint="@android:color/white"
+                app:fabSize="normal"
+                app:elevation="6dp" />
+        </FrameLayout>
+
+        <!-- 画廊列表（画廊Tab内容，直接内嵌） -->
+        <FrameLayout
+            android:id="@+id/art_content_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="300dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/artEmptyHint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="40dp"
+                android:text="暂无画作，点击右下角 + 添加"
+                android:textSize="15sp"
+                android:textColor="#999999"
+                android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/profileArtRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabAddGallery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="24dp"
+                android:src="@android:drawable/ic_input_add"
+                android:contentDescription="添加画作"
+                app:backgroundTint="#8B4513"
+                app:tint="@android:color/white"
+                app:fabSize="normal"
+                app:elevation="6dp" />
+        </FrameLayout>
 
         <Button
             android:id="@+id/btnLogout"
@@ -225,6 +301,8 @@
             android:textColor="@color/white"
             android:backgroundTint="#8B4513"
             android:fontFamily="@font/font2" />
+
+
 
 
 

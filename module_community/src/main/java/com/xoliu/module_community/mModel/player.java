@@ -3,11 +3,17 @@ package com.xoliu.module_community.mModel;
 import com.google.gson.annotations.SerializedName;
 
 public class player {
-    @SerializedName("Nickname")
+    @SerializedName(value = "username", alternate = {"Nickname"})
     String PName;
 
-    @SerializedName("Poem")
+    @SerializedName(value = "content", alternate = {"Poem"})
     String signer;
+
+    @SerializedName("title")
+    String title;
+
+    @SerializedName("avatar_url")
+    String avatarUrl;
 
     public String getPName() {
         return PName;
@@ -25,11 +31,29 @@ public class player {
         this.signer = signer;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
+    }
+
     @Override
     public String toString() {
         return "player{" +
                 "PName='" + PName + '\'' +
                 ", signer='" + signer + '\'' +
+                ", title='" + title + '\'' +
+                ", avatarUrl='" + avatarUrl + '\'' +
                 '}';
     }
 }

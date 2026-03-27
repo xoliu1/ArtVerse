@@ -36,17 +36,17 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ChatMsg msg = messages.get(position);
-        if (msg.getRole() == "user"){
-            //用户
+        if ("user".equals(msg.getRole())) {
+            // 用户消息：显示右边，隐藏左边
             holder.leftLayout.setVisibility(View.GONE);
+            holder.rightLayout.setVisibility(View.VISIBLE);
             holder.rightMsg.setText(msg.getContent());
-        } else{
-            //对方
+        } else {
+            // AI诗人消息：显示左边，隐藏右边
             holder.rightLayout.setVisibility(View.GONE);
+            holder.leftLayout.setVisibility(View.VISIBLE);
             holder.leftMsg.setText(msg.getContent());
         }
-
-
     }
 
     @Override

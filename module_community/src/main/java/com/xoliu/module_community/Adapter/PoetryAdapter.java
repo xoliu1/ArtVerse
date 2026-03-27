@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.media.Image;
 import android.text.Spannable;
 import android.text.Spanned;
+import android.text.TextUtils;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
@@ -19,6 +20,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.xoliu.module_community.R;
 
 import com.xoliu.module_community.mModel.player;
@@ -44,7 +47,6 @@ public class PoetryAdapter extends RecyclerView.Adapter<PoetryAdapter.PoetryItem
         integerList.add(R.drawable.tx7);
         this.context = context;
         this.playerList = playerList;
-        this.playerList.addAll(playerList);
     }
 
     @NonNull
@@ -57,25 +59,54 @@ public class PoetryAdapter extends RecyclerView.Adapter<PoetryAdapter.PoetryItem
 
     @Override
     public void onBindViewHolder(@NonNull PoetryItem holder, int position) {
-        holder.imageView.setImageResource(integerList.get(position % 7));
+        player item = playerList.get(position);
+        String pName = item.getPName() != null ? item.getPName() : "";
+        String content = item.getSigner() != null ? item.getSigner() : "";
+        String title = item.getTitle() != null ? item.getTitle() : "";
+        String avatarUrl = item.getAvatarUrl();
+
+        // 加载头像：有URL用Glide加载，否则用本地随机头像
+        int fallbackRes = integerList.get(position % 7);
+        if (!TextUtils.isEmpty(avatarUrl)) {
+            Glide.with(context)
+                    .load(avatarUrl)
+                    .apply(new RequestOptions()
+                            .placeholder(fallbackRes)
+                            .error(fallbackRes)
+                            .circleCrop())
+                    .into(holder.imageView);
+        } else {
+            holder.imageView.setImageResource(fallbackRes);
+        }
+
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ARouter.getInstance().build("/showActivity/main").navigation();
-                showActivity.string = playerList.get(position).getPName();
+                showActivity.string = pName;
                 showActivity.name = integerList.get(position % 7);
             }
         });
-        Spannable spannable = Spannable.Factory.getInstance().newSpannable(playerList.get(position).getPName());
-        RelativeSizeSpan relativeSizeSpan = new RelativeSizeSpan(0.6f);
-        StyleSpan styleSpan = new StyleSpan(Typeface.ITALIC);
-        spannable.setSpan(styleSpan,0,playerList.get(position).getPName().length(),Spanned.SPAN_INCLUSIVE_INCLUSIVE);
-        spannable.setSpan(relativeSizeSpan,0,playerList.get(position).getPName().length(),Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+
+        // 显示用户名
+        Spannable spannable = Spannable.Factory.getInstance().newSpannable(pName);
+        if (pName.length() > 0) {
+            RelativeSizeSpan relativeSizeSpan = new RelativeSizeSpan(0.6f);
+            StyleSpan styleSpan = new StyleSpan(Typeface.ITALIC);
+            spannable.setSpan(styleSpan, 0, pName.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+            spannable.setSpan(relativeSizeSpan, 0, pName.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+        }
         holder.textView.setText(spannable);
-        Spannable spannable1 = Spannable.Factory.getInstance().newSpannable(playerList.get(position).getSigner());
-        RelativeSizeSpan relativeSizeSpan1 = new RelativeSizeSpan(1.4f);
-        spannable1.setSpan(relativeSizeSpan1,0,playerList.get(position).getSigner().length(),Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+
+        // 显示标题+内容（如果有标题则显示"标题：内容"，否则只显示内容）
+        String displayText = title.isEmpty() ? content : "「" + title + "」" + content;
+        Spannable spannable1 = Spannable.Factory.getInstance().newSpannable(displayText);
+        if (displayText.length() > 0) {
+            RelativeSizeSpan relativeSizeSpan1 = new RelativeSizeSpan(1.4f);
+            spannable1.setSpan(relativeSizeSpan1, 0, displayText.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+        }
         holder.textViewT.setText(spannable1);
+
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

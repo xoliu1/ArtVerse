@@ -22,6 +22,9 @@
         <activity
             android:name=".assistant.AssistantChatActivity"
             android:exported="false" />
+        <activity
+            android:name=".GalleryDetailActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

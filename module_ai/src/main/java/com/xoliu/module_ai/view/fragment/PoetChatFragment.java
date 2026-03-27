@@ -42,7 +42,6 @@ public class PoetChatFragment extends Fragment {
     List<ChatMsg> messages = new ArrayList<>();
 
     ChatAI ai = new ChatAI();
-    int times = 1;
 
     ChatAdapter adapter;
 
@@ -93,13 +92,8 @@ public class PoetChatFragment extends Fragment {
                 if (isAdded()) {
                     getActivity().runOnUiThread(() -> {
                         for (ChatMessageEntity entity : history) {
-                            messages.add(new ChatMsg(
-                                    "user".equals(entity.getRole()) ? 1 : 2,
-                                    entity.getContent()
-                            ));
+                            messages.add(new ChatMsg(entity.getRole(), entity.getContent()));
                         }
-                        // 同步 times 计数器
-                        times = messages.size() + 1;
                         adapter.notifyDataSetChanged();
                         scrollToBottom();
                     });
@@ -118,7 +112,7 @@ public class PoetChatFragment extends Fragment {
                         String cleanedMsg = removeBeforeFirstNewLine(s);
                         chatMessageDao.insert(new ChatMessageEntity("assistant", cleanedMsg, System.currentTimeMillis()));
                         getActivity().runOnUiThread(() -> {
-                            messages.add(new ChatMsg(times, cleanedMsg));
+                            messages.add(new ChatMsg("assistant", cleanedMsg));
                             adapter.notifyDataSetChanged();
                             dismissProgressDialog();
                         });
@@ -148,7 +142,7 @@ public class PoetChatFragment extends Fragment {
                 binding.edText.setText("");
 
                 // 立即将用户消息添加到列表中并更新RecyclerView
-                addMessageAndUpdate(new ChatMsg(times++, msg));
+                addMessageAndUpdate(new ChatMsg("user", msg));
 
                 // 在后台线程中处理网络请求
                 executorService.execute(() -> {
@@ -162,7 +156,7 @@ public class PoetChatFragment extends Fragment {
                             // 保存 AI 回复到数据库
                             chatMessageDao.insert(new ChatMessageEntity("assistant", answer, System.currentTimeMillis()));
                             // 收到回复后更新RecyclerView
-                            addMessageAndUpdate(new ChatMsg(times++, answer));
+                            addMessageAndUpdate(new ChatMsg("assistant", answer));
                         }
                     } catch (InterruptedException e) {
                         // 异常处理...
@@ -200,7 +194,6 @@ public class PoetChatFragment extends Fragment {
                 getActivity().runOnUiThread(() -> {
                     // 2. 清空界面
                     messages.clear();
-                    times = 1;
                     adapter.notifyDataSetChanged();
 
                     // 3. 重置 AI 上下文（新建实例）

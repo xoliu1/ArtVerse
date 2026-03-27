@@ -47,7 +47,7 @@ public class ProfileArtLikesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding  = FragmentProfileArtLikesBinding.inflate(inflater);
+        binding  = FragmentProfileArtLikesBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 

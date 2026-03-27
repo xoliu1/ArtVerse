@@ -17,7 +17,7 @@ public class mid {
                 try{
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://10.0.2.2:9999/api/user/signature")
+                            .url("http://10.0.2.2:9999/api/anthology/all")
                             .get()
                             .build();
                     Response response = client.newCall(request).execute();

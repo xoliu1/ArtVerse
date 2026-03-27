@@ -65,7 +65,13 @@ public class commentAdapter extends RecyclerView.Adapter<commentAdapter.commentI
         spannable.setSpan(relativeSizeSpanSmall,y.length() + 1,y.length() + 11,Spanned.SPAN_INCLUSIVE_INCLUSIVE);
         spannable.setSpan(styleSpan,0,3, Spanned.SPAN_INCLUSIVE_INCLUSIVE);
         holder.textView2.setText(spannable);
-        Spannable spannable2 = Spannable.Factory.getInstance().newSpannable(x.substring(0,10) + "\n" + x.substring(10,x.length()));
+        String displayText;
+        if (x.length() > 10) {
+            displayText = x.substring(0, 10) + "\n" + x.substring(10);
+        } else {
+            displayText = x;
+        }
+        Spannable spannable2 = Spannable.Factory.getInstance().newSpannable(displayText);
         holder.textView.setText(spannable2);
         holder.imageView.setImageResource(integers.get(position % 7));
         holder.imageView2.setOnClickListener(new View.OnClickListener() {

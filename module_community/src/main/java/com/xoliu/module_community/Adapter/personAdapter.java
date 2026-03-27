@@ -76,7 +76,14 @@ public class personAdapter extends RecyclerView.Adapter<personAdapter.PoetryItem
         spannable.setSpan(relativeSizeSpanSmall,y.length() + 1,y.length() + 11,Spanned.SPAN_INCLUSIVE_INCLUSIVE);
         spannable.setSpan(styleSpan,0,3, Spanned.SPAN_INCLUSIVE_INCLUSIVE);
         holder.textView.setText(spannable);
-        Spannable spannable2 = Spannable.Factory.getInstance().newSpannable(x.substring(0,16) + "\n" + x.substring(16,x.length()));
+        // 安全地分行显示文本
+        String displayText;
+        if (x.length() > 16) {
+            displayText = x.substring(0, 16) + "\n" + x.substring(16);
+        } else {
+            displayText = x;
+        }
+        Spannable spannable2 = Spannable.Factory.getInstance().newSpannable(displayText);
         holder.textView2.setText(spannable2);
         holder.imageView2.setImageResource(integer);
         holder.textView3.setText("65");

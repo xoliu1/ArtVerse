@@ -5,13 +5,8 @@ public class ChatMsg {
 
     private String content;
 
-    public ChatMsg(int times, String content) {
-        if (times % 2 == 1){
-            this.role = "user";
-        }else{
-            this.role = "assistant";
-        }
-
+    public ChatMsg(String role, String content) {
+        this.role = role;
         this.content = content;
     }
 

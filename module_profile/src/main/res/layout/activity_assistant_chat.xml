@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F6F0F0">
+
+    <!-- 顶部标题栏 -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/assistantToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="#8B4513"
+        app:titleTextColor="@android:color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="AI 助手"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:fontFamily="@font/font2" />
+
+        <!-- 返回按钮 -->
+        <ImageView
+            android:id="@+id/assistantBack"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center_vertical|start"
+            android:layout_marginStart="4dp"
+            android:src="@android:drawable/ic_menu_revert"
+            android:contentDescription="返回"
+            android:clickable="true"
+            android:focusable="true"
+            app:tint="@android:color/white" />
+
+        <!-- 删除聊天记录按钮 -->
+        <ImageView
+            android:id="@+id/assistantClearChat"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="12dp"
+            android:src="@android:drawable/ic_menu_delete"
+            android:contentDescription="清除聊天记录"
+            android:clickable="true"
+            android:focusable="true"
+            app:tint="@android:color/white" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <!-- 聊天消息列表 -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/assistantRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="10dp"
+        android:clipToPadding="false" />
+
+    <!-- 底部输入栏 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:background="@android:color/white"
+        android:elevation="4dp"
+        android:gravity="center_vertical">
+
+        <EditText
+            android:id="@+id/assistantEditText"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:background="@drawable/assistant_bg_left"
+            android:hint="请输入您的问题..."
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:textSize="15sp"
+            android:textColor="#333333" />
+
+        <ImageView
+            android:id="@+id/assistantBtnSend"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="8dp"
+            android:padding="10dp"
+            android:background="@drawable/assistant_send_bg"
+            android:src="@android:drawable/ic_menu_send"
+            android:clickable="true"
+            android:focusable="true"
+            app:tint="@android:color/white" />
+
+    </LinearLayout>
+
+</LinearLayout>

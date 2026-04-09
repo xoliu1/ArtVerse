@@ -1,14 +1,7 @@
 package com.xoliu.module_community.Adapter;
 
-import android.app.Dialog;
 import android.content.Context;
-import android.graphics.Typeface;
-import android.media.Image;
-import android.text.Spannable;
-import android.text.Spanned;
 import android.text.TextUtils;
-import android.text.style.RelativeSizeSpan;
-import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -89,32 +82,31 @@ public class PoetryAdapter extends RecyclerView.Adapter<PoetryAdapter.PoetryItem
         });
 
         // 显示用户名
-        Spannable spannable = Spannable.Factory.getInstance().newSpannable(pName);
-        if (pName.length() > 0) {
-            RelativeSizeSpan relativeSizeSpan = new RelativeSizeSpan(0.6f);
-            StyleSpan styleSpan = new StyleSpan(Typeface.ITALIC);
-            spannable.setSpan(styleSpan, 0, pName.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
-            spannable.setSpan(relativeSizeSpan, 0, pName.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
-        }
-        holder.textView.setText(spannable);
+        holder.textView.setText(pName);
 
-        // 显示标题+内容（如果有标题则显示"标题：内容"，否则只显示内容）
-        String displayText = title.isEmpty() ? content : "「" + title + "」" + content;
-        Spannable spannable1 = Spannable.Factory.getInstance().newSpannable(displayText);
-        if (displayText.length() > 0) {
-            RelativeSizeSpan relativeSizeSpan1 = new RelativeSizeSpan(1.4f);
-            spannable1.setSpan(relativeSizeSpan1, 0, displayText.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
+        // 显示标题（如果有的话）
+        if (!title.isEmpty()) {
+            holder.tvTitle.setVisibility(View.VISIBLE);
+            holder.tvTitle.setText("「" + title + "」");
+        } else {
+            holder.tvTitle.setVisibility(View.GONE);
         }
-        holder.textViewT.setText(spannable1);
+
+        // 显示内容（XML中已设置 maxLines=3 + ellipsize=end，自动截断）
+        holder.textViewT.setText(content);
 
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(holder.pop){
                     holder.button.setText("+关注");
+                    holder.button.setTextColor(0xFF8B6B4A);
+                    holder.button.setBackgroundResource(R.drawable.bg_follow_btn);
                     holder.pop = false;
                 }else {
-                    holder.button.setText("✓关注");
+                    holder.button.setText("已关注");
+                    holder.button.setTextColor(0xFFFFFFFF);
+                    holder.button.setBackgroundResource(R.drawable.bg_followed_btn);
                     holder.pop = true;
                 }
             }
@@ -131,6 +123,7 @@ public class PoetryAdapter extends RecyclerView.Adapter<PoetryAdapter.PoetryItem
         ImageView imageView;
 
         TextView textView;
+        TextView tvTitle;
         TextView textViewT;
 
         Button button;
@@ -142,6 +135,7 @@ public class PoetryAdapter extends RecyclerView.Adapter<PoetryAdapter.PoetryItem
             imageView = itemView.findViewById(R.id.laydy);
             textView = itemView.findViewById(R.id.name);
             button = itemView.findViewById(R.id.focus);
+            tvTitle = itemView.findViewById(R.id.tv_title);
             textViewT = itemView.findViewById(R.id.about);
         }
     }

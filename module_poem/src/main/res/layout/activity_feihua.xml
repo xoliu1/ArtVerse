@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dynastybg">
+
+    <!-- 半透明遮罩让文字更清晰 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#30000000" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- ========== 顶部标题栏 ========== -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/btn_back"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_centerVertical="true"
+                android:padding="6dp"
+                android:src="@android:drawable/ic_menu_revert"
+                android:contentDescription="返回"
+                app:tint="#FFF8DC" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/font4"
+                android:text="飞 花 令"
+                android:textColor="#FFF8DC"
+                android:textSize="26sp" />
+        </RelativeLayout>
+
+        <!-- ========== 开始前：设置区域 ========== -->
+        <LinearLayout
+            android:id="@+id/setup_area"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="30dp">
+
+            <!-- 关键字展示卡片 -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="260dp"
+                android:layout_height="180dp"
+                android:layout_marginBottom="20dp"
+                app:cardBackgroundColor="#CC2B1B17"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/font8"
+                        android:text="今日飞花"
+                        android:textColor="#FFDEAD"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_keyword"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/font4"
+                        android:text="月"
+                        android:textColor="#FFD700"
+                        android:textSize="72sp" />
+
+                    <TextView
+                        android:id="@+id/btn_change_keyword"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="?attr/selectableItemBackground"
+                        android:fontFamily="@font/font8"
+                        android:paddingStart="16dp"
+                        android:paddingTop="4dp"
+                        android:paddingEnd="16dp"
+                        android:paddingBottom="4dp"
+                        android:text="⟳ 换一个"
+                        android:textColor="#DEB887"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- 难度选择 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/font8"
+                android:text="选择难度"
+                android:textColor="#FFF8DC"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/btn_mode_normal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/feihua_mode_selected_bg"
+                    android:fontFamily="@font/font8"
+                    android:paddingStart="24dp"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="24dp"
+                    android:paddingBottom="10dp"
+                    android:text="正常 · 40s"
+                    android:textColor="#FFF8DC"
+                    android:textSize="15sp" />
+
+                <View
+                    android:layout_width="16dp"
+                    android:layout_height="1dp" />
+
+                <TextView
+                    android:id="@+id/btn_mode_hard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/feihua_mode_normal_bg"
+                    android:fontFamily="@font/font8"
+                    android:paddingStart="24dp"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="24dp"
+                    android:paddingBottom="10dp"
+                    android:text="困难 · 20s"
+                    android:textColor="#DEB887"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <!-- 开始按钮 -->
+            <TextView
+                android:id="@+id/btn_start"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/feihua_start_btn_bg"
+                android:fontFamily="@font/font4"
+                android:gravity="center"
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp"
+                android:text="开始挑战"
+                android:textColor="#FFF8DC"
+                android:textSize="22sp" />
+
+        </LinearLayout>
+
+        <!-- ========== 游戏中：对话区域 ========== -->
+        <LinearLayout
+            android:id="@+id/game_area"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <!-- 顶部游戏信息 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingStart="16dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="8dp">
+
+                <TextView
+                    android:id="@+id/tv_game_keyword"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/font4"
+                    android:text="关键字：月"
+                    android:textColor="#FFD700"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_round"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font8"
+                    android:text="第 1 回合"
+                    android:textColor="#FFF8DC"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <!-- 倒计时进度条 -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/feihua_progress_bg">
+
+                <View
+                    android:id="@+id/progress_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/feihua_progress_fill" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tv_countdown"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font8"
+                android:gravity="center"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:text="40s"
+                android:textColor="#FFDEAD"
+                android:textSize="14sp" />
+
+            <!-- AI 思考提示 -->
+            <TextView
+                android:id="@+id/tv_ai_thinking"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font8"
+                android:gravity="center"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:text="对方正在思考..."
+                android:textColor="#DEB887"
+                android:textSize="13sp"
+                android:visibility="gone" />
+
+            <!-- 对话列表 -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_messages"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:clipToPadding="false"
+                android:padding="12dp" />
+
+            <!-- 底部输入区 -->
+            <LinearLayout
+                android:id="@+id/input_area"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#AA2B1B17"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="12dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="8dp">
+
+                <EditText
+                    android:id="@+id/et_input"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/feihua_input_bg"
+                    android:fontFamily="@font/font8"
+                    android:hint="请输入含关键字的诗句..."
+                    android:imeOptions="actionSend"
+                    android:inputType="text"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:singleLine="true"
+                    android:textColor="#FFF8DC"
+                    android:textColorHint="#DEB887"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/btn_send"
+                    android:layout_width="wrap_content"
+                    android:layout_height="44dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/feihua_send_btn_bg"
+                    android:fontFamily="@font/font8"
+                    android:gravity="center"
+                    android:paddingStart="18dp"
+                    android:paddingEnd="18dp"
+                    android:text="吟诗"
+                    android:textColor="#FFF8DC"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ========== 游戏结束：结果区域 ========== -->
+        <LinearLayout
+            android:id="@+id/result_area"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="30dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_result_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font4"
+                android:text="少侠好文采！"
+                android:textColor="#FFD700"
+                android:textSize="32sp" />
+
+            <TextView
+                android:id="@+id/tv_result_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/font8"
+                android:gravity="center"
+                android:lineSpacingExtra="6dp"
+                android:text="关键字：月\n共坚持了 5 个回合"
+                android:textColor="#FFDEAD"
+                android:textSize="17sp" />
+
+            <!-- 再来一局 -->
+            <TextView
+                android:id="@+id/btn_replay"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:background="@drawable/feihua_start_btn_bg"
+                android:fontFamily="@font/font4"
+                android:gravity="center"
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp"
+                android:text="再来一局"
+                android:textColor="#FFF8DC"
+                android:textSize="22sp" />
+
+            <!-- 返回 -->
+            <TextView
+                android:id="@+id/btn_go_back"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/feihua_mode_normal_bg"
+                android:fontFamily="@font/font8"
+                android:gravity="center"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:text="返回"
+                android:textColor="#DEB887"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

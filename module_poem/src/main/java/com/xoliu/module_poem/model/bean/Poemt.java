@@ -2,236 +2,111 @@ package com.xoliu.module_poem.model.bean;
 
 import com.google.gson.annotations.SerializedName;
 
-
 /***
- * 换新的api
- * @return
+ * 今日诗词 API Bean (v1简版)
+ * API: https://v1.jinrishici.com/all.json
+ *
+ * 返回格式（扁平结构，非常简单）:
+ * {
+ *   "content": "莫惊鸥鹭，四桥尽是，老子经行处。",
+ *   "origin": "青玉案·送伯固归吴中",
+ *   "author": "苏轼",
+ *   "category": "古诗文-动物-写鸟"
+ * }
+ *
+ * 为了兼容旧代码（fragment_viewpager_item 中调用 poem.getData().getSentence() 等），
+ * 保留了 getData() 返回 this 自身包装的 Data 对象。
+ *
  * @author xoliu
  * @create 24-1-28
  **/
 
-/*
-{
-    "code": 0,
-    "data": {
-        "author": "李觏",
-        "author_pinyin": "ligou",
-        "catalog": "青春",
-        "catalog_pinyin": "qingchun",
-        "ctime": 1556292972,
-        "id": 3833,
-        "name": "秋晚悲怀",
-        "sentence": "渐老多忧百事忙，天寒日短更心伤。",
-        "src_url": "https://so.gushiwen.org/mingju/juv_ebb901ed539f.aspx",
-        "theme": "人生",
-        "theme_pinyin": "rensheng"
-    },
-    "msg": null,
-    "q": {
-        "author": "all",
-        "catalog": "all",
-        "suffix": "json",
-        "theme": "all"
-    }
-}
- **/
-
 public class Poemt {
 
-    @SerializedName("code")
-    private Integer code;
-    @SerializedName("data")
-    private Data data;
-    @SerializedName("msg")
-    private Object msg;
-    @SerializedName("q")
-    private Q q;
+    @SerializedName("content")
+    private String content;
 
-    public Integer getCode() {
-        return code;
-    }
+    @SerializedName("origin")
+    private String origin;
 
-    public void setCode(Integer code) {
-        this.code = code;
-    }
+    @SerializedName("author")
+    private String author;
+
+    @SerializedName("category")
+    private String category;
+
+    // ===== 兼容旧代码：getData() 返回一个内部包装对象 =====
+    private transient Data dataWrapper;
 
     public Data getData() {
-        return data;
+        if (dataWrapper == null) {
+            dataWrapper = new Data(this);
+        }
+        return dataWrapper;
     }
 
-    public void setData(Data data) {
-        this.data = data;
+    // ===== 标准 getter/setter =====
+
+    public String getContent() {
+        return content;
     }
 
-    public Object getMsg() {
-        return msg;
+    public void setContent(String content) {
+        this.content = content;
     }
 
-    public void setMsg(Object msg) {
-        this.msg = msg;
+    public String getOrigin() {
+        return origin;
     }
 
-    public Q getQ() {
-        return q;
+    public void setOrigin(String origin) {
+        this.origin = origin;
     }
 
-    public void setQ(Q q) {
-        this.q = q;
+    public String getAuthor() {
+        return author;
     }
 
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    /***
+     * 内部兼容包装类，让旧代码 poem.getData().getSentence() 等调用不报错
+     */
     public static class Data {
-        @SerializedName("author")
-        private String author;
-        @SerializedName("author_pinyin")
-        private String authorPinyin;
-        @SerializedName("catalog")
-        private String catalog;
-        @SerializedName("catalog_pinyin")
-        private String catalogPinyin;
-        @SerializedName("ctime")
-        private Integer ctime;
-        @SerializedName("id")
-        private Integer id;
-        @SerializedName("name")
-        private String name;
-        @SerializedName("sentence")
-        private String sentence;
-        @SerializedName("src_url")
-        private String srcUrl;
-        @SerializedName("theme")
-        private String theme;
-        @SerializedName("theme_pinyin")
-        private String themePinyin;
+        private final Poemt poemt;
 
-        public String getAuthor() {
-            return author;
+        public Data(Poemt poemt) {
+            this.poemt = poemt;
         }
 
-        public void setAuthor(String author) {
-            this.author = author;
-        }
-
-        public String getAuthorPinyin() {
-            return authorPinyin;
-        }
-
-        public void setAuthorPinyin(String authorPinyin) {
-            this.authorPinyin = authorPinyin;
-        }
-
-        public String getCatalog() {
-            return catalog;
-        }
-
-        public void setCatalog(String catalog) {
-            this.catalog = catalog;
-        }
-
-        public String getCatalogPinyin() {
-            return catalogPinyin;
-        }
-
-        public void setCatalogPinyin(String catalogPinyin) {
-            this.catalogPinyin = catalogPinyin;
-        }
-
-        public Integer getCtime() {
-            return ctime;
-        }
-
-        public void setCtime(Integer ctime) {
-            this.ctime = ctime;
-        }
-
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
+        /** 获取诗句正文 */
         public String getSentence() {
-            return sentence;
+            return poemt.content;
         }
 
-        public void setSentence(String sentence) {
-            this.sentence = sentence;
-        }
-
-        public String getSrcUrl() {
-            return srcUrl;
-        }
-
-        public void setSrcUrl(String srcUrl) {
-            this.srcUrl = srcUrl;
-        }
-
-        public String getTheme() {
-            return theme;
-        }
-
-        public void setTheme(String theme) {
-            this.theme = theme;
-        }
-
-        public String getThemePinyin() {
-            return themePinyin;
-        }
-
-        public void setThemePinyin(String themePinyin) {
-            this.themePinyin = themePinyin;
-        }
-    }
-
-    public static class Q {
-        @SerializedName("author")
-        private String author;
-        @SerializedName("catalog")
-        private String catalog;
-        @SerializedName("suffix")
-        private String suffix;
-        @SerializedName("theme")
-        private String theme;
-
+        /** 获取作者 */
         public String getAuthor() {
-            return author;
+            return poemt.author;
         }
 
-        public void setAuthor(String author) {
-            this.author = author;
+        /** 获取诗名（origin 字段） */
+        public String getName() {
+            return poemt.origin;
         }
 
-        public String getCatalog() {
-            return catalog;
-        }
-
-        public void setCatalog(String catalog) {
-            this.catalog = catalog;
-        }
-
-        public String getSuffix() {
-            return suffix;
-        }
-
-        public void setSuffix(String suffix) {
-            this.suffix = suffix;
-        }
-
-        public String getTheme() {
-            return theme;
-        }
-
-        public void setTheme(String theme) {
-            this.theme = theme;
+        /** 旧 API 有 srcUrl，新 API 没有，返回空字符串 */
+        public String getSrcUrl() {
+            return "";
         }
     }
 }

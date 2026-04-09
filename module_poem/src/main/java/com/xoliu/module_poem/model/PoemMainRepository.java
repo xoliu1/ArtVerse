@@ -85,12 +85,12 @@ public class PoemMainRepository {
     }
 
 
-    //https://v1.hitokoto.cn/?c=i&encode=json 为诗词的数据接口
+    //今日诗词 API (v1简版，纯随机): https://v1.jinrishici.com/all.json
     @SuppressLint("CheckResult")
     public MutableLiveData<Poemt> getPoem(){
         MutableLiveData<Poemt> poemData = new MutableLiveData<>();
         CardService service = NetworkApi.createService(CardService.class);
-        service.getPoem("https://open.saintic.com/api/sentence/").compose(NetworkApi.applySchedulers(new BaseObserver<Poemt>() {
+        service.getPoem("https://v1.jinrishici.com/all.json").compose(NetworkApi.applySchedulers(new BaseObserver<Poemt>() {
             @Override
             public void onSuccess(Poemt poem) {
                 Log.d("TAG", "获取了诗词,正文：" + poem.getData().getSentence());
@@ -101,7 +101,13 @@ public class PoemMainRepository {
 
             @Override
             public void onFailure(Throwable e) {
-                Log.e("TAG", "获取诗词正文失败！");
+                Log.e("TAG", "获取诗词正文失败！" + e.getMessage());
+                // 请求失败时使用兜底默认诗词，避免卡片空白
+                Poemt fallback = new Poemt();
+                fallback.setContent("海上生明月，天涯共此时。");
+                fallback.setAuthor("张九龄");
+                fallback.setOrigin("望月怀远");
+                poemData.postValue(fallback);
             }
         }));
 

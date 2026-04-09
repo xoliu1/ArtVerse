@@ -44,7 +44,8 @@
             android:lineSpacingExtra="4sp"
 
             android:singleLine="false"
-            android:text="锄禾日当午，汗滴禾下土"
+            android:text=""
+            tools:text="锄禾日当午，汗滴禾下土"
             android:textColor="@color/black"
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -59,7 +60,8 @@
             android:layout_marginBottom="-40dp"
 
             android:gravity="center"
-            android:text="刘亮程"
+            android:text=""
+            tools:text="李绅"
             android:textColor="@color/gray"
             android:fontFamily="@font/pomo"
             android:textSize="20sp"
@@ -75,7 +77,8 @@
             android:fontFamily="@font/font2"
 
             android:gravity="center"
-            android:text="《一个人的存在》"
+            android:text=""
+            tools:text="《悯农》"
             android:textColor="@color/gray"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@id/icons_group"

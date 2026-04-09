@@ -165,6 +165,19 @@ public class fragment_viewpager_item extends Fragment {
 //            }
 //        });
 
+        // 先用构造函数传入的静态数据显示，避免 API 未返回时卡片空白
+        if (contentStr != null && !contentStr.isEmpty()) {
+            content.setText(contentStr);
+            content.setGravity(16);
+        }
+        if (authorStr != null && !authorStr.isEmpty()) {
+            author.setText(authorStr);
+        }
+        if (fromStr != null && !fromStr.isEmpty()) {
+            from.setText(fromStr);
+        }
+
+        // API 成功后会覆盖上面的静态数据
         cardViewModel.getPoem().observe(getViewLifecycleOwner(), new Observer<Poemt>() {
             @Override
             public void onChanged(Poemt poem) {

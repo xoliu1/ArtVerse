@@ -27,6 +27,8 @@ import java.util.Random;
 
 import Transformer.FadeInOutPageTransformer;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+
 
 /***
  * 诗句界面的主界面
@@ -165,6 +167,11 @@ public class fragment_poem_main extends Fragment {
         Glide.with(this).load(R.drawable.temp5).into((ImageView) view.findViewById(R.id.ImageView1));
         Glide.with(this).load(R.drawable.temp1).into((ImageView) view.findViewById(R.id.ImageView2));
         Glide.with(this).load(R.drawable.temp7).into((ImageView) view.findViewById(R.id.ImageView3));
+
+        // 飞花令卡片点击跳转
+        view.findViewById(R.id.poemCardView).setOnClickListener(v -> {
+            ARouter.getInstance().build("/poem/feihua").navigation();
+        });
 
     }
 }

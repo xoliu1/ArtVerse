@@ -35,7 +35,6 @@
             android:textColor="@color/cornflowerblue"
             android:layout_marginStart="10dp"
             android:text="周某人"
-            android:fontFamily="@font/pomo"
             android:textSize="18sp"/>
         <TextView
             android:id="@+id/comment_time"
@@ -51,7 +50,6 @@
             android:layout_height="match_parent"
             android:layout_marginTop="10dp"
             android:textSize="15sp"
-            android:fontFamily="@font/font8"
             android:textColor="@color/black"
             android:text="阿斯达我去问的钱王拳王到期\n打的哇哇的缺乏"/>
 

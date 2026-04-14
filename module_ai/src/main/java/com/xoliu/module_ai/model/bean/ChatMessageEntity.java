@@ -15,6 +15,7 @@ public class ChatMessageEntity {
     private String role;      // "user" 或 "assistant"
     private String content;   // 消息内容
     private long timestamp;   // 发送时间戳
+    private String poetName;  // 所属诗人名称
 
     public ChatMessageEntity(String role, String content, long timestamp) {
         this.role = role;
@@ -34,4 +35,7 @@ public class ChatMessageEntity {
 
     public long getTimestamp() { return timestamp; }
     public void setTimestamp(long timestamp) { this.timestamp = timestamp; }
+
+    public String getPoetName() { return poetName; }
+    public void setPoetName(String poetName) { this.poetName = poetName; }
 }

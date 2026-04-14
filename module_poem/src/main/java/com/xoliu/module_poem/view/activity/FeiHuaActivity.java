@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.xoliu.common.utils.FontCache;
 import com.xoliu.module_poem.R;
 import com.xoliu.module_poem.adapter.FeiHuaMsgAdapter;
 import com.xoliu.module_poem.bean.FeiHuaMsg;
@@ -172,6 +173,31 @@ public class FeiHuaActivity extends AppCompatActivity {
         lm.setStackFromEnd(false);
         rvMessages.setLayoutManager(lm);
         rvMessages.setAdapter(adapter);
+
+        // 应用自定义字体（从 assets 加载，避免 OOM）
+        TextView tvTitle = findViewById(R.id.tv_title);
+        TextView tvTodayLabel = findViewById(R.id.tv_today_label);
+        TextView tvDifficultyLabel = findViewById(R.id.tv_difficulty_label);
+
+        FontCache.apply(tvTitle, this, FontCache.FONT4);
+        FontCache.apply(tvKeyword, this, FontCache.FONT4);
+        FontCache.apply(btnStart, this, FontCache.FONT4);
+        FontCache.apply(btnReplay, this, FontCache.FONT4);
+
+        FontCache.apply(tvTodayLabel, this, FontCache.FONT8);
+        FontCache.apply(btnChangeKeyword, this, FontCache.FONT8);
+        FontCache.apply(tvDifficultyLabel, this, FontCache.FONT8);
+        FontCache.apply(btnModeNormal, this, FontCache.FONT8);
+        FontCache.apply(btnModeHard, this, FontCache.FONT8);
+        FontCache.apply(tvGameKeyword, this, FontCache.FONT8);
+        FontCache.apply(tvRound, this, FontCache.FONT8);
+        FontCache.apply(tvCountdown, this, FontCache.FONT8);
+        FontCache.apply(tvAiThinking, this, FontCache.FONT8);
+        FontCache.apply(etInput, this, FontCache.FONT8);
+        FontCache.apply(btnSend, this, FontCache.FONT8);
+        FontCache.apply(tvResultTitle, this, FontCache.FONT8);
+        FontCache.apply(tvResultDetail, this, FontCache.FONT8);
+        FontCache.apply(btnGoBack, this, FontCache.FONT8);
     }
 
     private void setupListeners() {

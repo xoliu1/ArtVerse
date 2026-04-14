@@ -83,4 +83,3 @@ public class ArtCardAdapter extends RecyclerView.Adapter<ArtCardAdapter.ViewHold
         }
     }
 }
-

@@ -35,10 +35,10 @@
                 app:tint="#FFF8DC" />
 
             <TextView
+                android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:fontFamily="@font/font4"
                 android:text="飞 花 令"
                 android:textColor="#FFF8DC"
                 android:textSize="26sp" />
@@ -70,9 +70,9 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tv_today_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/font8"
                         android:text="今日飞花"
                         android:textColor="#FFDEAD"
                         android:textSize="16sp" />
@@ -82,7 +82,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:fontFamily="@font/font4"
                         android:text="月"
                         android:textColor="#FFD700"
                         android:textSize="72sp" />
@@ -93,7 +92,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:background="?attr/selectableItemBackground"
-                        android:fontFamily="@font/font8"
                         android:paddingStart="16dp"
                         android:paddingTop="4dp"
                         android:paddingEnd="16dp"
@@ -107,10 +105,10 @@
 
             <!-- 难度选择 -->
             <TextView
+                android:id="@+id/tv_difficulty_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:fontFamily="@font/font8"
                 android:text="选择难度"
                 android:textColor="#FFF8DC"
                 android:textSize="16sp" />
@@ -127,7 +125,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/feihua_mode_selected_bg"
-                    android:fontFamily="@font/font8"
                     android:paddingStart="24dp"
                     android:paddingTop="10dp"
                     android:paddingEnd="24dp"
@@ -145,7 +142,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/feihua_mode_normal_bg"
-                    android:fontFamily="@font/font8"
                     android:paddingStart="24dp"
                     android:paddingTop="10dp"
                     android:paddingEnd="24dp"
@@ -162,7 +158,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/feihua_start_btn_bg"
-                android:fontFamily="@font/font4"
                 android:gravity="center"
                 android:paddingTop="14dp"
                 android:paddingBottom="14dp"
@@ -197,7 +192,6 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:fontFamily="@font/font4"
                     android:text="关键字：月"
                     android:textColor="#FFD700"
                     android:textSize="20sp" />
@@ -206,7 +200,6 @@
                     android:id="@+id/tv_round"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/font8"
                     android:text="第 1 回合"
                     android:textColor="#FFF8DC"
                     android:textSize="15sp" />
@@ -231,7 +224,6 @@
                 android:id="@+id/tv_countdown"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/font8"
                 android:gravity="center"
                 android:paddingTop="4dp"
                 android:paddingBottom="4dp"
@@ -244,7 +236,6 @@
                 android:id="@+id/tv_ai_thinking"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/font8"
                 android:gravity="center"
                 android:paddingTop="4dp"
                 android:paddingBottom="4dp"
@@ -281,7 +272,6 @@
                     android:layout_height="44dp"
                     android:layout_weight="1"
                     android:background="@drawable/feihua_input_bg"
-                    android:fontFamily="@font/font8"
                     android:hint="请输入含关键字的诗句..."
                     android:imeOptions="actionSend"
                     android:inputType="text"
@@ -298,7 +288,6 @@
                     android:layout_height="44dp"
                     android:layout_marginStart="8dp"
                     android:background="@drawable/feihua_send_btn_bg"
-                    android:fontFamily="@font/font8"
                     android:gravity="center"
                     android:paddingStart="18dp"
                     android:paddingEnd="18dp"
@@ -323,7 +312,6 @@
                 android:id="@+id/tv_result_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/font4"
                 android:text="少侠好文采！"
                 android:textColor="#FFD700"
                 android:textSize="32sp" />
@@ -333,7 +321,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:fontFamily="@font/font8"
                 android:gravity="center"
                 android:lineSpacingExtra="6dp"
                 android:text="关键字：月\n共坚持了 5 个回合"
@@ -347,7 +334,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="36dp"
                 android:background="@drawable/feihua_start_btn_bg"
-                android:fontFamily="@font/font4"
                 android:gravity="center"
                 android:paddingTop="14dp"
                 android:paddingBottom="14dp"
@@ -362,7 +348,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/feihua_mode_normal_bg"
-                android:fontFamily="@font/font8"
                 android:gravity="center"
                 android:paddingTop="12dp"
                 android:paddingBottom="12dp"

@@ -20,9 +20,18 @@ public interface ChatMessageDao {
     @Query("SELECT * FROM chat_messages ORDER BY timestamp ASC")
     List<ChatMessageEntity> getAllMessages();
 
+    @Query("SELECT * FROM chat_messages WHERE poetName = :poetName ORDER BY timestamp ASC")
+    List<ChatMessageEntity> getMessagesByPoet(String poetName);
+
     @Query("DELETE FROM chat_messages")
     void deleteAll();
 
+    @Query("DELETE FROM chat_messages WHERE poetName = :poetName")
+    void deleteByPoet(String poetName);
+
     @Query("SELECT COUNT(*) FROM chat_messages")
     int getMessageCount();
+
+    @Query("SELECT COUNT(*) FROM chat_messages WHERE poetName = :poetName")
+    int getMessageCountByPoet(String poetName);
 }

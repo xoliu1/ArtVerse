@@ -66,6 +66,15 @@ public class ChatAI {
         this.messages = new ArrayList<>();
     }
 
+    /**
+     * 重置对话上下文，切换诗人时调用
+     */
+    public void resetContext() {
+        this.messages = new ArrayList<>();
+        this.requestBody = new HashMap<>();
+        this.times = 1;
+    }
+
     public String addAndCall(String content) throws InterruptedException {
         addMsg(content);
         return chatCall();

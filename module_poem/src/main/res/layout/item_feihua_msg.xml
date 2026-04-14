@@ -25,7 +25,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/font4"
                 android:text="诗"
                 android:textColor="#FFF8DC"
                 android:textSize="18sp" />
@@ -47,7 +46,6 @@
                 android:id="@+id/tv_ai_msg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/font8"
                 android:lineSpacingExtra="4dp"
                 android:textColor="#FFF8DC"
                 android:textSize="16sp" />
@@ -87,7 +85,6 @@
                 android:id="@+id/tv_player_msg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/font8"
                 android:lineSpacingExtra="4dp"
                 android:textColor="#3E2723"
                 android:textSize="16sp" />
@@ -112,7 +109,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/font4"
                 android:text="侠"
                 android:textColor="#3E2723"
                 android:textSize="18sp" />
@@ -126,7 +122,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/feihua_system_msg_bg"
-        android:fontFamily="@font/font8"
         android:paddingStart="16dp"
         android:paddingTop="4dp"
         android:paddingEnd="16dp"

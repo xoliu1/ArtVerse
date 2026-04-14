@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.xoliu.module_music.R;
 import com.xoliu.module_music.model.bean.Song;
+import com.xoliu.common.utils.FontCache;
 
 import java.util.List;
 
@@ -39,6 +40,8 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder
         // 设置歌曲来源
         holder.songFromTextView.setText(song.getFrom());
 
+        // 应用自定义字体
+        FontCache.apply(holder.songNameTextView, holder.itemView.getContext(), FontCache.FONT11);
 
     }
 

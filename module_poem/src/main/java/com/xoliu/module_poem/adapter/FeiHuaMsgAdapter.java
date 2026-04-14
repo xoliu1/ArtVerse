@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.xoliu.module_poem.R;
 import com.xoliu.module_poem.bean.FeiHuaMsg;
+import com.xoliu.common.utils.FontCache;
 
 import java.util.List;
 
@@ -35,6 +36,11 @@ public class FeiHuaMsgAdapter extends RecyclerView.Adapter<FeiHuaMsgAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         FeiHuaMsg msg = messages.get(position);
+
+        // 应用字体
+        FontCache.apply(holder.tvAiMsg, context, FontCache.FONT8);
+        FontCache.apply(holder.tvPlayerMsg, context, FontCache.FONT8);
+        FontCache.apply(holder.tvSystemMsg, context, FontCache.FONT8);
 
         // 先全部隐藏
         holder.layoutAi.setVisibility(View.GONE);

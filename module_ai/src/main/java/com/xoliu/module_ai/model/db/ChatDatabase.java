@@ -12,7 +12,7 @@ import com.xoliu.module_ai.model.dao.ChatMessageDao;
 /**
  * Room Database - 聊天数据库
  */
-@Database(entities = {ChatMessageEntity.class}, version = 1, exportSchema = false)
+@Database(entities = {ChatMessageEntity.class}, version = 2, exportSchema = false)
 public abstract class ChatDatabase extends RoomDatabase {
 
     public abstract ChatMessageDao chatMessageDao();
@@ -27,7 +27,7 @@ public abstract class ChatDatabase extends RoomDatabase {
                             context.getApplicationContext(),
                             ChatDatabase.class,
                             "chat_database"
-                    ).build();
+                    ).fallbackToDestructiveMigration().build();
                 }
             }
         }

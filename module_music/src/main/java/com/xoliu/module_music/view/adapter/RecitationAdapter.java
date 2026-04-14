@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.xoliu.module_music.R;
 import com.xoliu.module_music.model.bean.Recitation;
+import com.xoliu.common.utils.FontCache;
 
 import java.util.List;
 
@@ -33,6 +34,9 @@ public class RecitationAdapter extends RecyclerView.Adapter<RecitationAdapter.My
         Recitation recitation = itemList.get(position);
         holder.img.setImageResource(recitation.getBgImgId());
         holder.oriName.setText(recitation.getName());
+
+        // 应用自定义字体
+        FontCache.apply(holder.oriName, holder.itemView.getContext(), FontCache.FONT11);
     }
 
     @Override

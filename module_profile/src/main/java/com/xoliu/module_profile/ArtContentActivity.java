@@ -12,6 +12,7 @@ import androidx.room.Room;
 
 
 import com.xoliu.module_profile.databinding.ActivityArtContentBinding;
+import com.xoliu.common.utils.FontCache;
 
 import db.AppDatabase;
 import db.bean.ArtContent;
@@ -50,6 +51,13 @@ public class ArtContentActivity extends AppCompatActivity {
         binding.artContentSize.setText(artContent.getSize());
         binding.artContentInfo.setText(artContent.getContent());
         ViewCompat.setTransitionName(binding.artContentImg, "name");
+
+        // 应用自定义字体
+        FontCache.apply(binding.artContentName, this, FontCache.FONT8);
+        FontCache.apply(binding.artContentAuthor, this, FontCache.FONT8);
+        FontCache.apply(binding.artContentYear, this, FontCache.FONT8);
+        FontCache.apply(binding.artContentMaterial, this, FontCache.FONT8);
+        FontCache.apply(binding.artContentSize, this, FontCache.FONT8);
 
         //设置返回
         binding.btnClose.setOnClickListener(v -> {

@@ -59,7 +59,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:fontFamily="@font/font8"
                         android:gravity="center"
                         android:padding="10dp"
                         android:text="请输入想要生成的句头,\n我将为你生成对应的藏头诗"

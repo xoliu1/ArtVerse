@@ -39,7 +39,6 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="110dp"
             android:ellipsize="end"
-            android:fontFamily="@font/font8"
             android:gravity="center"
             android:lineSpacingExtra="4sp"
 
@@ -63,7 +62,6 @@
             android:text=""
             tools:text="李绅"
             android:textColor="@color/gray"
-            android:fontFamily="@font/pomo"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@id/tv_from"
             app:layout_constraintEnd_toEndOf="parent"

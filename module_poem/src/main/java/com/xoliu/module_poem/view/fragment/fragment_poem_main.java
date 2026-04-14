@@ -11,9 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.bumptech.glide.Glide;
+import com.xoliu.common.utils.FontCache;
 import com.scwang.smart.refresh.header.BezierRadarHeader;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.sdsmdg.tastytoast.TastyToast;
@@ -167,6 +169,12 @@ public class fragment_poem_main extends Fragment {
         Glide.with(this).load(R.drawable.temp5).into((ImageView) view.findViewById(R.id.ImageView1));
         Glide.with(this).load(R.drawable.temp1).into((ImageView) view.findViewById(R.id.ImageView2));
         Glide.with(this).load(R.drawable.temp7).into((ImageView) view.findViewById(R.id.ImageView3));
+
+        // 应用自定义字体
+        TextView gameTitle = view.findViewById(R.id.gameTitle);
+        TextView gameAuthor = view.findViewById(R.id.gameAuthor);
+        FontCache.apply(gameTitle, requireContext(), FontCache.FONT4);
+        FontCache.apply(gameAuthor, requireContext(), FontCache.FONT8);
 
         // 飞花令卡片点击跳转
         view.findViewById(R.id.poemCardView).setOnClickListener(v -> {

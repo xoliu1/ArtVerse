@@ -25,7 +25,6 @@
             android:layout_gravity="center"
             android:text="原创名字"
             android:textSize="24sp"
-            android:fontFamily="@font/font11"
             android:textColor="@color/darkgreen"/>
 
         <ImageView

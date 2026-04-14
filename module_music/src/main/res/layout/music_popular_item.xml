@@ -29,7 +29,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
-                android:fontFamily="@font/font11"
                 android:text="歌曲名字"/>
 
             <TextView

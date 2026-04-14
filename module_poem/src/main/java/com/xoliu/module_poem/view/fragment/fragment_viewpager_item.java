@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import com.xoliu.module_poem.R;
 import com.xoliu.module_poem.model.bean.Poemt;
+import com.xoliu.common.utils.FontCache;
 import com.xoliu.module_poem.view.activity.PoemInfo;
 import com.xoliu.module_poem.view.dialog.CommentsSheetDialog;
 import com.xoliu.module_poem.view.dialog.ShareDialog;
@@ -113,6 +114,10 @@ public class fragment_viewpager_item extends Fragment {
         ImageButton btn_share = (ImageButton) view.findViewById(R.id.btn_share);
         TextView from = view.findViewById(R.id.tv_from);
         ImageView btn_src = view.findViewById(R.id.btn_src);
+
+        // 应用自定义字体
+        FontCache.apply(content, requireContext(), FontCache.FONT8);
+        FontCache.apply(author, requireContext(), FontCache.POMO);
 
         //设置图片
 //        Retrofit retrofit = new Retrofit.Builder()

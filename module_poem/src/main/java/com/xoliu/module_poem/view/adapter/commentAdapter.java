@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.xoliu.module_poem.R;
 import com.xoliu.module_poem.model.bean.commentItem;
+import com.xoliu.common.utils.FontCache;
 
 import java.util.List;
 
@@ -42,6 +43,10 @@ public class commentAdapter extends RecyclerView.Adapter<commentAdapter.ViewHold
         holder.commentTime.setText(comment.commentTime);
         holder.userName.setText(comment.userName);
         holder.commentContent.setText(comment.commentContent);
+
+        // 应用自定义字体
+        FontCache.apply(holder.userName, mContext, FontCache.POMO);
+        FontCache.apply(holder.commentContent, mContext, FontCache.FONT8);
 
 
         //设置点击事件

@@ -25,6 +25,9 @@
         <activity
             android:name=".GalleryDetailActivity"
             android:exported="false" />
+        <activity
+            android:name=".FansActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

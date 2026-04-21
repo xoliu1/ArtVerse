@@ -2,6 +2,7 @@ package com.xoliu.module_art;
 
 
 import db.bean.ArtContent;
+import db.bean.GalleryBean;
 
 /***
  * 艺术画廊卡片的实体对象(已实现序列化)
@@ -11,14 +12,19 @@ import db.bean.ArtContent;
  **/
 
 public class ArtCard{
+
+    // 卡片类型常量
+    public static final int TYPE_MASTERPIECE = 0;   // 名作
+    public static final int TYPE_PERSONAL = 2;       // 个人作品
+
+    private int cardType = TYPE_MASTERPIECE; // 默认是名作
     private int artImgId;
     private String artAuthor;
     private String artName;
-
+    private String imageUrl;  // 网络图片URL（个人作品用）
 
     private ArtContent artContent;
-
-
+    private GalleryBean galleryBean; // 个人作品的原始数据
 
 
     public ArtCard(int artImgId, String artAuthor, String artName, ArtContent artContent) {
@@ -26,6 +32,7 @@ public class ArtCard{
         this.artAuthor = artAuthor;
         this.artName = artName;
         this.artContent = artContent;
+        this.cardType = TYPE_MASTERPIECE;
     }
 
 
@@ -34,6 +41,7 @@ public class ArtCard{
         this.artImgId = artImgId;
         this.artAuthor = artAuthor;
         this.artName = artName;
+        this.cardType = TYPE_MASTERPIECE;
         this.artContent = new ArtContent();
         this.artContent.setArtContentImg(artImgId);
         this.artContent.setName(name);
@@ -44,7 +52,30 @@ public class ArtCard{
         this.artContent.setContent(content);
     }
 
+    /**
+     * 从 GalleryBean 构造个人作品卡片
+     */
+    public static ArtCard fromGalleryBean(GalleryBean bean) {
+        ArtCard card = new ArtCard();
+        card.cardType = TYPE_PERSONAL;
+        card.artName = bean.getTitle();
+        card.artAuthor = bean.getCreator() != null && !bean.getCreator().isEmpty()
+                ? bean.getCreator() : bean.getUsername();
+        card.imageUrl = bean.getImageUrl();
+        card.galleryBean = bean;
 
+        // 同时构建 ArtContent 以便详情页复用
+        ArtContent ac = new ArtContent();
+        ac.setName(bean.getTitle());
+        ac.setCreator(bean.getCreator() != null ? bean.getCreator() : "");
+        ac.setYear(bean.getYear() != null ? bean.getYear() : "");
+        ac.setMaterial(bean.getMaterial() != null ? bean.getMaterial() : "");
+        ac.setSize(bean.getSize() != null ? bean.getSize() : "");
+        ac.setContent(bean.getDescription() != null ? bean.getDescription() : "");
+        card.artContent = ac;
+
+        return card;
+    }
 
 
 
@@ -53,6 +84,29 @@ public class ArtCard{
     }
 
 
+    public int getCardType() {
+        return cardType;
+    }
+
+    public void setCardType(int cardType) {
+        this.cardType = cardType;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public GalleryBean getGalleryBean() {
+        return galleryBean;
+    }
+
+    public void setGalleryBean(GalleryBean galleryBean) {
+        this.galleryBean = galleryBean;
+    }
 
     public ArtContent getArtContent() {
         return artContent;
@@ -85,12 +139,5 @@ public class ArtCard{
     public void setArtName(String artName) {
         this.artName = artName;
     }
-
-
-
-
-
-
-
 
 }

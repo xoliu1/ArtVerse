@@ -6,6 +6,9 @@
         <activity
             android:name=".ArtContentActivity"
             android:exported="false" />
+        <activity
+            android:name=".ArtPersonalDetailActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

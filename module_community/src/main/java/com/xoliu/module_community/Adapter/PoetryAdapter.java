@@ -25,11 +25,23 @@ import java.util.List;
 
 public class PoetryAdapter extends RecyclerView.Adapter<PoetryAdapter.PoetryItem>{
 
+    /**
+     * 关注按钮点击回调接口
+     */
+    public interface OnFollowClickListener {
+        void onFollowClick(player item, int position, boolean isCurrentlyFollowed);
+    }
+
     List<Integer> integerList;
     Context context;
     List<player> playerList;
+    OnFollowClickListener followClickListener;
 
     public PoetryAdapter(Context context, List<player> playerList) {
+        this(context, playerList, null);
+    }
+
+    public PoetryAdapter(Context context, List<player> playerList, OnFollowClickListener listener) {
         integerList = new ArrayList<>();
         integerList.add(R.drawable.tx1);
         integerList.add(R.drawable.tx2);
@@ -40,6 +52,7 @@ public class PoetryAdapter extends RecyclerView.Adapter<PoetryAdapter.PoetryItem
         integerList.add(R.drawable.tx7);
         this.context = context;
         this.playerList = playerList;
+        this.followClickListener = listener;
     }
 
     @NonNull
@@ -95,19 +108,19 @@ public class PoetryAdapter extends RecyclerView.Adapter<PoetryAdapter.PoetryItem
         // 显示内容（XML中已设置 maxLines=3 + ellipsize=end，自动截断）
         holder.textViewT.setText(content);
 
+        // 根据数据模型中的关注状态设置按钮样式
+        updateFollowButton(holder, item.isFollowed());
+
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(holder.pop){
-                    holder.button.setText("+关注");
-                    holder.button.setTextColor(0xFF8B6B4A);
-                    holder.button.setBackgroundResource(R.drawable.bg_follow_btn);
-                    holder.pop = false;
-                }else {
-                    holder.button.setText("已关注");
-                    holder.button.setTextColor(0xFFFFFFFF);
-                    holder.button.setBackgroundResource(R.drawable.bg_followed_btn);
-                    holder.pop = true;
+                if (followClickListener != null) {
+                    // 回调给 Activity 处理真实的关注/取消关注逻辑
+                    followClickListener.onFollowClick(item, holder.getAdapterPosition(), item.isFollowed());
+                } else {
+                    // 兜底：如果没设置回调，走本地切换（向后兼容）
+                    item.setFollowed(!item.isFollowed());
+                    updateFollowButton(holder, item.isFollowed());
                 }
             }
         });
@@ -116,6 +129,31 @@ public class PoetryAdapter extends RecyclerView.Adapter<PoetryAdapter.PoetryItem
     @Override
     public int getItemCount() {
         return playerList == null ? 0 : playerList.size();
+    }
+
+    /**
+     * 更新关注按钮的视觉状态
+     */
+    private void updateFollowButton(PoetryItem holder, boolean isFollowed) {
+        if (isFollowed) {
+            holder.button.setText("已关注");
+            holder.button.setTextColor(0xFFFFFFFF);
+            holder.button.setBackgroundResource(R.drawable.bg_followed_btn);
+        } else {
+            holder.button.setText("+关注");
+            holder.button.setTextColor(0xFF8B6B4A);
+            holder.button.setBackgroundResource(R.drawable.bg_follow_btn);
+        }
+    }
+
+    /**
+     * 外部调用：更新指定位置的关注状态
+     */
+    public void updateFollowStatus(int position, boolean isFollowed) {
+        if (position >= 0 && position < playerList.size()) {
+            playerList.get(position).setFollowed(isFollowed);
+            notifyItemChanged(position);
+        }
     }
 
     class PoetryItem extends RecyclerView.ViewHolder{
@@ -127,8 +165,6 @@ public class PoetryAdapter extends RecyclerView.Adapter<PoetryAdapter.PoetryItem
         TextView textViewT;
 
         Button button;
-
-        Boolean pop = false;
 
         public PoetryItem(@NonNull View itemView) {
             super(itemView);

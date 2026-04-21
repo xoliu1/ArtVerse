@@ -8,18 +8,96 @@
     android:orientation="vertical"
     android:background="#F6F0F0">
 
+    <!-- 顶部切换按钮 -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
+        android:background="@drawable/bg_switch_container"
+        android:padding="3dp">
 
+        <TextView
+            android:id="@+id/btn_masterpiece"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="名作鉴赏"
+            android:textSize="14sp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/bg_switch_selected"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:gravity="center" />
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/art_viewPager2"
+        <TextView
+            android:id="@+id/btn_personal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="个人作品"
+            android:textSize="14sp"
+            android:textColor="#888888"
+            android:background="@android:color/transparent"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="50dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:padding="10dp"
-         />
+        android:layout_marginTop="4dp">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/art_viewPager2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:padding="10dp" />
+
+        <!-- 个人作品为空时的提示 -->
+        <LinearLayout
+            android:id="@+id/empty_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🎨"
+                android:textSize="48sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="暂无个人作品"
+                android:textSize="16sp"
+                android:textColor="#AAAAAA"
+                android:layout_marginTop="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="去个人主页的画廊上传你的第一幅作品吧"
+                android:textSize="13sp"
+                android:textColor="#CCCCCC"
+                android:layout_marginTop="6dp" />
+
+        </LinearLayout>
+
+    </FrameLayout>
 
 </LinearLayout>

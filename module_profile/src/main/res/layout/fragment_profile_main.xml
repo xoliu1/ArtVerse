@@ -146,24 +146,28 @@
                     android:text="发现"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/profileFans"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:gravity="center"
                 android:layout_height="match_parent"
-                android:background="@color/white">
+                android:background="@color/white"
+                android:clickable="true"
+                android:focusable="true">
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@drawable/thank"/>
                 <TextView
+                    android:id="@+id/tvFansLabel"
                     android:layout_marginTop="5dp"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:textColor="@color/peru"
                     android:gravity="center"
                     android:fontFamily="@font/font2"
-                    android:text="感谢"/>
+                    android:text="粉丝"/>
             </LinearLayout>
 
 

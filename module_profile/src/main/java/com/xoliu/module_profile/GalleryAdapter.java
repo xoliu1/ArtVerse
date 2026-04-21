@@ -14,7 +14,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.xoliu.module_profile.gallery.GalleryBean;
+import db.bean.GalleryBean;
 
 import java.util.List;
 

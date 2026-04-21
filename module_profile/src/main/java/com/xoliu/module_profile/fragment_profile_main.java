@@ -38,8 +38,8 @@ import com.xoliu.module_profile.anthology.AnthologyApi;
 import com.xoliu.module_profile.anthology.AnthologyBean;
 import com.xoliu.module_profile.assistant.AssistantChatActivity;
 import com.xoliu.module_profile.databinding.FragmentProfileMainBinding;
-import com.xoliu.module_profile.gallery.GalleryApi;
-import com.xoliu.module_profile.gallery.GalleryBean;
+import utils.GalleryApi;
+import db.bean.GalleryBean;
 import com.xoliu.module_profile.note.NoteListActivity;
 
 import org.json.JSONObject;
@@ -173,6 +173,11 @@ public class fragment_profile_main extends Fragment {
             intent.putExtra(WebViewActivity.EXTRA_URL, "https://www.thechinajourney.com/zh_cn/%E6%99%AF%E7%82%B9/");
             intent.putExtra(WebViewActivity.EXTRA_TITLE, "周边");
             startActivity(intent);
+        });
+
+        // 设置"粉丝"点击事件
+        binding.profileFans.setOnClickListener(v -> {
+            startActivity(new Intent(getContext(), FansActivity.class));
         });
 
         // 退出登录

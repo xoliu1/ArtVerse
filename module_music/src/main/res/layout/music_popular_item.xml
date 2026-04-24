@@ -43,11 +43,14 @@
         </LinearLayout>
 
         <ImageView
+            android:id="@+id/btnPlay"
             android:layout_weight="1"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
-            android:src="@drawable/btn_on"/>
+            android:src="@drawable/btn_on"
+            android:clickable="true"
+            android:focusable="true"/>
 
     </LinearLayout>
 

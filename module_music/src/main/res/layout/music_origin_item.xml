@@ -28,11 +28,14 @@
             android:textColor="@color/darkgreen"/>
 
         <ImageView
+            android:id="@+id/btnPlay"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/btn_on2"
             android:layout_gravity="bottom|end"
             android:layout_margin="10dp"
+            android:clickable="true"
+            android:focusable="true"
             />
 
     </androidx.cardview.widget.CardView>

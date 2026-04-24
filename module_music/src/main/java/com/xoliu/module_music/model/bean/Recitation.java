@@ -6,6 +6,8 @@ public class Recitation {
 
     private int bgImgId;
 
+    private int audioResId;
+
     public String getName() {
         return Name;
     }
@@ -22,8 +24,23 @@ public class Recitation {
         this.bgImgId = bgImgId;
     }
 
+    public int getAudioResId() {
+        return audioResId;
+    }
+
+    public void setAudioResId(int audioResId) {
+        this.audioResId = audioResId;
+    }
+
     public Recitation(String name, int bgImgId) {
         Name = name;
         this.bgImgId = bgImgId;
+        this.audioResId = 0;
+    }
+
+    public Recitation(String name, int bgImgId, int audioResId) {
+        Name = name;
+        this.bgImgId = bgImgId;
+        this.audioResId = audioResId;
     }
 }

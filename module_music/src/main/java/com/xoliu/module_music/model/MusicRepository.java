@@ -15,16 +15,16 @@ public class MusicRepository {
     private List<Recitation> recitations= new ArrayList<>();;
 
     private MusicRepository() {
-        songs.add(new Song("氓","佚名 〔先秦〕"));
-        songs.add(new Song("月夜忆舍弟","杜甫 〔唐代〕"));
-        songs.add(new Song("江南","汉乐府 〔两汉〕"));
-        songs.add(new Song("如意娘","武则天 〔唐代〕"));
-        recitations.add(new Recitation("朗诵-将近酒", R.drawable.bg_1));
-        recitations.add(new Recitation("朗诵-浣溪沙·谁念西风独自凉", R.drawable.bg_2));
-        recitations.add(new Recitation("作画-折桂令·春情", R.drawable.bg_3));
-        recitations.add(new Recitation("唱曲-蝶恋花·伫倚危楼风细细", R.drawable.bg_4));
-        recitations.add(new Recitation("朗诵-三五七言", R.drawable.bg_5));
-        recitations.add(new Recitation("吟诗-江南", R.drawable.bg_6));
+        songs.add(new Song("氓","佚名 〔先秦〕", R.raw.libai_jiangjinjiu));
+        songs.add(new Song("月夜忆舍弟","杜甫 〔唐代〕", R.raw.libai_jiangjinjiu));
+        songs.add(new Song("江南","汉乐府 〔两汉〕", R.raw.libai_jiangjinjiu));
+        songs.add(new Song("如意娘","武则天 〔唐代〕", R.raw.libai_jiangjinjiu));
+        recitations.add(new Recitation("朗诵-将近酒", R.drawable.bg_1, R.raw.libai_jiangjinjiu));
+        recitations.add(new Recitation("朗诵-浣溪沙·谁念西风独自凉", R.drawable.bg_2, R.raw.libai_jiangjinjiu));
+        recitations.add(new Recitation("作画-折桂令·春情", R.drawable.bg_3, R.raw.libai_jiangjinjiu));
+        recitations.add(new Recitation("唱曲-蝶恋花·伫倚危楼风细细", R.drawable.bg_4, R.raw.libai_jiangjinjiu));
+        recitations.add(new Recitation("朗诵-三五七言", R.drawable.bg_5, R.raw.libai_jiangjinjiu));
+        recitations.add(new Recitation("吟诗-江南", R.drawable.bg_6, R.raw.libai_jiangjinjiu));
     }
 
     public static MusicRepository getInstance() {

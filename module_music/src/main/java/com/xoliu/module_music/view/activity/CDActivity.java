@@ -76,7 +76,12 @@ public class CDActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        mediaPlayer = MediaPlayer.create(CDActivity.this, R.raw.libai_jiangjinjiu);
+        // 接收外部传入的音频资源 ID，如果没有传入则使用默认音频
+        int audioResId = getIntent().getIntExtra("audio_res_id", 0);
+        if (audioResId == 0) {
+            audioResId = R.raw.libai_jiangjinjiu;
+        }
+        mediaPlayer = MediaPlayer.create(CDActivity.this, audioResId);
     }
 
     RotateAnimation animation;

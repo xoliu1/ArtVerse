@@ -13,7 +13,7 @@ import okhttp3.Response;
 
 public class GalleryApi {
     private static final String TAG = "GalleryApi";
-    private static final String BASE_URL = "http://10.0.2.2:9999/api/gallery";
+    private static final String BASE_URL = "http://127.0.0.1:9999/api/gallery";
 
     public static final int MSG_GET_MY = 401;
     public static final int MSG_CREATE = 402;

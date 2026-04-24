@@ -15,7 +15,7 @@ import okhttp3.Response;
 
 public class FollowApi {
     private static final String TAG = "FollowApi";
-    private static final String BASE_URL = "http://10.0.2.2:9999/api";
+    private static final String BASE_URL = "http://127.0.0.1:9999/api";
 
     public static final int MSG_FOLLOW = 401;
     public static final int MSG_UNFOLLOW = 402;

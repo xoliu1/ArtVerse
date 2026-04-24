@@ -22,7 +22,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="邮箱"
+            android:hint="用户名"
             android:id="@+id/email0"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"

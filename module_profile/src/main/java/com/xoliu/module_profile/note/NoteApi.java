@@ -13,7 +13,7 @@ import okhttp3.Response;
 
 public class NoteApi {
     private static final String TAG = "NoteApi";
-    private static final String BASE_URL = "http://10.0.2.2:9999/api/note";
+    private static final String BASE_URL = "http://127.0.0.1:9999/api/note";
 
     public static final int MSG_GET_NOTES = 201;
     public static final int MSG_CREATE_NOTE = 202;

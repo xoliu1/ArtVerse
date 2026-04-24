@@ -13,7 +13,7 @@ import okhttp3.Response;
 
 public class AnthologyApi {
     private static final String TAG = "AnthologyApi";
-    private static final String BASE_URL = "http://10.0.2.2:9999/api/anthology";
+    private static final String BASE_URL = "http://127.0.0.1:9999/api/anthology";
 
     public static final int MSG_GET_MY = 301;
     public static final int MSG_GET_ALL = 302;

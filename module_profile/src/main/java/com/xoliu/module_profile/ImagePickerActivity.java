@@ -36,7 +36,7 @@ import utils.MVUtil;
 public class ImagePickerActivity extends AppCompatActivity {
 
     private static final String TAG = "ImagePickerActivity";
-    private static final String BASE_URL = "http://10.0.2.2:9999/api";
+    private static final String BASE_URL = "http://127.0.0.1:9999/api";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

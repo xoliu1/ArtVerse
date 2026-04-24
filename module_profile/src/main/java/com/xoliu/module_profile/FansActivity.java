@@ -183,7 +183,7 @@ public class FansActivity extends AppCompatActivity {
                 try {
                     okhttp3.OkHttpClient client = new okhttp3.OkHttpClient();
                     okhttp3.Request request = new okhttp3.Request.Builder()
-                            .url("http://10.0.2.2:9999/api/follow/check?follower_id=" + userId + "&followed_id=" + item.getUserId())
+                            .url("http://127.0.0.1:9999/api/follow/check?follower_id=" + userId + "&followed_id=" + item.getUserId())
                             .get()
                             .build();
                     okhttp3.Response response = client.newCall(request).execute();

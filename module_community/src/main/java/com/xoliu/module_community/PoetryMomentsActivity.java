@@ -38,7 +38,7 @@ import utils.MVUtil;
 public class PoetryMomentsActivity extends AppCompatActivity {
 
     private static final String TAG = "PoetryMoments";
-    private static final String BASE_URL = "http://10.0.2.2:9999/api";
+    private static final String BASE_URL = "http://127.0.0.1:9999/api";
 
     RecyclerView recyclerView;
     PoetryAdapter poetryAdapter;
